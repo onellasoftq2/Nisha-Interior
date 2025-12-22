@@ -45,7 +45,7 @@ const HeroSection = () => {
       )}
       <div className="absolute inset-0 bg-black/50" />
       <div className="relative z-10 flex h-full items-center">
-        <div className="container">
+        <div className="container px-4 md:px-6">
           <motion.div
             className="max-w-2xl text-left text-white"
             variants={containerVariants}

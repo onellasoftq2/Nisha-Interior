@@ -7,7 +7,7 @@ const CustomizationSection = () => {
 
   return (
     <section className="bg-background">
-      <div className="container">
+      <div className="container px-4 md:px-6">
         <div className="grid items-center gap-12 md:grid-cols-2">
           <div className="space-y-6">
             <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">

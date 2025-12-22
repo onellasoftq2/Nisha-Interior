@@ -5,7 +5,7 @@ import { WhatsappIcon } from './icons/whatsapp-icon';
 const ConsultationCtaSection = () => {
   return (
     <section id="contact" className="bg-background">
-      <div className="container text-center">
+      <div className="container px-4 md:px-6 text-center">
         <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">
           Let’s Design Your Home, Together
         </h2>

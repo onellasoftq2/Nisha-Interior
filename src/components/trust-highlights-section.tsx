@@ -58,7 +58,7 @@ const TrustHighlightsSection = () => {
 
   return (
     <section id="about" className="bg-background">
-      <div className="container">
+      <div className="container px-4 md:px-6">
         <motion.div
           className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4"
           variants={containerVariants}

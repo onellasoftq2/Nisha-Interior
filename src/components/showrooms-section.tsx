@@ -12,7 +12,7 @@ const showrooms = [
 const ShowroomsSection = () => {
   return (
     <section id="showrooms" className="bg-background/80 border-y">
-      <div className="container">
+      <div className="container px-4 md:px-6">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">
             Visit Our Showrooms

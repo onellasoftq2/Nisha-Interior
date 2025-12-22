@@ -3,7 +3,7 @@ import { Separator } from "./ui/separator";
 const Footer = () => {
   return (
     <footer className="bg-background border-t">
-      <div className="container py-12">
+      <div className="container py-12 px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
           <div className="space-y-2">
             <h3 className="font-bold text-lg font-headline">HomeCraft Studio</h3>
