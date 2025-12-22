@@ -55,7 +55,7 @@ export default function FactoryPage() {
           variants={containerVariants}
           className="py-16 md:py-24"
         >
-          <div className="container text-center">
+          <div className="container px-4 md:px-6 text-center">
             <motion.h1
               variants={itemVariants}
               className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
@@ -78,7 +78,7 @@ export default function FactoryPage() {
           variants={containerVariants}
           className="py-16 md:py-24 border-t"
         >
-          <div className="container">
+          <div className="container px-4 md:px-6">
             <div className="grid md:grid-cols-2 items-center gap-12">
               <motion.div variants={itemVariants} className="space-y-8">
                 <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">

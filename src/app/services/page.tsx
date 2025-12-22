@@ -76,7 +76,7 @@ export default function ServicesPage() {
           variants={sectionVariants}
           className="py-16 md:py-24"
         >
-          <div className="container text-center">
+          <div className="container px-4 md:px-6 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
               Our Services
             </h1>
@@ -86,7 +86,7 @@ export default function ServicesPage() {
           </div>
         </motion.section>
 
-        <div className="container space-y-24 md:space-y-32 mb-24">
+        <div className="container px-4 md:px-6 space-y-24 md:space-y-32 mb-24">
           {services.map((service, index) => {
             const image = PlaceHolderImages.find((img) => img.id === service.imageId);
             return (

@@ -29,7 +29,7 @@ export default function AboutUsPage() {
           variants={sectionVariants}
           className="py-16 md:py-24"
         >
-          <div className="container text-center">
+          <div className="container px-4 md:px-6 text-center">
             <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
               Designing Spaces, Building Trust.
             </h1>
@@ -44,7 +44,7 @@ export default function AboutUsPage() {
           whileInView="visible"
           viewport={{ once: true }}
           variants={dividerVariants}
-          className="container max-w-lg"
+          className="container max-w-lg px-4 md:px-6"
         >
           <Separator />
         </motion.div>
@@ -56,7 +56,7 @@ export default function AboutUsPage() {
           variants={sectionVariants}
           className="py-16 md:py-24"
         >
-          <div className="container">
+          <div className="container px-4 md:px-6">
             <div className="grid md:grid-cols-2 items-center gap-16">
               <div className="space-y-6 text-lg text-muted-foreground">
                 <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">Our Philosophy</h2>
