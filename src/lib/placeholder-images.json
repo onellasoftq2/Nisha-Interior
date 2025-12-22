@@ -1,3 +1,34 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-background",
+      "description": "A dark, cinematic, and modern living room interior.",
+      "imageUrl": "https://images.unsplash.com/photo-1640357897497-599b4fc84f51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxkYXJrJTIwaW50ZXJpb3J8ZW58MHx8fHwxNzY2Mzc1NjQ0fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "dark interior"
+    },
+    {
+      "id": "service-kitchens",
+      "description": "A sleek and modern modular kitchen.",
+      "imageUrl": "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBraXRjaGVufGVufDB8fHx8MTc2NjM2Nzk5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern kitchen"
+    },
+    {
+      "id": "service-wardrobes",
+      "description": "A spacious and elegant wardrobe and storage solution.",
+      "imageUrl": "https://images.unsplash.com/photo-1672137233327-37b0c1049e77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjB3YXJkcm9iZXxlbnwwfHx8fDE3NjYyNjY1Nzd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern wardrobe"
+    },
+    {
+      "id": "service-interiors",
+      "description": "A beautifully designed complete home interior living space.",
+      "imageUrl": "https://images.unsplash.com/photo-1618220179428-22790b461013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxsaXZpbmclMjByb29tfGVufDB8fHx8MTc2NjMxMjcyNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "living room"
+    },
+    {
+      "id": "customization-image",
+      "description": "A workshop showing custom furniture being crafted.",
+      "imageUrl": "https://images.unsplash.com/photo-1600078307129-97e9d51d19cc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmdXJuaXR1cmUlMjBmYWN0b3J5fGVufDB8fHx8MTc2NjM3NTY0NHww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "furniture factory"
+    }
+  ]
 }
