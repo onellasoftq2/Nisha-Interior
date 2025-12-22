@@ -7,6 +7,18 @@
       "imageHint": "dark interior"
     },
     {
+      "id": "hero-background-2",
+      "description": "A bright and airy modern living room with minimalist furniture.",
+      "imageUrl": "https://images.unsplash.com/photo-1618220179428-22790b461013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmaW5lJTIwbGl2aW5nJTIwcm9vbXxlbnwwfHx8fDE3MjE4OTc4MjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bright living room"
+    },
+    {
+      "id": "hero-background-3",
+      "description": "An elegant dining room setup with luxury furniture.",
+      "imageUrl": "https://images.unsplash.com/photo-1617806118233-18e1de247200?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBkaW5pbmclMjByb29tfGVufDB8fHx8fDE3MjE4OTc4NDd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "luxury dining room"
+    },
+    {
       "id": "service-kitchens",
       "description": "A sleek and modern modular kitchen.",
       "imageUrl": "https://images.unsplash.com/photo-1600489000022-c2086d79f9d4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBraXRjaGVufGVufDB8fHx8MTc2NjM2Nzk5MXww&ixlib=rb-4.1.0&q=80&w=1080",
