@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import Link from 'next/link';
 
 const heroImages = PlaceHolderImages.filter((img) =>
   img.id.startsWith('hero-background')
@@ -48,9 +49,9 @@ const HeroSection = () => {
   };
 
   const imageVariants = {
-    initial: { opacity: 0 },
-    animate: { opacity: 1, transition: { duration: 1, ease: 'easeInOut' } },
-    exit: { opacity: 0, transition: { duration: 1, ease: 'easeInOut' } },
+    initial: { opacity: 0, scale: 1.05 },
+    animate: { opacity: 1, scale: 1, transition: { duration: 1.5, ease: [0.42, 0, 0.58, 1] } },
+    exit: { opacity: 0, scale: 1, transition: { duration: 1.5, ease: [0.42, 0, 0.58, 1] } },
   };
 
   return (
@@ -72,6 +73,7 @@ const HeroSection = () => {
               className="object-cover"
               priority={currentImageIndex === 0}
               data-ai-hint={heroImage.imageHint}
+              unoptimized
             />
           </motion.div>
         )}
@@ -101,10 +103,14 @@ const HeroSection = () => {
               className="mt-10 flex items-center gap-x-6"
               variants={itemVariants}
             >
-              <Button size="lg">Get Free Consultation</Button>
-              <Button size="lg" variant="outline" className="border-white text-white bg-transparent hover:bg-white hover:text-black">
-                Visit Showrooms
-              </Button>
+              <Link href="/contact">
+                <Button size="lg">Get Free Consultation</Button>
+              </Link>
+              <Link href="/showrooms">
+                <Button size="lg" variant="outline" className="border-white text-white bg-transparent hover:bg-white hover:text-black">
+                  Visit Showrooms
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>

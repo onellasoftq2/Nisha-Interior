@@ -1,10 +1,14 @@
+'use client';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
 import { LogoIcon } from './icons/logo-icon';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 const Header = () => {
+  const pathname = usePathname();
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
@@ -26,7 +30,12 @@ const Header = () => {
               <Link
                 key={item.name}
                 href={item.href}
-                className="transition-colors hover:text-foreground/80 text-foreground/60"
+                className={cn(
+                  'transition-colors hover:text-foreground',
+                  pathname === item.href
+                    ? 'text-foreground font-semibold'
+                    : 'text-foreground/70'
+                )}
               >
                 {item.name}
               </Link>
@@ -52,7 +61,12 @@ const Header = () => {
                     <Link
                       key={item.name}
                       href={item.href}
-                      className="transition-colors hover:text-foreground/80 text-foreground"
+                      className={cn(
+                        'transition-colors hover:text-foreground/80',
+                        pathname === item.href
+                          ? 'text-foreground font-semibold'
+                          : 'text-foreground'
+                      )}
                     >
                       {item.name}
                     </Link>
