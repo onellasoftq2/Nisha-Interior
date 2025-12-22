@@ -6,6 +6,7 @@ import Link from 'next/link';
 
 const Header = () => {
   const navItems = [
+    { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
     { name: 'Factory', href: '/factory' },
     { name: 'Showrooms', href: '/showrooms' },
