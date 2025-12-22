@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'HomeCraft Studio',
+  title: 'Nisha Interior',
   description: 'Designed for Your Space. Crafted to Last.',
 };
 

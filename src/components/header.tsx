@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Menu } from 'lucide-react';
+import { LogoIcon } from './icons/logo-icon';
 
 const Header = () => {
   const navItems = [
@@ -14,7 +15,8 @@ const Header = () => {
       <div className="container flex h-14 max-w-screen-2xl items-center px-4 md:px-6">
         <div className="mr-4 hidden md:flex">
           <a href="/" className="mr-6 flex items-center space-x-2">
-            <span className="font-bold sm:inline-block">HomeCraft Studio</span>
+            <LogoIcon className="h-6 w-6" />
+            <span className="font-bold sm:inline-block">Nisha Interior</span>
           </a>
           <nav className="flex items-center gap-6 text-sm">
             {navItems.map((item) => (
@@ -39,7 +41,8 @@ const Header = () => {
               </SheetTrigger>
               <SheetContent side="left">
                 <a href="/" className="mr-6 flex items-center space-x-2 mb-6">
-                  <span className="font-bold sm:inline-block">HomeCraft Studio</span>
+                  <LogoIcon className="h-6 w-6" />
+                  <span className="font-bold sm:inline-block">Nisha Interior</span>
                 </a>
                 <nav className="flex flex-col gap-4">
                   {navItems.map((item) => (
