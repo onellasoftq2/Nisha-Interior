@@ -73,7 +73,6 @@ const HeroSection = () => {
               className="object-cover"
               priority={currentImageIndex === 0}
               data-ai-hint={heroImage.imageHint}
-              unoptimized
             />
           </motion.div>
         )}
