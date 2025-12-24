@@ -61,13 +61,13 @@ const InteractiveHighlightsSection = () => {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center min-h-[30rem]">
           {/* Left Side - Titles */}
-          <div className="space-y-4 md:space-y-0 relative">
+          <div className="relative flex flex-col justify-center gap-4">
             {highlights.map((highlight, index) => (
               <motion.div
                 key={highlight.title}
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={() => setActiveIndex(index)}
-                className="relative cursor-pointer p-4 -m-4 md:p-6 md:-m-6 rounded-lg transition-colors duration-300"
+                className="relative cursor-pointer p-4 -m-4 rounded-lg transition-colors duration-300"
               >
                 <motion.h3
                   className="text-2xl sm:text-3xl font-bold font-headline"
