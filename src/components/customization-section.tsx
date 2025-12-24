@@ -1,3 +1,5 @@
+'use client';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Button } from './ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
@@ -5,12 +7,33 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 const CustomizationSection = () => {
   const customImage = PlaceHolderImages.find((img) => img.id === 'customization-image');
 
+  const containerVariants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: 0.2, delayChildren: 0.2 } },
+  };
+
+  const textVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.95 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: 'easeOut' } },
+  };
+
   return (
-    <section className="bg-background">
+    <motion.section 
+      className="bg-secondary"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      variants={containerVariants}
+    >
       <div className="container px-4 md:px-6">
-        <div className="grid items-center gap-12 md:grid-cols-2">
-          <div className="space-y-6">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">
+        <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
+          <motion.div variants={textVariants} className="space-y-6">
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
               Manufactured In-House. Made for Your Exact Space.
             </h2>
             <p className="text-lg text-muted-foreground">
@@ -19,9 +42,13 @@ const CustomizationSection = () => {
             <p className="text-lg text-muted-foreground">
               From material selection to the final finish, we control every step of the process to ensure the highest quality standards.
             </p>
-            <Button size="lg">Discuss Custom Requirements</Button>
-          </div>
-          <div className="rounded-lg overflow-hidden shadow-lg">
+            <Button size="lg" asChild>
+                <motion.a href="/contact" whileHover={{ scale: 1.05 }} transition={{ duration: 0.2 }}>
+                    Discuss Custom Requirements
+                </motion.a>
+            </Button>
+          </motion.div>
+          <motion.div variants={imageVariants} className="rounded-lg overflow-hidden shadow-lg">
             {customImage && (
               <Image
                 src={customImage.imageUrl}
@@ -32,10 +59,10 @@ const CustomizationSection = () => {
                 data-ai-hint={customImage.imageHint}
               />
             )}
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

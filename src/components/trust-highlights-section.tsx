@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Factory, Scissors, Store, Users } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
+import { Card, CardContent, CardHeader } from './ui/card';
 
 interface Highlight {
   icon: LucideIcon;
@@ -13,23 +14,23 @@ interface Highlight {
 const highlights: Highlight[] = [
   {
     icon: Factory,
-    title: 'Own Manufacturing Factory',
-    description: 'Ensuring quality control and timely delivery from our state-of-the-art facility.',
+    title: 'Own Manufacturing',
+    description: 'Quality control and timely delivery from our state-of-the-art facility.',
   },
   {
     icon: Scissors,
-    title: 'Custom Size Furniture',
-    description: 'Perfectly fitting furniture for your unique spaces, crafted to your exact specifications.',
+    title: 'Custom Furniture',
+    description: 'Perfectly fitting furniture for your unique spaces, crafted to your specifications.',
   },
   {
     icon: Store,
-    title: '4 Showrooms in Pune',
-    description: 'Experience our craftsmanship firsthand at any of our conveniently located showrooms.',
+    title: '4 Pune Showrooms',
+    description: 'Experience our craftsmanship firsthand at any of our convenient locations.',
   },
   {
     icon: Users,
-    title: 'Interior Design Consultation',
-    description: 'Our expert designers help you create a home that reflects your personal style.',
+    title: 'Expert Consultation',
+    description: 'Our designers help you create a home that truly reflects your personal style.',
   },
 ];
 
@@ -39,7 +40,8 @@ const TrustHighlightsSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
       },
     },
   };
@@ -50,33 +52,39 @@ const TrustHighlightsSection = () => {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.4,
+        duration: 0.35,
         ease: 'easeOut',
       },
     },
   };
 
   return (
-    <section id="about" className="bg-background">
+    <section id="about" className="bg-secondary">
       <div className="container px-4 md:px-6">
         <motion.div
-          className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4"
+          className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          viewport={{ once: true, amount: 0.2 }}
         >
-          {highlights.map((highlight, index) => (
-            <motion.div key={index} className="text-center" variants={itemVariants}>
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
-                <highlight.icon className="h-8 w-8" />
-              </div>
-              <h3 className="mt-6 text-lg font-medium leading-6 text-foreground font-headline">
-                {highlight.title}
-              </h3>
-              <p className="mt-2 text-base text-muted-foreground">
-                {highlight.description}
-              </p>
+          {highlights.map((highlight) => (
+            <motion.div key={highlight.title} variants={itemVariants}>
+              <Card className="h-full text-center bg-background/50 border-0 shadow-sm transition-all duration-300 ease-out hover:shadow-lg hover:-translate-y-1.5">
+                <CardHeader className="items-center">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <highlight.icon className="h-8 w-8" />
+                  </div>
+                </CardHeader>
+                <CardContent>
+                  <h3 className="text-lg font-medium leading-6 text-foreground font-headline">
+                    {highlight.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground">
+                    {highlight.description}
+                  </p>
+                </CardContent>
+              </Card>
             </motion.div>
           ))}
         </motion.div>
