@@ -1,6 +1,6 @@
 import Header from '@/components/header';
 import HeroSection from '@/components/hero-section';
-import TrustHighlightsSection from '@/components/trust-highlights-section';
+import InteractiveHighlightsSection from '@/components/interactive-highlights-section';
 import ServicesSection from '@/components/services-section';
 import CustomizationSection from '@/components/customization-section';
 import ShowroomsSection from '@/components/showrooms-section';
@@ -13,7 +13,7 @@ export default function Home() {
       <Header />
       <main className="flex-1">
         <HeroSection />
-        <TrustHighlightsSection />
+        <InteractiveHighlightsSection />
         <ServicesSection />
         <CustomizationSection />
         <ShowroomsSection />
