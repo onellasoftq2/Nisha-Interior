@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 interface Highlight {
+  id: string;
   imageId: string;
   title: string;
   description: string;
@@ -12,21 +13,25 @@ interface Highlight {
 
 const highlights: Highlight[] = [
   {
+    id: 'manufacturing',
     imageId: 'highlight-manufacturing',
     title: 'Own Manufacturing',
     description: 'Quality control and timely delivery from our state-of-the-art facility gives you peace of mind and ensures perfection.',
   },
   {
+    id: 'furniture',
     imageId: 'highlight-furniture',
     title: 'Custom Furniture',
     description: 'Perfectly fitting furniture for your unique spaces, crafted to your exact specifications for a truly bespoke home.',
   },
   {
+    id: 'showrooms',
     imageId: 'highlight-showrooms',
     title: '4 Pune Showrooms',
     description: 'Experience our craftsmanship firsthand at any of our convenient locations across Pune. See and feel the quality for yourself.',
   },
   {
+    id: 'consultation',
     imageId: 'services-consultation',
     title: 'Expert Consultation',
     description: 'Our experienced designers help you create a home that truly reflects your personal style and functional needs.',
@@ -49,31 +54,42 @@ const InteractiveHighlightsSection = () => {
   };
 
   return (
-    <section id="about" className="bg-background">
+    <section id="about" className="bg-background py-20 md:py-32">
       <div className="container px-4 md:px-6">
-        <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
-              Why Choose Us?
+        <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.4, ease: 'easeOut' }}
+            className="text-center mb-16"
+        >
+            <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
+              Why Choose Nisha Interior?
             </h2>
             <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-              Four key pillars that define the Nisha Interior experience.
+              The four key pillars that define our commitment to excellence.
             </p>
-        </div>
+        </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center min-h-[30rem]">
           {/* Left Side - Titles */}
-          <div className="relative flex flex-col justify-center gap-4">
+          <div className="relative flex flex-col justify-center gap-8">
             {highlights.map((highlight, index) => (
               <motion.div
-                key={highlight.title}
+                key={highlight.id}
                 onMouseEnter={() => setActiveIndex(index)}
                 onClick={() => setActiveIndex(index)}
-                className="relative cursor-pointer p-4 -m-4 rounded-lg transition-colors duration-300"
+                className="relative cursor-pointer p-4 -m-4 rounded-lg"
+                initial={{x: -20, opacity: 0}}
+                whileInView={{x: 0, opacity: 1}}
+                viewport={{once: true, amount: 0.2}}
+                transition={{ duration: 0.3, ease: 'easeOut', delay: index * 0.1 }}
               >
                 <motion.h3
-                  className="text-2xl sm:text-3xl font-bold font-headline"
+                  className="text-2xl sm:text-3xl font-semibold font-headline"
                   variants={titleVariants}
                   animate={activeIndex === index ? 'active' : 'inactive'}
                   initial={false}
+                  transition={{duration: 0.3}}
                 >
                   {highlight.title}
                 </motion.h3>
@@ -112,20 +128,26 @@ const InteractiveHighlightsSection = () => {
                 initial="hidden"
                 animate="visible"
                 exit="hidden"
-                className="flex flex-col items-center justify-center text-center max-w-sm mx-auto"
+                className="flex flex-col items-center justify-center text-center w-full"
               >
                 {activeImage && (
-                    <div className="relative w-full h-64 rounded-lg overflow-hidden shadow-lg mb-8">
+                    <motion.div 
+                        className="relative w-full h-80 rounded-lg overflow-hidden shadow-lg mb-8"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.4, ease: 'easeOut' }}
+                    >
                         <Image
                             src={activeImage.imageUrl}
                             alt={activeImage.description}
                             fill
                             className="object-cover"
+                            sizes="(max-width: 768px) 100vw, 50vw"
                             data-ai-hint={activeImage.imageHint}
                         />
-                    </div>
+                    </motion.div>
                 )}
-                <p className="text-xl text-foreground leading-relaxed">
+                <p className="text-xl text-foreground/90 leading-relaxed max-w-md">
                   {activeHighlight.description}
                 </p>
               </motion.div>

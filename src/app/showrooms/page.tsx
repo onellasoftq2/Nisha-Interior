@@ -5,27 +5,32 @@ import { Button } from '@/components/ui/button';
 import { MapPin, Phone } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import Link from 'next/link';
 
 const showrooms = [
   {
     name: 'Wakad Showroom',
     address: '123 Sunshine Plaza, Wakad, Pune, Maharashtra 411057',
     phone: '+91 123 456 7890',
+    mapLink: 'https://maps.google.com'
   },
   {
     name: 'Kharadi Showroom',
     address: '456 Urban Square, Kharadi, Pune, Maharashtra 411014',
     phone: '+91 123 456 7891',
+    mapLink: 'https://maps.google.com'
   },
   {
     name: 'New Kharadi Annex',
     address: '789 Galaxy Galleria, New Kharadi, Pune, Maharashtra 411014',
     phone: '+91 123 456 7892',
+    mapLink: 'https://maps.google.com'
   },
   {
     name: 'Nanded City Hub',
     address: '101 Aspire Towers, Nanded City, Pune, Maharashtra 411041',
     phone: '+91 123 456 7893',
+    mapLink: 'https://maps.google.com'
   },
 ];
 
@@ -33,7 +38,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, duration: 0.4, ease: 'easeOut' },
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
   },
 };
 
@@ -55,12 +60,12 @@ export default function ShowroomsPage() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="py-16 md:py-24"
+          className="pt-24 pb-16 md:pt-32 md:pb-24"
         >
           <div className="container px-4 md:px-6 text-center">
             <motion.h1
               variants={itemVariants}
-              className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
+              className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
             >
               Visit Our Showrooms
             </motion.h1>
@@ -78,13 +83,13 @@ export default function ShowroomsPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="pb-24"
+          className="pb-24 md:pb-32"
         >
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
               {showrooms.map((showroom) => (
                 <motion.div key={showroom.name} variants={itemVariants}>
-                  <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-2">
+                  <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-2 bg-card border">
                     <CardHeader>
                       <CardTitle className="font-headline text-2xl">{showroom.name}</CardTitle>
                     </CardHeader>
@@ -93,11 +98,15 @@ export default function ShowroomsPage() {
                       <p className="text-sm text-muted-foreground">{showroom.phone}</p>
                     </CardContent>
                     <CardFooter className="flex flex-col gap-2 pt-4">
-                      <Button className="w-full">
-                        <Phone className="mr-2" /> Call Now
+                      <Button className="w-full" asChild>
+                        <Link href={`tel:${showroom.phone}`}>
+                            <Phone className="mr-2" /> Call Now
+                        </Link>
                       </Button>
-                      <Button variant="outline" className="w-full">
-                        <MapPin className="mr-2" /> Directions
+                      <Button variant="outline" className="w-full" asChild>
+                        <Link href={showroom.mapLink} target="_blank">
+                            <MapPin className="mr-2" /> Directions
+                        </Link>
                       </Button>
                     </CardFooter>
                   </Card>

@@ -6,35 +6,54 @@ import { LogoIcon } from './icons/logo-icon';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
+import { useState, useEffect } from 'react';
 
 const Header = () => {
   const pathname = usePathname();
+  const [isScrolled, setIsScrolled] = useState(false);
+
   const navItems = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/services' },
     { name: 'Factory', href: '/factory' },
     { name: 'Showrooms', href: '/showrooms' },
-    { name: 'About Us', href: '/about' },
+    { name: 'About', href: '/about' },
+    { name: 'Contact', href: '/contact' },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-      <div className="container flex h-14 max-w-screen-2xl items-center px-4 md:px-6">
-        <div className="mr-4 hidden md:flex">
+    <header className={cn(
+        "sticky top-0 z-50 w-full transition-all duration-300",
+        isScrolled ? "border-b border-border/40 bg-background/95 backdrop-blur-sm" : "bg-transparent"
+    )}>
+      <div className="container flex h-20 items-center px-4 md:px-6">
+        <div className="mr-8 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
-            <LogoIcon className="h-6 w-6" />
-            <span className="font-bold sm:inline-block">Nisha Interior</span>
+            <LogoIcon className="h-6 w-6 text-primary" />
+            <span className={cn("font-bold sm:inline-block", isScrolled ? "text-foreground" : "text-white")}>Nisha Interior</span>
           </Link>
           <nav className="flex items-center gap-6 text-sm">
-            {navItems.map((item) => (
+            {navItems.slice(0, 5).map((item) => ( // Hide Contact from main nav
               <Link
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  'transition-colors hover:text-foreground',
+                  'relative transition-colors hover:text-primary',
                   pathname === item.href
-                    ? 'text-foreground font-semibold'
-                    : 'text-foreground/70'
+                    ? isScrolled ? 'text-primary' : 'text-white'
+                    : isScrolled ? 'text-foreground/70 hover:text-foreground' : 'text-white/80 hover:text-white',
+                  'after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300',
+                  pathname === item.href && 'after:scale-x-100'
                 )}
               >
                 {item.name}
@@ -43,28 +62,34 @@ const Header = () => {
           </nav>
         </div>
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+          <div className="md:hidden flex-1">
+             <Link href="/" className="flex items-center space-x-2">
+                <LogoIcon className="h-6 w-6 text-primary" />
+                <span className={cn("font-bold", isScrolled ? "text-foreground" : "text-white")}>Nisha Interior</span>
+            </Link>
+          </div>
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="ghost" size="icon" className={cn(isScrolled ? 'text-foreground' : 'text-white')}>
                   <Menu className="h-5 w-5" />
                   <span className="sr-only">Toggle Menu</span>
                 </Button>
               </SheetTrigger>
-              <SheetContent side="left">
-                <Link href="/" className="mr-6 flex items-center space-x-2 mb-6">
-                  <LogoIcon className="h-6 w-6" />
-                  <span className="font-bold sm:inline-block">Nisha Interior</span>
+              <SheetContent side="left" className="bg-background">
+                <Link href="/" className="mr-6 flex items-center space-x-2 mb-8">
+                  <LogoIcon className="h-6 w-6 text-primary" />
+                  <span className="font-bold">Nisha Interior</span>
                 </Link>
-                <nav className="flex flex-col gap-4">
+                <nav className="flex flex-col gap-6">
                   {navItems.map((item) => (
                     <Link
                       key={item.name}
                       href={item.href}
                       className={cn(
-                        'transition-colors hover:text-foreground/80',
+                        'text-lg transition-colors hover:text-primary',
                         pathname === item.href
-                          ? 'text-foreground font-semibold'
+                          ? 'text-primary font-semibold'
                           : 'text-foreground'
                       )}
                     >
@@ -75,9 +100,9 @@ const Header = () => {
               </SheetContent>
             </Sheet>
           </div>
-          <Link href="/contact">
-            <Button>Get a Quote</Button>
-          </Link>
+           <Button asChild className="hidden md:inline-flex">
+             <Link href="/contact">Get a Quote</Link>
+           </Button>
         </div>
       </div>
     </header>

@@ -1,35 +1,60 @@
 'use client';
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
-import { Phone } from 'lucide-react';
-import { WhatsappIcon } from './icons/whatsapp-icon';
+import { Phone, MessageCircle } from 'lucide-react';
+import Link from 'next/link';
 
 const ConsultationCtaSection = () => {
   return (
-    <section id="contact" className="bg-secondary">
-      <div className="container px-4 md:px-6">
+    <motion.section 
+        id="contact" 
+        className="bg-secondary text-secondary-foreground"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+    >
+      <div className="container px-4 md:px-6 py-20 md:py-32">
         <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
-            Let’s Design Your Home, Together
-            </h2>
-            <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Ready to take the next step? Our design consultants are here to help you bring your vision to life.
-            </p>
-            <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button size="lg" className="w-full sm:w-auto">
+            <motion.h2 
+                className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
+            >
+                Let’s Design Your Home, Together
+            </motion.h2>
+            <motion.p 
+                className="mt-6 max-w-2xl mx-auto text-lg text-secondary-foreground/80"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
+            >
+                Ready to take the next step? Our design consultants are here to help you bring your vision to life.
+            </motion.p>
+            <motion.div 
+                className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, ease: 'easeOut', delay: 0.3 }}
+            >
+                <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary-hover" asChild>
+                    <Link href="tel:+919876543210">
                         <Phone /> Call Now
-                    </Button>
-                </motion.div>
-                <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                    <Button size="lg" variant="outline" className="w-full sm:w-auto border-foreground/20 hover:bg-background">
-                        <WhatsappIcon className="mr-2 h-5 w-5" /> WhatsApp Us
-                    </Button>
-                </motion.div>
-            </div>
+                    </Link>
+                </Button>
+                <Button size="lg" variant="outline" className="w-full sm:w-auto border-white/80 text-white hover:bg-white hover:text-black" asChild>
+                    <Link href="https://wa.me/919876543210" target="_blank">
+                        <MessageCircle /> WhatsApp Us
+                    </Link>
+                </Button>
+            </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

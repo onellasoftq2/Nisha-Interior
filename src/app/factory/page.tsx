@@ -28,7 +28,7 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, duration: 0.4, ease: 'easeOut' },
+    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
   },
 };
 
@@ -38,8 +38,8 @@ const itemVariants = {
 };
 
 const imageVariants = {
-  hidden: { opacity: 0 },
-  visible: { opacity: 1, transition: { duration: 0.4, ease: 'easeOut' } },
+  hidden: { opacity: 0, scale: 0.95 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } },
 };
 
 export default function FactoryPage() {
@@ -53,12 +53,12 @@ export default function FactoryPage() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="py-16 md:py-24"
+          className="pt-24 pb-16 md:pt-32 md:pb-24"
         >
           <div className="container px-4 md:px-6 text-center">
             <motion.h1
               variants={itemVariants}
-              className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
+              className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
             >
               Factory-Backed Precision
             </motion.h1>
@@ -66,7 +66,7 @@ export default function FactoryPage() {
               variants={itemVariants}
               className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground"
             >
-              Our state-of-the-art factory is the heart of our operation, giving us unparalleled control over quality, customization, and delivery. Discover the advantage of in-house manufacturing.
+              Our state-of-the-art factory is the heart of our operation, giving us unparalleled control over quality, customization, and delivery.
             </motion.p>
           </div>
         </motion.section>
@@ -79,9 +79,9 @@ export default function FactoryPage() {
           className="py-16 md:py-24 border-t"
         >
           <div className="container px-4 md:px-6">
-            <div className="grid md:grid-cols-2 items-center gap-12">
+            <div className="grid md:grid-cols-2 items-center gap-16">
               <motion.div variants={itemVariants} className="space-y-8">
-                <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl font-headline">
+                <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">
                   The Art of Custom Manufacturing
                 </h2>
                 <p className="text-lg text-muted-foreground">
@@ -89,7 +89,17 @@ export default function FactoryPage() {
                 </p>
                 <div className="space-y-6">
                   {features.map((feature, index) => (
-                    <div key={index} className="flex items-start gap-4">
+                    <motion.div 
+                      key={index} 
+                      className="flex items-start gap-4"
+                      initial="hidden"
+                      whileInView="visible"
+                      viewport={{ once: true, amount: 0.5 }}
+                      variants={{
+                        hidden: { opacity: 0, x: -20 },
+                        visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: 'easeOut', delay: index * 0.1 } },
+                      }}
+                    >
                       <div className="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
                         <feature.icon className="h-6 w-6" />
                       </div>
@@ -97,13 +107,13 @@ export default function FactoryPage() {
                         <h3 className="font-semibold text-foreground">{feature.title}</h3>
                         <p className="mt-1 text-muted-foreground">{feature.description}</p>
                       </div>
-                    </div>
+                    </motion.div>
                   ))}
                 </div>
               </motion.div>
               <motion.div
                 variants={imageVariants}
-                className="rounded-lg overflow-hidden shadow-lg aspect-w-4 aspect-h-3"
+                className="rounded-lg overflow-hidden shadow-xl aspect-w-4 aspect-h-3"
               >
                 {factoryImage && (
                   <Image

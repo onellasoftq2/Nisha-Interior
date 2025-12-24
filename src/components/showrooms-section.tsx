@@ -2,6 +2,7 @@
 import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { MapPin, Phone, ArrowRight } from 'lucide-react';
+import Link from 'next/link';
 
 const showrooms = [
   { name: 'Wakad', address: '123 Sunshine Plaza, 411057' },
@@ -23,20 +24,20 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.35, ease: 'easeOut' },
+    transition: { duration: 0.4, ease: 'easeOut' },
   },
 };
 
 const cardHoverVariants = {
-  rest: { y: 0, boxShadow: '0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1)' },
-  hover: { y: -6, boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1)' },
+  rest: { y: 0 },
+  hover: { y: -8 },
 };
 
 const ShowroomsSection = () => {
   return (
     <motion.section
       id="showrooms"
-      className="bg-secondary"
+      className="bg-background py-20 md:py-32"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
@@ -44,7 +45,7 @@ const ShowroomsSection = () => {
     >
       <div className="container px-4 md:px-6">
         <motion.div variants={itemVariants} className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
+          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
             Visit Our Showrooms
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
@@ -59,30 +60,24 @@ const ShowroomsSection = () => {
               whileHover="hover"
               initial="rest"
               animate="rest"
-              className="relative"
+              className="group"
             >
-              <motion.div
-                variants={cardHoverVariants}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="flex flex-col h-full rounded-lg bg-background/50 shadow-md border border-border/60 overflow-hidden"
-              >
-                <div className="flex-grow p-6 sm:p-8 flex flex-col justify-between">
-                  <div>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-foreground font-headline mb-2">{showroom.name}</h3>
-                    <p className="text-muted-foreground">{showroom.address}, Pune</p>
-                  </div>
-                  <div className="mt-8 space-y-3">
-                    <Button variant="outline" className="w-full justify-between group bg-transparent border-foreground/20 hover:bg-background">
-                      <span>Call Now</span>
-                      <Phone className="group-hover:translate-x-1 transition-transform duration-300" />
-                    </Button>
-                    <Button variant="outline" className="w-full justify-between group bg-transparent border-foreground/20 hover:bg-background">
-                      <span>Get Directions</span>
-                      <MapPin className="group-hover:translate-x-1 transition-transform duration-300" />
-                    </Button>
-                  </div>
-                </div>
-              </motion.div>
+              <Link href="/showrooms" className="block h-full">
+                <motion.div
+                  variants={cardHoverVariants}
+                  transition={{ duration: 0.3, ease: 'easeOut' }}
+                  className="flex flex-col h-full rounded-lg bg-card shadow-sm border border-border/60 overflow-hidden p-6 sm:p-8"
+                >
+                    <div className="flex-grow">
+                        <h3 className="text-2xl sm:text-3xl font-semibold text-foreground font-headline mb-2">{showroom.name}</h3>
+                        <p className="text-muted-foreground">{showroom.address}, Pune</p>
+                    </div>
+                    <div className="mt-8 flex items-center text-primary font-medium">
+                        <span>Visit Showroom</span>
+                        <ArrowRight className="h-4 w-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"/>
+                    </div>
+                </motion.div>
+              </Link>
             </motion.div>
           ))}
         </div>

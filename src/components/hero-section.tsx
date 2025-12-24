@@ -5,6 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
+import Link from 'next/link';
 
 const heroImages = PlaceHolderImages.filter((img) =>
   img.id.startsWith('hero-background')
@@ -19,7 +21,7 @@ const HeroSection = () => {
       setCurrentImageIndex((prevIndex) =>
         prevIndex === heroImages.length - 1 ? 0 : prevIndex + 1
       );
-    }, 3000);
+    }, 5000); // Changed to 5 seconds for a calmer feel
     return () => clearTimeout(timer);
   }, [currentImageIndex]);
 
@@ -31,9 +33,7 @@ const HeroSection = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.2,
-        delayChildren: 0.3,
-        duration: 0.5,
-        ease: 'easeOut',
+        delayChildren: 0.4,
       },
     },
   };
@@ -57,7 +57,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-[calc(100vh-56px)] w-full overflow-hidden p-0">
+    <section className="relative h-[85vh] min-h-[600px] md:h-[calc(100vh-80px)] w-full overflow-hidden">
       <div className="absolute inset-0">
         <AnimatePresence initial={false}>
           {heroImage && (
@@ -81,45 +81,39 @@ const HeroSection = () => {
           )}
         </AnimatePresence>
       </div>
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/50 to-transparent" />
-      <div className="relative z-10 flex h-full items-center justify-center text-center md:items-end md:justify-start md:text-left">
-        <div className="container px-4 md:px-6 pb-12 md:pb-24">
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/60 to-transparent" />
+
+      <div className="relative z-10 flex h-full items-center">
+        <div className="container px-4 md:px-6">
           <motion.div
-            className="max-w-2xl text-white"
+            className="max-w-3xl text-white"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
             <motion.h1
-              className="text-4xl font-bold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl font-headline"
+              className="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl font-headline"
               variants={itemVariants}
             >
-              Designed for Your Space. Crafted to Last.
+              Designed for Your Space.
+              <br />
+              Crafted to Last.
             </motion.h1>
             <motion.p
-              className="mt-6 text-lg leading-8 text-gray-200"
+              className="mt-6 text-lg leading-8 text-gray-200/90"
               variants={itemVariants}
             >
               Custom modular kitchens and interiors, manufactured in our own factory in Pune.
             </motion.p>
             <motion.div
-              className="mt-10 flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4"
+              className="mt-10 flex flex-col sm:flex-row items-center justify-start gap-4"
               variants={itemVariants}
             >
-              <Button
-                size="lg"
-                onClick={() => router.push('/contact')}
-                className="w-full sm:w-auto"
-              >
-                Get Free Consultation
+              <Button asChild size="lg" className="w-full sm:w-auto">
+                <Link href="/contact">Get Free Consultation</Link>
               </Button>
-              <Button
-                size="lg"
-                variant="outline"
-                onClick={() => router.push('/showrooms')}
-                className="border-white text-white bg-transparent hover:bg-white hover:text-black w-full sm:w-auto"
-              >
-                Visit Showrooms
+              <Button asChild size="lg" variant="outline" className="text-white bg-transparent border-white/80 hover:bg-white hover:text-black w-full sm:w-auto">
+                 <Link href="/showrooms">Visit Showrooms</Link>
               </Button>
             </motion.div>
           </motion.div>

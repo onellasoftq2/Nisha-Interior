@@ -8,12 +8,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import Link from 'next/link';
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15, duration: 0.4, ease: 'easeOut' },
+    transition: { staggerChildren: 0.15, delayChildren: 0.2, duration: 0.4, ease: 'easeOut' },
   },
 };
 
@@ -35,12 +36,12 @@ export default function ContactPage() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="py-16 md:py-24"
+          className="py-24 md:py-32"
         >
           <div className="container px-4 md:px-6 text-center">
             <motion.h1
               variants={itemVariants}
-              className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
+              className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
             >
               Get in Touch
             </motion.h1>
@@ -58,14 +59,14 @@ export default function ContactPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
-          className="pb-24"
+          className="pb-24 md:pb-32"
         >
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Contact Methods */}
               <div className="space-y-8">
                 <motion.div variants={itemVariants}>
-                  <Card className="overflow-hidden transition-all duration-300 ease-out hover:shadow-xl hover:bg-card/90">
+                  <Card className="overflow-hidden transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1">
                     <CardHeader>
                       <CardTitle className="flex items-center gap-3 text-2xl font-headline">
                         <Phone />
@@ -76,15 +77,15 @@ export default function ContactPage() {
                       <p className="text-muted-foreground mb-4">
                         Speak directly with our design consultants.
                       </p>
-                      <Button size="lg" className="w-full sm:w-auto">
-                        +91 987 654 3210
+                      <Button asChild size="lg" className="w-full sm:w-auto">
+                        <Link href="tel:+919876543210">+91 987 654 3210</Link>
                       </Button>
                     </CardContent>
                   </Card>
                 </motion.div>
 
                 <motion.div variants={itemVariants}>
-                  <Card className="overflow-hidden transition-all duration-300 ease-out hover:shadow-xl hover:bg-card/90">
+                  <Card className="overflow-hidden transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1">
                     <CardHeader>
                       <CardTitle className="flex items-center gap-3 text-2xl font-headline">
                         <WhatsappIcon className="h-6 w-6" />
@@ -95,15 +96,15 @@ export default function ContactPage() {
                       <p className="text-muted-foreground mb-4">
                         Prefer texting? Send us a message for a quick response.
                       </p>
-                      <Button size="lg" variant="secondary" className="w-full sm:w-auto bg-green-500 text-white hover:bg-green-600">
-                        Message Us
+                      <Button asChild size="lg" className="w-full sm:w-auto">
+                        <Link href="https://wa.me/919876543210" target="_blank">Message Us</Link>
                       </Button>
                     </CardContent>
                   </Card>
                 </motion.div>
 
                 <motion.div variants={itemVariants}>
-                  <Card className="overflow-hidden transition-all duration-300 ease-out hover:shadow-xl hover:bg-card/90">
+                  <Card className="overflow-hidden transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1">
                     <CardHeader>
                       <CardTitle className="flex items-center gap-3 text-2xl font-headline">
                         <MapPin />
@@ -114,8 +115,8 @@ export default function ContactPage() {
                       <p className="text-muted-foreground mb-4">
                         See our quality and designs firsthand.
                       </p>
-                      <Button size="lg" variant="outline" className="w-full sm:w-auto">
-                        Find Locations
+                      <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                        <Link href="/showrooms">Find Locations</Link>
                       </Button>
                     </CardContent>
                   </Card>
