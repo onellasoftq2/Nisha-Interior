@@ -34,13 +34,13 @@ const Header = () => {
   return (
     <header className={cn(
         "sticky top-0 z-50 w-full transition-all duration-300",
-        isScrolled ? "border-b border-border/40 bg-background/95 backdrop-blur-sm" : "bg-transparent"
+        isScrolled ? "border-b border-border/40 bg-background/95 backdrop-blur-sm" : "bg-background/80"
     )}>
       <div className="container flex h-20 items-center px-4 md:px-6">
         <div className="mr-8 hidden md:flex">
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <LogoIcon className="h-6 w-6 text-primary" />
-            <span className={cn("font-bold sm:inline-block", isScrolled ? "text-foreground" : "text-white")}>Nisha Interior</span>
+            <span className={cn("font-bold sm:inline-block", isScrolled ? "text-foreground" : "text-foreground")}>Nisha Interior</span>
           </Link>
           <nav className="flex items-center gap-6 text-sm">
             {navItems.slice(0, 5).map((item) => ( // Hide Contact from main nav
@@ -48,10 +48,10 @@ const Header = () => {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  'relative transition-colors hover:text-primary',
+                  'relative transition-colors hover:text-primary font-medium',
                   pathname === item.href
-                    ? isScrolled ? 'text-primary' : 'text-white'
-                    : isScrolled ? 'text-foreground/70 hover:text-foreground' : 'text-white/80 hover:text-white',
+                    ? isScrolled ? 'text-primary' : 'text-primary'
+                    : isScrolled ? 'text-foreground/70 hover:text-foreground' : 'text-foreground/80 hover:text-foreground',
                   'after:absolute after:bottom-[-4px] after:left-0 after:h-[2px] after:w-full after:bg-primary after:scale-x-0 after:origin-left after:transition-transform after:duration-300',
                   pathname === item.href && 'after:scale-x-100'
                 )}
@@ -65,13 +65,13 @@ const Header = () => {
           <div className="md:hidden flex-1">
              <Link href="/" className="flex items-center space-x-2">
                 <LogoIcon className="h-6 w-6 text-primary" />
-                <span className={cn("font-bold", isScrolled ? "text-foreground" : "text-white")}>Nisha Interior</span>
+                <span className={cn("font-bold", isScrolled ? "text-foreground" : "text-foreground")}>Nisha Interior</span>
             </Link>
           </div>
           <div className="md:hidden">
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="ghost" size="icon" className={cn(isScrolled ? 'text-foreground' : 'text-white')}>
+                <Button variant="ghost" size="icon" className={cn(isScrolled ? 'text-foreground' : 'text-foreground')}>
                   <Menu className="h-5 w-5" />
                   <span className="sr-only">Toggle Menu</span>
                 </Button>
@@ -100,7 +100,7 @@ const Header = () => {
               </SheetContent>
             </Sheet>
           </div>
-           <Button asChild className="hidden md:inline-flex">
+           <Button asChild className="hidden md:inline-flex text-base">
              <Link href="/contact">Get a Quote</Link>
            </Button>
         </div>
