@@ -34,7 +34,7 @@ const CustomizationSection = () => {
       <div className="container px-4 md:px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
           <motion.div variants={textVariants} className="space-y-6">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline">
+            <h2 className="text-3xl font-semibold tracking-tight text-secondary-foreground sm:text-4xl md:text-5xl font-headline">
               Manufactured In-House.
               <br />
               Made for Your Exact Space.
