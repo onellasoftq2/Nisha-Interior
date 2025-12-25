@@ -128,7 +128,7 @@ export default function ContactPage() {
                 <Card className="h-full p-4 sm:p-6 transition-all duration-300 ease-out hover:shadow-xl">
                   <CardHeader>
                     <CardTitle className="text-2xl font-headline">
-                      Request a Free Consultation
+                      Request a Free Quote
                     </CardTitle>
                   </CardHeader>
                   <CardContent>
@@ -142,7 +142,7 @@ export default function ContactPage() {
                         <Input id="phone" type="tel" placeholder="e.g. +91 98765 43210" />
                       </div>
                       <Button type="submit" size="lg" className="w-full">
-                        Schedule Call
+                        Get a Quote
                       </Button>
                     </form>
                   </CardContent>

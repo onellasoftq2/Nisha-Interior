@@ -109,11 +109,8 @@ const Header = () => {
             </Sheet>
           </div>
            <div className="hidden md:flex items-center gap-2">
-             <Button onClick={() => setShowBookingModal(true)} variant="outline" className="text-base">
-                <Video /> Video Consultation
-             </Button>
-             <Button asChild className="text-base">
-                <Link href="/contact">Get a Quote</Link>
+             <Button onClick={() => setShowBookingModal(true)} variant="default" className="text-base">
+                <Video className="mr-2" /> Video Consultation
              </Button>
            </div>
         </div>
