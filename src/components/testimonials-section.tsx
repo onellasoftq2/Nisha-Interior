@@ -1,8 +1,8 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Card, CardContent } from '@/components/ui/card';
-import { Quote, ArrowRight } from 'lucide-react';
+import { Quote } from 'lucide-react';
 
 const initialTestimonials = [
   {
@@ -128,15 +128,19 @@ export default function TestimonialsSection() {
   const [testimonials, setTestimonials] = useState(initialTestimonials);
   const [nextId, setNextId] = useState(initialTestimonials.length + 1);
 
-  const handleNext = () => {
-    const newTestimonial = { 
-        ...initialTestimonials[(nextId - 1) % initialTestimonials.length], 
-        id: nextId 
-    };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newTestimonial = { 
+          ...initialTestimonials[(nextId - 1) % initialTestimonials.length], 
+          id: nextId 
+      };
 
-    setTestimonials((prev) => [...prev.slice(1), newTestimonial]);
-    setNextId((prev) => prev + 1);
-  };
+      setTestimonials((prev) => [...prev.slice(1), newTestimonial]);
+      setNextId((prev) => prev + 1);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [nextId]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -177,15 +181,6 @@ export default function TestimonialsSection() {
                     <AnimatedCard key={testimonial.id} testimonial={testimonial} index={index} />
                 ))}
                 </AnimatePresence>
-            </div>
-
-            <div className="relative z-10 mt-6 flex w-full items-center justify-center">
-                <button
-                    onClick={handleNext}
-                    className="flex h-11 cursor-pointer select-none items-center justify-center gap-2 overflow-hidden rounded-md border bg-card px-4 py-2 font-medium text-foreground transition-all hover:bg-secondary/80 active:scale-[0.98] shadow-sm"
-                >
-                    Next Review <ArrowRight className="h-4 w-4" />
-                </button>
             </div>
         </motion.div>
       </div>
