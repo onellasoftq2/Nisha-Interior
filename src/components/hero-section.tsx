@@ -32,19 +32,19 @@ const HeroSection = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.4,
+        staggerChildren: 0.15,
+        delayChildren: 0.3,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: 12 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.5,
+        duration: 0.4,
         ease: 'easeOut',
       },
     },
@@ -86,25 +86,27 @@ const HeroSection = () => {
       <div className="relative z-10 flex h-full items-center">
         <div className="container px-4 md:px-6">
           <motion.div
-            className="max-w-3xl text-white"
+            className="max-w-3xl text-left text-white"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
             <motion.h1
-              className="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl font-headline"
+              className="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl font-headline leading-none md:leading-[1.05]"
               variants={itemVariants}
             >
-              Designed for life. Crafted for you.
+              <span>Designed.</span><br/>
+              <span className="text-white/80">Built In-House.</span><br/>
+              <span>Lived In.</span>
             </motion.h1>
             <motion.p
-              className="mt-6 text-lg leading-8 text-gray-200/90"
+              className="mt-6 max-w-xl text-lg leading-8 text-gray-200/90"
               variants={itemVariants}
             >
-              Custom modular kitchens and interiors, manufactured in our own factory in Pune.
+              Custom interiors crafted in our own factory — designed for real homes and real living.
             </motion.p>
             <motion.div
-              className="mt-10 flex flex-col sm:flex-row items-center justify-start gap-4"
+              className="mt-10 flex flex-col sm:flex-row items-start justify-start gap-4"
               variants={itemVariants}
             >
               <Button asChild size="lg" className="w-full sm:w-auto">
