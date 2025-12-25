@@ -1,40 +1,79 @@
 'use client';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { Ruler, CheckCircle, Gem } from 'lucide-react';
+import { Ruler, CheckCircle, Gem, ClipboardList, Package, Truck, Layers, ShieldCheck, Palette, Users } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
-const features = [
+const processSteps = [
   {
-    icon: Ruler,
-    title: 'Precision Engineering',
-    description: 'Using advanced machinery, we craft furniture to your exact specifications. This means a perfect, built-in look that maximizes every inch of your space.',
+    icon: ClipboardList,
+    title: '1. Design & Planning',
+    description: 'Every project begins with a detailed plan. Our engineers translate your approved designs into precise technical drawings for our factory floor.',
   },
   {
-    icon: CheckCircle,
-    title: 'Hands-On Quality Control',
-    description: 'Because we make it ourselves, we can stand behind it. We inspect every joint, hinge, and surface to ensure your furniture is flawless and built to last a lifetime.',
+    icon: Layers,
+    title: '2. Material Sourcing',
+    description: 'We carefully select and source high-grade raw materials, including calibrated plywood, premium laminates, and trusted hardware.',
   },
   {
     icon: Gem,
-    title: 'Limitless Customization',
-    description: 'Your home should be a reflection of you. Our factory allows us to offer an extensive range of materials, finishes, and hardware to create a look that’s entirely your own.',
+    title: '3. Precision Crafting',
+    description: 'Using advanced machinery, each component is cut, finished, and assembled with meticulous attention to detail by our skilled craftsmen.',
   },
+  {
+    icon: ShieldCheck,
+    title: '4. Quality Assurance',
+    description: 'Every single piece undergoes a rigorous 3-stage quality check to ensure it meets our exacting standards for durability and finish.',
+  },
+  {
+    icon: Package,
+    title: '5. Secure Packaging',
+    description: 'Once approved, your custom furniture is carefully packaged to ensure it arrives at your home in pristine condition.',
+  },
+  {
+    icon: Truck,
+    title: '6. Site Delivery',
+    description: 'Our logistics team coordinates a timely and efficient delivery, ready for our installation experts to take over.',
+  },
+];
+
+const glanceItems = [
+    {
+        icon: Layers,
+        title: "Advanced Machinery",
+        description: "Precision engineering for a flawless fit and finish."
+    },
+    {
+        icon: ShieldCheck,
+        title: "Rigorous QA",
+        description: "Multi-stage checks to ensure lifelong durability."
+    },
+    {
+        icon: Palette,
+        title: "Limitless Finishes",
+        description: "An extensive library of materials and finishes."
+    },
+    {
+        icon: Users,
+        title: "Skilled Craftsmen",
+        description: "Decades of combined experience in furniture making."
+    }
 ];
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.15, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 };
 
 const imageVariants = {
@@ -44,6 +83,7 @@ const imageVariants = {
 
 export default function FactoryPage() {
   const factoryImage = PlaceHolderImages.find((img) => img.id === 'factory-process');
+  const materialsImage = PlaceHolderImages.find((img) => img.id === 'factory-materials');
   
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -60,75 +100,148 @@ export default function FactoryPage() {
               variants={itemVariants}
               className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
             >
-              Where Design Meets Craft
+              The Heart of Our Craft
             </motion.h1>
             <motion.p
               variants={itemVariants}
               className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground"
             >
-              Our state-of-the-art factory is where your vision takes shape. It's how we guarantee quality, offer true customization, and deliver on our promises.
+              Our state-of-the-art factory isn't just a facility—it's the core of our promise. It's how we guarantee exceptional quality, deliver true customization, and build furniture designed to last a lifetime.
             </motion.p>
           </div>
         </motion.section>
+        
+        {/* Factory at a Glance */}
+        <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={containerVariants}
+            className="pb-24 md:pb-32"
+        >
+          <div className="container px-4 md:px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {glanceItems.map((item, index) => (
+                <motion.div
+                  key={item.title}
+                  variants={itemVariants}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Card className="h-full bg-card border-none shadow-none text-center p-0">
+                    <CardHeader className="items-center p-0">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+                        <item.icon className="h-7 w-7" />
+                      </div>
+                      <CardTitle className="font-headline text-lg md:text-xl">{item.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0 mt-2">
+                      <p className="text-muted-foreground text-sm md:text-base">{item.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
 
+        {/* Manufacturing Process */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
-          className="py-16 md:py-24 border-t"
+          className="py-24 md:py-32 bg-secondary text-secondary-foreground"
+        >
+          <div className="container px-4 md:px-6">
+            <motion.div variants={itemVariants} className="text-center mb-16">
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline">
+                From Raw Material to Refined Reality
+              </h2>
+              <p className="mt-4 max-w-2xl mx-auto text-lg text-secondary-foreground/80">
+                Our manufacturing process is a blend of precision technology and hands-on craftsmanship, ensuring every piece is built to our exacting standards.
+              </p>
+            </motion.div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
+              {processSteps.map((step, index) => (
+                <motion.div
+                  key={step.title}
+                  variants={itemVariants}
+                  transition={{ delay: index * 0.1 }}
+                  className="flex items-start gap-4"
+                >
+                  <div className="flex-shrink-0 h-12 w-12 flex items-center justify-center rounded-lg bg-background text-primary">
+                    <step.icon className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-xl font-headline text-foreground">{step.title}</h3>
+                    <p className="mt-1 text-secondary-foreground/80">{step.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
+        {/* Quality & Materials */}
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+          className="py-24 md:py-32"
         >
           <div className="container px-4 md:px-6">
             <div className="grid md:grid-cols-2 items-center gap-16">
-              <motion.div variants={itemVariants} className="space-y-8">
+              <motion.div variants={itemVariants} className="space-y-6">
                 <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">
-                  The Art of Making
+                  A Foundation of Quality
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Owning our manufacturing isn't just a business model—it's our commitment to you. It means we're not just designers; we are makers. This control allows us to deliver bespoke solutions without compromising on quality.
+                  True luxury is not just about looks; it's about longevity. We build furniture that withstands the rigors of daily life. Our commitment starts with sourcing the finest materials—from moisture-resistant plywood to premium hardware—and continues through every stage of production.
                 </p>
-                <div className="space-y-6">
-                  {features.map((feature, index) => (
-                    <motion.div 
-                      key={index} 
-                      className="flex items-start gap-4"
-                      initial="hidden"
-                      whileInView="visible"
-                      viewport={{ once: true, amount: 0.5 }}
-                      variants={{
-                        hidden: { opacity: 0, x: -20 },
-                        visible: { opacity: 1, x: 0, transition: { duration: 0.4, ease: 'easeOut', delay: index * 0.1 } },
-                      }}
-                    >
-                      <div className="flex-shrink-0 h-10 w-10 flex items-center justify-center rounded-lg bg-primary/10 text-primary">
-                        <feature.icon className="h-6 w-6" />
-                      </div>
-                      <div>
-                        <h3 className="font-semibold text-foreground">{feature.title}</h3>
-                        <p className="mt-1 text-muted-foreground">{feature.description}</p>
-                      </div>
-                    </motion.div>
-                  ))}
+                <div className="space-y-4">
+                    <div className="flex items-start gap-4">
+                        <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                        <div>
+                            <h4 className='font-semibold text-foreground'>Durability Standards</h4>
+                            <p className='text-muted-foreground'>Engineered to resist wear, moisture, and daily use for years of reliability.</p>
+                        </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                        <Ruler className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                        <div>
+                            <h4 className='font-semibold text-foreground'>Material Selection</h4>
+                            <p className='text-muted-foreground'>We partner with trusted suppliers for certified woods, laminates, and hardware.</p>
+                        </div>
+                    </div>
+                     <div className="flex items-start gap-4">
+                        <ShieldCheck className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                        <div>
+                            <h4 className='font-semibold text-foreground'>Final Inspection</h4>
+                            <p className='text-muted-foreground'>Every finished product is inspected for flawless functionality and finish before it leaves our factory.</p>
+                        </div>
+                    </div>
                 </div>
               </motion.div>
               <motion.div
                 variants={imageVariants}
-                className="rounded-lg overflow-hidden shadow-xl aspect-w-4 aspect-h-3"
+                className="rounded-lg overflow-hidden shadow-xl"
               >
-                {factoryImage && (
+                {materialsImage && (
                   <Image
-                    src={factoryImage.imageUrl}
-                    alt={factoryImage.description}
+                    src={materialsImage.imageUrl}
+                    alt={materialsImage.description}
                     width={800}
                     height={600}
                     className="w-full h-full object-cover"
-                    data-ai-hint={factoryImage.imageHint}
+                    data-ai-hint={materialsImage.imageHint}
                   />
                 )}
               </motion.div>
             </div>
           </div>
         </motion.section>
+
       </main>
       <Footer />
     </div>

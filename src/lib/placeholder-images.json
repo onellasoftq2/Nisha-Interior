@@ -73,6 +73,12 @@
       "imageHint": "carpenter working"
     },
     {
+      "id": "factory-materials",
+      "description": "A close-up of different high-quality wood and material samples.",
+      "imageUrl": "https://images.unsplash.com/photo-1589824734893-c35d962512c3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3b29kJTIwbWF0ZXJpYWwlMjBwYW5lbHN8ZW58MHx8fHwxNzY2NTQ4NDY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wood material panels"
+    },
+    {
       "id": "about-team",
       "description": "A professional interior design team collaborating in an office.",
       "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c710?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkZXNpZ24lMjB0ZWFtfGVufDB8fHx8MTc2NjM3NTY0NHww&ixlib=rb-4.1.0&q=80&w=1080",
