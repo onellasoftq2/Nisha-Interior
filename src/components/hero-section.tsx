@@ -95,7 +95,7 @@ const HeroSection = () => {
               className="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl font-headline"
               variants={itemVariants}
             >
-              Your Home, Reimagined.
+              Designed for life. Crafted for you.
             </motion.h1>
             <motion.p
               className="mt-6 text-lg leading-8 text-gray-200/90"
