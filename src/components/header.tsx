@@ -1,16 +1,18 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu } from 'lucide-react';
+import { Menu, Video } from 'lucide-react';
 import { LogoIcon } from './icons/logo-icon';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
+import { useBookingModal } from '@/hooks/use-booking-modal';
 
 const Header = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
+  const { setShowBookingModal } = useBookingModal();
 
   const navItems = [
     { name: 'Home', href: '/' },
@@ -96,13 +98,23 @@ const Header = () => {
                       {item.name}
                     </Link>
                   ))}
+                  <Separator />
+                   <Button onClick={() => setShowBookingModal(true)} variant="outline" className="text-base">
+                        <Video className="mr-2 h-5 w-5" />
+                        Video Consultation
+                    </Button>
                 </nav>
               </SheetContent>
             </Sheet>
           </div>
-           <Button asChild className="hidden md:inline-flex text-base">
-             <Link href="/contact">Get a Quote</Link>
-           </Button>
+           <div className="hidden md:flex items-center gap-2">
+             <Button onClick={() => setShowBookingModal(true)} variant="outline" className="text-base">
+                <Video /> Video Consultation
+             </Button>
+             <Button asChild className="text-base">
+                <Link href="/contact">Get a Quote</Link>
+             </Button>
+           </div>
         </div>
       </div>
     </header>

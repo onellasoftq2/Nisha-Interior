@@ -3,12 +3,14 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MapPin, Phone, Palette, DraftingCompass, Users } from 'lucide-react';
+import { MapPin, Phone, Palette, DraftingCompass, Users, Video } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { useBookingModal } from '@/hooks/use-booking-modal';
+import { Separator } from '@/components/ui/separator';
 
 const experienceCenters = [
   {
@@ -78,6 +80,7 @@ const itemVariants = {
 
 export default function ExperienceCentersPage() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'highlight-showrooms');
+  const { setShowBookingModal } = useBookingModal();
   
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -104,6 +107,42 @@ export default function ExperienceCentersPage() {
             </motion.p>
           </div>
         </motion.section>
+        
+        {/* Remote Consultation CTA */}
+        <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={itemVariants}
+            className="pb-24 md:pb-32"
+        >
+            <div className="container px-4 md:px-6">
+                <Card className="bg-secondary border-none overflow-hidden">
+                    <div className="grid md:grid-cols-2 items-center">
+                        <div className="p-8 md:p-12">
+                             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-secondary-foreground font-headline">Can't Visit in Person?</h2>
+                             <p className="mt-4 text-lg text-secondary-foreground/80">No problem. Get the same expert guidance and explore our designs from the comfort of your home with a one-on-one video consultation.</p>
+                             <Button size="lg" className="mt-6" onClick={() => setShowBookingModal(true)}>
+                                <Video className="mr-2" />
+                                Book a Video Consultation
+                            </Button>
+                        </div>
+                        <div className="hidden md:block h-full">
+                             <Image
+                                src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2aWRlbyUyMGNvbnN1bHRhdGlvbnxlbnwwfHx8fDE3MjE5MzA5OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                                alt="A person having a video consultation with a designer"
+                                width={800}
+                                height={600}
+                                className="w-full h-full object-cover"
+                                data-ai-hint="video consultation"
+                            />
+                        </div>
+                    </div>
+                </Card>
+            </div>
+        </motion.section>
+
+        <div className="container px-4 md:px-6"><Separator/></div>
 
         {/* Why Visit Section */}
         <motion.section
@@ -111,7 +150,7 @@ export default function ExperienceCentersPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
-          className="pb-24 md:pb-32"
+          className="py-24 md:py-32"
         >
           <div className="container px-4 md:px-6">
             <div className="text-center mb-16">

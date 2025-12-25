@@ -7,8 +7,9 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
-import { Check, DraftingCompass, Factory, Handshake, MessagesSquare, Smile } from 'lucide-react';
+import { Check, DraftingCompass, Factory, Handshake, MessagesSquare, Smile, Video } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { useBookingModal } from '@/hooks/use-booking-modal';
 
 const services = [
   {
@@ -131,6 +132,7 @@ const textVariants = (direction: 'left' | 'right') => ({
 
 export default function ServicesPage() {
   const factoryImage = PlaceHolderImages.find((img) => img.id === 'factory-process');
+  const { setShowBookingModal } = useBookingModal();
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -182,9 +184,10 @@ export default function ServicesPage() {
                         </li>
                     ))}
                   </ul>
-                   <Button size="lg" variant="link" className="px-0 group text-lg" asChild>
-                     <Link href="/contact">
-                        {service.cta}
+                  {service.id === 'interior-design-consultation' ? (
+                      <Button size="lg" variant="default" className="text-lg group" onClick={() => setShowBookingModal(true)}>
+                        <Video className="mr-2 h-5 w-5" />
+                        Book Video Consultation
                         <motion.span 
                             className="inline-block ml-2"
                             initial={{ x: 0 }}
@@ -193,8 +196,22 @@ export default function ServicesPage() {
                         >
                             →
                         </motion.span>
-                     </Link>
-                   </Button>
+                      </Button>
+                  ) : (
+                    <Button size="lg" variant="link" className="px-0 group text-lg" asChild>
+                      <Link href="/contact">
+                          {service.cta}
+                          <motion.span 
+                              className="inline-block ml-2"
+                              initial={{ x: 0 }}
+                              whileHover={{ x: 4 }}
+                              transition={{ duration: 0.2, ease: 'easeOut' }}
+                          >
+                              →
+                          </motion.span>
+                      </Link>
+                    </Button>
+                  )}
                 </motion.div>
                 <motion.div
                   variants={imageVariants(isReversed ? 'left' : 'right')}
@@ -355,5 +372,3 @@ export default function ServicesPage() {
     </div>
   );
 }
-
-    

@@ -3,6 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { Inter } from 'next/font/google';
 import { cn } from '@/lib/utils';
+import { BookingModalProvider } from '@/components/booking-modal';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 
@@ -19,7 +20,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("font-sans antialiased", inter.variable)}>
-        {children}
+        <BookingModalProvider>
+            {children}
+        </BookingModalProvider>
         <Toaster />
       </body>
     </html>
