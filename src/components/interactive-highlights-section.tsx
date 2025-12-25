@@ -78,7 +78,7 @@ const InteractiveHighlightsSection = () => {
               <motion.div
                 key={highlight.id}
                 onViewportEnter={() => setActiveIndex(index)}
-                viewport={{ amount: 0.8 }}
+                viewport={{ amount: 0.5 }}
                 className="relative cursor-pointer p-4 rounded-lg"
                 initial={{x: -20, opacity: 0}}
                 whileInView={{x: 0, opacity: 1}}
