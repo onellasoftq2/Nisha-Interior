@@ -41,12 +41,12 @@ const ConsultationCtaSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, ease: 'easeOut', delay: 0.3 }}
             >
-                <Button size="lg" className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary-hover" asChild>
+                <Button size="lg" className="w-full sm:w-auto" asChild>
                     <Link href="tel:+919876543210">
                         <Phone /> Call Now
                     </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="w-full sm:w-auto border-white/80 text-white hover:bg-white hover:text-black" asChild>
+                <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
                     <Link href="https://wa.me/919876543210" target="_blank">
                         <MessageCircle /> WhatsApp Us
                     </Link>
