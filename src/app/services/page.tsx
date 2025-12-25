@@ -142,7 +142,7 @@ export default function ServicesPage() {
           initial="hidden"
           animate="visible"
           variants={sectionVariants}
-          className="pt-24 pb-16 md:pt-32 md:pb-24"
+          className="pt-24 pb-16 md:pt-32 md:pb-20"
         >
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
@@ -154,7 +154,7 @@ export default function ServicesPage() {
           </div>
         </motion.section>
 
-        <div className="container px-4 md:px-6 space-y-24 md:space-y-32 mb-24 md:mb-32">
+        <div className="container px-4 md:px-6 space-y-20 md:space-y-24 mb-16 md:mb-24">
           {services.map((service, index) => {
             const image = PlaceHolderImages.find((img) => img.id === service.imageId);
             const isReversed = index % 2 === 1;
@@ -239,7 +239,7 @@ export default function ServicesPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={sectionVariants}
-          className="py-24 md:py-32 bg-secondary text-secondary-foreground"
+          className="py-16 md:py-24 bg-secondary text-secondary-foreground"
         >
           <div className="container px-4 md:px-6">
             <div className="text-center mb-16">
@@ -280,7 +280,7 @@ export default function ServicesPage() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={sectionVariants}
-            className="py-24 md:py-32"
+            className="py-16 md:py-24"
         >
           <div className="container px-4 md:px-6">
             <div className="text-center mb-16">
@@ -326,7 +326,7 @@ export default function ServicesPage() {
             className="bg-secondary text-secondary-foreground"
         >
             <div className="container px-4 md:px-6">
-                <div className="grid md:grid-cols-2 items-center gap-12 md:gap-24 py-20 md:py-24">
+                <div className="grid md:grid-cols-2 items-center gap-12 md:gap-24 py-16 md:py-20">
                     <motion.div 
                         className="rounded-lg overflow-hidden shadow-xl group"
                         initial={{ opacity: 0, scale: 0.95 }}
