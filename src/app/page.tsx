@@ -6,6 +6,7 @@ import CustomizationSection from '@/components/customization-section';
 import ShowroomsSection from '@/components/showrooms-section';
 import ConsultationCtaSection from '@/components/consultation-cta-section';
 import Footer from '@/components/footer';
+import TestimonialsSection from '@/components/testimonials-section';
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <HeroSection />
         <InteractiveHighlightsSection />
         <ServicesSection />
+        <TestimonialsSection />
         <CustomizationSection />
         <ShowroomsSection />
         <ConsultationCtaSection />

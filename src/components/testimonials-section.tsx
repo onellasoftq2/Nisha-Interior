@@ -1,0 +1,152 @@
+'use client';
+import { motion } from 'framer-motion';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@/components/ui/carousel';
+import { Card, CardContent } from '@/components/ui/card';
+import { Quote } from 'lucide-react';
+import { Separator } from './ui/separator';
+
+const testimonials = [
+  {
+    quote:
+      'The attention to detail was remarkable. Our kitchen is now the heart of our home, both beautiful and incredibly functional. The team understood our vision perfectly.',
+    name: 'Rohan & Priya Sharma',
+    project: 'Modular Kitchen',
+    location: 'Wakad, Pune',
+  },
+  {
+    quote:
+      'From design to handover, the process was seamless. Nisha Interior managed everything, and the quality of their in-house manufacturing is evident in every corner of our home.',
+    name: 'Anjali Verma',
+    project: 'Complete Home Interior',
+    location: 'Kharadi, Pune',
+  },
+  {
+    quote:
+      'Our custom wardrobes are a dream come true. The team optimized the space brilliantly, and the finish is absolutely flawless. It’s beyond what we expected.',
+    name: 'Sameer Patel',
+    project: 'Wardrobes & Storage',
+    location: 'Nanded City, Pune',
+  },
+  {
+    quote:
+      'As an architect, I appreciate their technical skill. The precision of the custom furniture built in their own factory is something you don’t find with aggregators.',
+    name: 'Meera Desai',
+    project: 'Custom Furniture',
+    location: 'Pune',
+  },
+  {
+    quote:
+      'Visiting their experience center was a game-changer. Seeing the materials and quality in person gave us the confidence to go ahead. We couldn’t be happier with the result.',
+    name: 'The Joshi Family',
+    project: 'Complete Home Interior',
+    location: 'Kharadi Annex, Pune',
+  },
+];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: 'easeOut' },
+  },
+};
+
+const TestimonialsSection = () => {
+  return (
+    <motion.section
+      className="bg-secondary text-secondary-foreground py-16 md:py-24"
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      variants={containerVariants}
+    >
+      <div className="container px-4 md:px-6">
+        <motion.div
+          variants={itemVariants}
+          className="text-center mb-12 md:mb-16"
+        >
+          <h2 className="text-3xl font-semibold tracking-tight text-secondary-foreground sm:text-4xl md:text-5xl font-headline">
+            Homes We’ve Been Trusted With
+          </h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-secondary-foreground/80">
+            What our clients say about designing and building their homes with us.
+          </p>
+        </motion.div>
+
+        <motion.div variants={itemVariants}>
+          <Carousel
+            opts={{
+              align: 'start',
+              loop: true,
+            }}
+            className="w-full"
+          >
+            <CarouselContent className="-ml-4">
+              {testimonials.map((testimonial, index) => (
+                <CarouselItem
+                  key={index}
+                  className="pl-4 md:basis-1/2 lg:basis-1/3"
+                >
+                  <motion.div
+                    className="h-full p-1"
+                    whileHover={{ y: -4, scale: 1.01 }}
+                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                  >
+                    <Card className="h-full bg-background/80 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                      <CardContent className="p-6 flex flex-col h-full">
+                        <Quote className="w-8 h-8 text-primary/30 mb-4" />
+                        <p className="flex-grow text-foreground/90 text-base mb-6">
+                          "{testimonial.quote}"
+                        </p>
+                        <div className="text-right">
+                          <p className="font-semibold text-foreground">
+                            {testimonial.name}
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            {testimonial.project} • {testimonial.location}
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+            <CarouselPrevious className="hidden lg:inline-flex" />
+            <CarouselNext className="hidden lg:inline-flex" />
+          </Carousel>
+        </motion.div>
+        
+        <motion.div 
+            variants={itemVariants}
+            className="mt-16 text-center"
+        >
+            <div className="flex items-center justify-center space-x-4 md:space-x-8 text-secondary-foreground/70">
+                <span className="text-sm md:text-base">15+ Years Experience</span>
+                <Separator orientation="vertical" className="h-4 bg-secondary-foreground/40" />
+                <span className="text-sm md:text-base">1200+ Homes Delivered</span>
+                <Separator orientation="vertical" className="h-4 bg-secondary-foreground/40" />
+                <span className="text-sm md:text-base">4 Experience Centers</span>
+            </div>
+        </motion.div>
+      </div>
+    </motion.section>
+  );
+};
+
+export default TestimonialsSection;
