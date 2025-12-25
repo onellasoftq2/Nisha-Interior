@@ -245,7 +245,6 @@ const ShowroomVisual = ({ data, isReversed }: { data: ShowroomData; isReversed: 
 
 const ShowroomDetails = ({ data, isReversed }: { data: ShowroomData; isReversed: boolean }) => {
   const alignClass = isReversed ? 'items-end text-right' : 'items-start text-left';
-  const flexDirClass = isReversed ? 'flex-row-reverse' : 'flex-row';
 
   return (
     <motion.div
@@ -256,36 +255,7 @@ const ShowroomDetails = ({ data, isReversed }: { data: ShowroomData; isReversed:
       exit="exit"
       className={`flex flex-col ${alignClass}`}
     >
-      <motion.h2 variants={ANIMATIONS.item} className="text-3xl md:text-4xl font-bold tracking-tight text-foreground font-headline mb-4">
-        {data.title}
-      </motion.h2>
-      <motion.p variants={ANIMATIONS.item} className={`text-muted-foreground mb-8 max-w-sm leading-relaxed ${isReversed ? 'ml-auto' : 'mr-auto'}`}>
-        {data.description}
-      </motion.p>
-
-      <motion.div variants={ANIMATIONS.item} className="w-full space-y-4 bg-foreground/5 p-6 rounded-2xl border border-foreground/5 backdrop-blur-sm">
-        {data.features.map((feature) => (
-          <div key={feature.label} className={`flex items-center gap-4 text-sm ${flexDirClass}`}>
-            <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-lg ${data.colors.glow}/10 text-primary`}>
-              <feature.icon size={20}/>
-            </div>
-            <div className={`flex-1 flex justify-between items-center ${alignClass}`}>
-              <span className="font-medium text-foreground">{feature.label}</span>
-              <span className="text-muted-foreground text-xs">{feature.value}</span>
-            </div>
-          </div>
-        ))}
-      </motion.div>
-
-      <motion.div variants={ANIMATIONS.item} className={`mt-8 flex flex-col ${alignClass} gap-2 text-muted-foreground`}>
-        <div className={`flex items-center gap-2 ${flexDirClass}`}>
-            <MapPin size={16} />
-            <span className="text-sm font-medium">{data.stats.address}, Pune</span>
-        </div>
-        <Link href="/showrooms" className="group flex items-center gap-1 text-sm font-semibold text-primary">
-            Get Directions <ChevronRight size={14} className="transition-transform group-hover:translate-x-1" />
-        </Link>
-      </motion.div>
+      {/* All content has been removed as per the user's request for a minimal design. */}
     </motion.div>
   );
 };
@@ -382,3 +352,5 @@ export default function ShowroomsSection() {
     </section>
   );
 }
+
+    
