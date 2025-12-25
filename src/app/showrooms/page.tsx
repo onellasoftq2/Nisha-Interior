@@ -1,44 +1,69 @@
+
 'use client';
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MapPin, Phone } from 'lucide-react';
+import { MapPin, Phone, Palette, DraftingCompass, Users } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Link from 'next/link';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
-const showrooms = [
+const experienceCenters = [
   {
-    name: 'Wakad Showroom',
+    name: 'Wakad Center',
     address: '123 Sunshine Plaza, Wakad, Pune, Maharashtra 411057',
     phone: '+91 123 456 7890',
-    mapLink: 'https://maps.google.com'
+    mapLink: 'https://maps.google.com',
+    imageId: 'highlight-showrooms'
   },
   {
-    name: 'Kharadi Showroom',
+    name: 'Kharadi Center',
     address: '456 Urban Square, Kharadi, Pune, Maharashtra 411014',
     phone: '+91 123 456 7891',
-    mapLink: 'https://maps.google.com'
+    mapLink: 'https://maps.google.com',
+    imageId: 'customization-image'
   },
   {
     name: 'New Kharadi Annex',
     address: '789 Galaxy Galleria, New Kharadi, Pune, Maharashtra 411014',
     phone: '+91 123 456 7892',
-    mapLink: 'https://maps.google.com'
+    mapLink: 'https://maps.google.com',
+    imageId: 'service-wardrobes'
   },
   {
     name: 'Nanded City Hub',
     address: '101 Aspire Towers, Nanded City, Pune, Maharashtra 411041',
     phone: '+91 123 456 7893',
-    mapLink: 'https://maps.google.com'
+    mapLink: 'https://maps.google.com',
+    imageId: 'services-kitchens'
   },
+];
+
+const benefits = [
+    {
+        icon: Palette,
+        title: "Touch & Feel Materials",
+        description: "Experience the quality of our laminates, woods, and hardware firsthand."
+    },
+    {
+        icon: DraftingCompass,
+        title: "Explore Full Setups",
+        description: "Visualize your future home by walking through our model kitchens and living spaces."
+    },
+    {
+        icon: Users,
+        title: "Meet Our Designers",
+        description: "Get free, personalized advice from our experts to kickstart your project."
+    }
 ];
 
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.15, delayChildren: 0.2, ease: 'easeOut' },
   },
 };
 
@@ -47,11 +72,13 @@ const itemVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: 'easeOut' },
+    transition: { duration: 0.5, ease: 'easeOut' },
   },
 };
 
-export default function ShowroomsPage() {
+export default function ExperienceCentersPage() {
+  const heroImage = PlaceHolderImages.find((img) => img.id === 'highlight-showrooms');
+  
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
@@ -67,14 +94,61 @@ export default function ShowroomsPage() {
               variants={itemVariants}
               className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
             >
-              Visit Our Showrooms
+              Step Into Your Future Home
             </motion.h1>
             <motion.p
               variants={itemVariants}
               className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground"
             >
-              Experience our craftsmanship and design philosophy in person. Our teams are ready to welcome you and discuss your vision.
+              Our Experience Centers are more than just showrooms. They are creative spaces designed to inspire you and help you visualize the endless possibilities for your home interior.
             </motion.p>
+          </div>
+        </motion.section>
+
+        {/* Why Visit Section */}
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={containerVariants}
+          className="pb-24 md:pb-32"
+        >
+          <div className="container px-4 md:px-6">
+            <div className="text-center mb-16">
+                 <motion.h2
+                    variants={itemVariants}
+                    className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline"
+                >
+                    Why Visit an Experience Center?
+                </motion.h2>
+                <motion.p
+                    variants={itemVariants}
+                    className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground"
+                >
+                    Designing a home is a tactile experience. See the quality, feel the textures, and get expert guidance all in one place.
+                </motion.p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {benefits.map((benefit, index) => (
+                <motion.div
+                  key={benefit.title}
+                  variants={itemVariants}
+                  transition={{ delay: index * 0.1 }}
+                >
+                  <Card className="h-full text-center p-6 transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1 border-transparent bg-secondary/50">
+                    <CardHeader className="items-center p-0">
+                      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
+                        <benefit.icon className="h-7 w-7" />
+                      </div>
+                      <CardTitle className="font-headline text-xl">{benefit.title}</CardTitle>
+                    </CardHeader>
+                    <CardContent className="p-0 mt-2">
+                      <p className="text-muted-foreground">{benefit.description}</p>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              ))}
+            </div>
           </div>
         </motion.section>
 
@@ -83,36 +157,55 @@ export default function ShowroomsPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="pb-24 md:pb-32"
+          className="pb-24 md:pb-32 bg-secondary"
         >
-          <div className="container px-4 md:px-6">
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {showrooms.map((showroom) => (
-                <motion.div key={showroom.name} variants={itemVariants}>
-                  <Card className="flex flex-col h-full overflow-hidden transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-2 bg-card border">
-                    <CardHeader>
-                      <CardTitle className="font-headline text-2xl">{showroom.name}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="flex-grow space-y-2">
-                      <p className="text-muted-foreground">{showroom.address}</p>
-                      <p className="text-sm text-muted-foreground">{showroom.phone}</p>
-                    </CardContent>
-                    <CardFooter className="flex flex-col gap-2 pt-4">
-                      <Button className="w-full" asChild>
-                        <Link href={`tel:${showroom.phone}`}>
-                            <Phone className="mr-2" /> Call Now
-                        </Link>
-                      </Button>
-                      <Button variant="outline" className="w-full" asChild>
-                        <Link href={showroom.mapLink} target="_blank">
-                            <MapPin className="mr-2" /> Directions
-                        </Link>
-                      </Button>
-                    </CardFooter>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
+          <div className="container px-4 md:px-6 space-y-20">
+             {experienceCenters.map((center, index) => {
+                 const image = PlaceHolderImages.find((img) => img.id === center.imageId);
+                 const isReversed = index % 2 === 1;
+
+                 return (
+                    <motion.div 
+                        key={center.name} 
+                        variants={itemVariants}
+                        className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 md:gap-16"
+                    >
+                         <motion.div 
+                            className={`group rounded-lg overflow-hidden shadow-lg ${isReversed ? 'md:order-last' : ''}`}
+                            whileHover={{ y: -5, scale: 1.02 }}
+                            transition={{ duration: 0.3, ease: 'easeOut' }}
+                         >
+                            {image && (
+                                <Image
+                                src={image.imageUrl}
+                                alt={center.name}
+                                width={800}
+                                height={600}
+                                className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                                data-ai-hint={image.imageHint}
+                                />
+                            )}
+                        </motion.div>
+                        <div className="space-y-4">
+                            <h3 className="text-3xl font-semibold tracking-tight text-foreground font-headline">{center.name}</h3>
+                            <p className="text-lg text-muted-foreground">{center.address}</p>
+                            <p className="text-muted-foreground">{center.phone}</p>
+                            <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                                <Button size="lg" className="w-full sm:w-auto" asChild>
+                                    <Link href={`tel:${center.phone}`}>
+                                        <Phone className="mr-2" /> Call Now
+                                    </Link>
+                                </Button>
+                                <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
+                                    <Link href={center.mapLink} target="_blank">
+                                        <MapPin className="mr-2" /> Get Directions
+                                    </Link>
+                                </Button>
+                            </div>
+                        </div>
+                    </motion.div>
+                 );
+             })}
           </div>
         </motion.section>
       </main>

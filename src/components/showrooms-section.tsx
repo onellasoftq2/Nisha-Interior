@@ -46,10 +46,10 @@ const ShowroomsSection = () => {
       <div className="container px-4 md:px-6">
         <motion.div variants={itemVariants} className="text-center mb-16">
           <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
-            Visit Our Showrooms
+            Visit Our Experience Centers
           </h2>
           <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-            Experience our quality and designs in person. Find the Nisha Interior showroom nearest to you.
+            Experience our quality and designs in person. Find the Nisha Interior center nearest to you.
           </p>
         </motion.div>
         <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
@@ -73,7 +73,7 @@ const ShowroomsSection = () => {
                         <p className="text-muted-foreground">{showroom.address}, Pune</p>
                     </div>
                     <div className="mt-8 flex items-center text-primary font-medium">
-                        <span>Visit Showroom</span>
+                        <span>Explore Center</span>
                         <ArrowRight className="h-4 w-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"/>
                     </div>
                 </motion.div>

@@ -113,7 +113,7 @@ const HeroSection = () => {
                 <Link href="/contact">Get Free Consultation</Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-white bg-transparent border-white/80 hover:bg-white hover:text-black w-full sm:w-auto">
-                 <Link href="/showrooms">Visit Showrooms</Link>
+                 <Link href="/showrooms">Visit Experience Centers</Link>
               </Button>
             </motion.div>
           </motion.div>

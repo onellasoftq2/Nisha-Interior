@@ -108,7 +108,7 @@ export default function ContactPage() {
                     <CardHeader>
                       <CardTitle className="flex items-center gap-3 text-2xl font-headline">
                         <MapPin />
-                        Visit a Showroom
+                        Visit an Experience Center
                       </CardTitle>
                     </CardHeader>
                     <CardContent>
