@@ -1,6 +1,5 @@
 'use client';
 import { motion, useInView, useAnimation } from 'framer-motion';
-import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Separator } from '@/components/ui/separator';
 import Header from '@/components/header';
@@ -10,6 +9,7 @@ import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { Award, Home, Building, Factory, Users, Heart, Lightbulb, Video } from 'lucide-react';
 import { useBookingModal } from '@/hooks/use-booking-modal';
+import { InteractiveImage } from '@/components/interactive-image';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -19,11 +19,6 @@ const sectionVariants = {
 const dividerVariants = {
   hidden: { scaleX: 0 },
   visible: { scaleX: 1, transition: { duration: 0.6, ease: 'easeOut', delay: 0.3 } },
-};
-
-const imageVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: 'easeOut', delay: 0.2 } },
 };
 
 const MetricCounter = ({ to, prefix = '', suffix = '' }: { to: number, prefix?: string, suffix?: string }) => {
@@ -94,7 +89,7 @@ export default function AboutUsPage() {
           initial="hidden"
           animate="visible"
           variants={sectionVariants}
-          className="pt-24 pb-16 md:pt-32 md:pb-20"
+          className="pt-20 pb-12 md:pt-24 md:pb-16"
         >
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
@@ -112,7 +107,7 @@ export default function AboutUsPage() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={sectionVariants}
-            className="pb-16 md:pb-24"
+            className="pb-12 md:pb-20"
         >
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -151,7 +146,7 @@ export default function AboutUsPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
-          className="py-16 md:py-24"
+          className="py-12 md:py-20"
         >
           <div className="container px-4 md:px-6">
             <div className="grid md:grid-cols-2 items-center gap-16">
@@ -167,21 +162,18 @@ export default function AboutUsPage() {
                   Whether you visit us in-person or <Button variant="link" className="p-0 h-auto text-lg" onClick={() => setShowBookingModal(true)}>connect via video consultation</Button>, it’s more than just furniture; it’s about building trust and crafting a home that is as unique and enduring as your family.
                 </p>
               </div>
-              <motion.div 
-                className="rounded-lg overflow-hidden shadow-xl"
-                variants={imageVariants}
-              >
+              <div className="aspect-[4/5]">
                 {aboutImage && (
-                  <Image
+                  <InteractiveImage
                     src={aboutImage.imageUrl}
                     alt={aboutImage.description}
                     width={800}
-                    height={900}
-                    className="w-full h-full object-cover"
+                    height={1000}
+                    className="w-full h-full"
                     data-ai-hint={aboutImage.imageHint}
                   />
                 )}
-              </motion.div>
+              </div>
             </div>
           </div>
         </motion.section>
@@ -192,7 +184,7 @@ export default function AboutUsPage() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={sectionVariants}
-            className="py-16 md:py-24 bg-secondary"
+            className="py-12 md:py-20 bg-secondary"
         >
           <div className="container px-4 md:px-6">
             <div className="text-center mb-16">
@@ -230,25 +222,22 @@ export default function AboutUsPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
-          className="py-16 md:py-24"
+          className="py-12 md:py-20"
         >
           <div className="container px-4 md:px-6">
             <div className="grid md:grid-cols-2 items-center gap-16">
-              <motion.div 
-                className="rounded-lg overflow-hidden shadow-xl md:order-last"
-                variants={imageVariants}
-              >
+              <div className="aspect-video md:aspect-[4/3] md:order-last">
                 {valuesImage && (
-                  <Image
+                  <InteractiveImage
                     src={valuesImage.imageUrl}
                     alt={valuesImage.description}
                     width={800}
                     height={600}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full"
                     data-ai-hint={valuesImage.imageHint}
                   />
                 )}
-              </motion.div>
+              </div>
               <div className="space-y-8 text-muted-foreground">
                 <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">Our Process is Our Promise</h2>
                 <p className="text-lg">

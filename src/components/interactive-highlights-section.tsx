@@ -1,8 +1,8 @@
 'use client';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { InteractiveImage } from './interactive-image';
 
 interface Highlight {
   id: string;
@@ -51,6 +51,7 @@ const InteractiveHighlightsSection = () => {
   const contentVariants = {
     hidden: { opacity: 0, y: 10 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } },
+    exit: { opacity: 0, y: -10, transition: { duration: 0.2, ease: 'easeIn' } },
   };
 
   return (
@@ -127,27 +128,22 @@ const InteractiveHighlightsSection = () => {
                 variants={contentVariants}
                 initial="hidden"
                 animate="visible"
-                exit="hidden"
+                exit="exit"
                 className="flex flex-col items-center justify-center text-center w-full"
               >
-                {activeImage && (
-                    <motion.div 
-                        className="relative w-full h-80 rounded-lg overflow-hidden shadow-lg mb-8"
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.4, ease: 'easeOut' }}
-                    >
-                        <Image
-                            src={activeImage.imageUrl}
-                            alt={activeImage.description}
-                            fill
-                            className="object-cover"
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            data-ai-hint={activeImage.imageHint}
-                        />
-                    </motion.div>
-                )}
-                <p className="text-xl text-foreground/90 leading-relaxed max-w-md">
+                <div className="w-full aspect-[4/3]">
+                  {activeImage && (
+                      <InteractiveImage
+                          src={activeImage.imageUrl}
+                          alt={activeImage.description}
+                          width={800}
+                          height={600}
+                          className="w-full h-full mb-8"
+                          data-ai-hint={activeImage.imageHint}
+                      />
+                  )}
+                </div>
+                <p className="text-xl text-foreground/90 leading-relaxed max-w-md mt-8">
                   {activeHighlight.description}
                 </p>
               </motion.div>

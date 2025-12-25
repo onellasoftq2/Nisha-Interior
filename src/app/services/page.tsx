@@ -1,6 +1,5 @@
 'use client';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Header from '@/components/header';
@@ -10,6 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import { Check, DraftingCompass, Factory, Handshake, MessagesSquare, Smile, Video } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useBookingModal } from '@/hooks/use-booking-modal';
+import { InteractiveImage } from '@/components/interactive-image';
 
 const services = [
   {
@@ -119,11 +119,6 @@ const sectionVariants = {
   },
 };
 
-const imageVariants = (direction: 'left' | 'right') => ({
-    hidden: { opacity: 0, x: direction === 'left' ? -30 : 30 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut', delay: 0.2 } },
-});
-
 const textVariants = (direction: 'left' | 'right') => ({
     hidden: { opacity: 0, x: direction === 'left' ? -30 : 30 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut', delay: 0.2 } },
@@ -142,7 +137,7 @@ export default function ServicesPage() {
           initial="hidden"
           animate="visible"
           variants={sectionVariants}
-          className="pt-24 pb-16 md:pt-32 md:pb-20"
+          className="pt-20 pb-12 md:pt-24 md:pb-16"
         >
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
@@ -154,7 +149,7 @@ export default function ServicesPage() {
           </div>
         </motion.section>
 
-        <div className="container px-4 md:px-6 space-y-20 md:space-y-24 mb-16 md:mb-24">
+        <div className="container px-4 md:px-6 space-y-16 md:space-y-20 mb-12 md:mb-20">
           {services.map((service, index) => {
             const image = PlaceHolderImages.find((img) => img.id === service.imageId);
             const isReversed = index % 2 === 1;
@@ -213,21 +208,18 @@ export default function ServicesPage() {
                     </Button>
                   )}
                 </motion.div>
-                <motion.div
-                  variants={imageVariants(isReversed ? 'left' : 'right')}
-                  className="rounded-lg overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-2xl group"
-                >
+                <div className="aspect-video md:aspect-[4/3]">
                   {image && (
-                    <Image
+                    <InteractiveImage
                       src={image.imageUrl}
                       alt={image.description}
                       width={800}
-                      height={533}
-                      className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                      height={600}
+                      className="w-full h-full"
                       data-ai-hint={image.imageHint}
                     />
                   )}
-                </motion.div>
+                </div>
               </motion.div>
             );
           })}
@@ -239,7 +231,7 @@ export default function ServicesPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={sectionVariants}
-          className="py-16 md:py-24 bg-secondary text-secondary-foreground"
+          className="py-12 md:py-20 bg-secondary text-secondary-foreground"
         >
           <div className="container px-4 md:px-6">
             <div className="text-center mb-16">
@@ -280,7 +272,7 @@ export default function ServicesPage() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={sectionVariants}
-            className="py-16 md:py-24"
+            className="py-12 md:py-20"
         >
           <div className="container px-4 md:px-6">
             <div className="text-center mb-16">
@@ -326,25 +318,19 @@ export default function ServicesPage() {
             className="bg-secondary text-secondary-foreground"
         >
             <div className="container px-4 md:px-6">
-                <div className="grid md:grid-cols-2 items-center gap-12 md:gap-24 py-16 md:py-20">
-                    <motion.div 
-                        className="rounded-lg overflow-hidden shadow-xl group"
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.5, ease: 'easeOut' }}
-                    >
+                <div className="grid md:grid-cols-2 items-center gap-12 md:gap-24 py-12 md:py-16">
+                    <div className="aspect-video md:aspect-[4/3]">
                         {factoryImage && (
-                        <Image
+                        <InteractiveImage
                             src={factoryImage.imageUrl}
                             alt={factoryImage.description}
                             width={800}
                             height={600}
-                            className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
+                            className="w-full h-full"
                             data-ai-hint={factoryImage.imageHint}
                         />
                         )}
-                    </motion.div>
+                    </div>
                     <motion.div 
                         className="space-y-6"
                         initial={{ opacity: 0, x: 20 }}

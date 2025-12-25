@@ -1,11 +1,11 @@
 'use client';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { Ruler, CheckCircle, Gem, ClipboardList, Package, Truck, Layers, ShieldCheck, Palette, Users } from 'lucide-react';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { InteractiveImage } from '@/components/interactive-image';
 
 const processSteps = [
   {
@@ -90,11 +90,6 @@ const glanceHoverVariants = {
   hover: { y: -6, scale: 1.03 },
 };
 
-const imageVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } },
-};
-
 export default function FactoryPage() {
   const factoryImage = PlaceHolderImages.find((img) => img.id === 'factory-process');
   const materialsImage = PlaceHolderImages.find((img) => img.id === 'factory-materials');
@@ -107,7 +102,7 @@ export default function FactoryPage() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="pt-24 pb-16 md:pt-32 md:pb-20"
+          className="pt-20 pb-12 md:pt-24 md:pb-16"
         >
           <div className="container px-4 md:px-6 text-center">
             <motion.h1
@@ -131,7 +126,7 @@ export default function FactoryPage() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={containerVariants}
-            className="pb-16 md:pb-24"
+            className="pb-12 md:pb-20"
         >
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -181,7 +176,7 @@ export default function FactoryPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
-          className="py-16 md:py-24 bg-secondary text-secondary-foreground"
+          className="py-12 md:py-20 bg-secondary text-secondary-foreground"
         >
           <div className="container px-4 md:px-6">
             <motion.div variants={itemVariants} className="text-center mb-16">
@@ -219,7 +214,7 @@ export default function FactoryPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
-          className="py-16 md:py-24"
+          className="py-12 md:py-20"
         >
           <div className="container px-4 md:px-6">
             <div className="grid md:grid-cols-2 items-center gap-16">
@@ -254,21 +249,18 @@ export default function FactoryPage() {
                     </div>
                 </div>
               </motion.div>
-              <motion.div
-                variants={imageVariants}
-                className="rounded-lg overflow-hidden shadow-xl"
-              >
+              <div className="aspect-video md:aspect-[4/3]">
                 {materialsImage && (
-                  <Image
+                  <InteractiveImage
                     src={materialsImage.imageUrl}
                     alt={materialsImage.description}
                     width={800}
                     height={600}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full"
                     data-ai-hint={materialsImage.imageHint}
                   />
                 )}
-              </motion.div>
+              </div>
             </div>
           </div>
         </motion.section>

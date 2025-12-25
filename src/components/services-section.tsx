@@ -1,10 +1,10 @@
 'use client';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { InteractiveImage } from './interactive-image';
 
 const services = [
   {
@@ -73,30 +73,29 @@ const ServicesSection = () => {
                 transition={{ duration: 0.3, ease: 'easeOut', delay: index * 0.1}}
               >
                 <Link href={service.href} className="group block">
-                <Card
-                  className="overflow-hidden rounded-lg shadow-sm transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1"
-                >
-                  <div className="overflow-hidden aspect-[4/3] relative">
-                    {image && (
-                         <Image
-                          src={image.imageUrl}
-                          alt={image.description}
-                          fill
-                          className="object-cover transition-transform duration-350 ease-out group-hover:scale-105"
-                          data-ai-hint={image.imageHint}
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                        />
-                    )}
-                  </div>
-                  <CardContent className="p-6">
-                    <h3 className="font-semibold text-xl md:text-2xl font-headline group-hover:text-primary transition-colors duration-300">{service.title}</h3>
-                    <p className="mt-2 text-muted-foreground">{service.description}</p>
-                    <div className="mt-4 flex items-center text-primary font-medium">
-                        <span>Explore</span>
-                        <ArrowRight className="h-4 w-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"/>
+                  <Card className="overflow-hidden rounded-lg shadow-sm transition-shadow duration-300 ease-out hover:shadow-xl">
+                    <div className="aspect-[4/3] overflow-hidden">
+                      {image && (
+                          <InteractiveImage
+                            src={image.imageUrl}
+                            alt={image.description}
+                            width={800}
+                            height={600}
+                            className="w-full h-full"
+                            imageClassName="transition-transform duration-500 ease-out group-hover:scale-105"
+                            data-ai-hint={image.imageHint}
+                          />
+                      )}
                     </div>
-                  </CardContent>
-                </Card>
+                    <CardContent className="p-6">
+                      <h3 className="font-semibold text-xl md:text-2xl font-headline group-hover:text-primary transition-colors duration-300">{service.title}</h3>
+                      <p className="mt-2 text-muted-foreground">{service.description}</p>
+                      <div className="mt-4 flex items-center text-primary font-medium">
+                          <span>Explore</span>
+                          <ArrowRight className="h-4 w-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"/>
+                      </div>
+                    </CardContent>
+                  </Card>
                 </Link>
               </motion.div>
             );

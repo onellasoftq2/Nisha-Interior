@@ -1,9 +1,9 @@
 'use client';
 import { motion } from 'framer-motion';
-import Image from 'next/image';
 import { Button } from './ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import Link from 'next/link';
+import { InteractiveImage } from './interactive-image';
 
 const CustomizationSection = () => {
   const customImage = PlaceHolderImages.find((img) => img.id === 'customization-image');
@@ -16,11 +16,6 @@ const CustomizationSection = () => {
   const textVariants = {
     hidden: { opacity: 0, x: -20 },
     visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-  };
-
-  const imageVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } },
   };
 
   return (
@@ -51,18 +46,18 @@ const CustomizationSection = () => {
                 </Link>
             </Button>
           </motion.div>
-          <motion.div variants={imageVariants} className="rounded-lg overflow-hidden shadow-2xl">
+          <div className="aspect-video md:aspect-[4/3]">
             {customImage && (
-              <Image
+              <InteractiveImage
                 src={customImage.imageUrl}
                 alt={customImage.description}
                 width={800}
                 height={600}
-                className="w-full h-auto object-cover"
+                className="w-full h-full"
                 data-ai-hint={customImage.imageHint}
               />
             )}
-          </motion.div>
+          </div>
         </div>
       </div>
     </motion.section>
