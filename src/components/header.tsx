@@ -51,7 +51,7 @@ const Header = () => {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  'relative transition-colors hover:text-primary font-medium',
+                  'relative transition-colors hover:text-primary font-medium whitespace-nowrap',
                   pathname === item.href
                     ? isScrolled ? 'text-primary' : 'text-primary'
                     : isScrolled ? 'text-foreground/70 hover:text-foreground' : 'text-foreground/80 hover:text-foreground',
