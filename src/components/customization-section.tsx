@@ -45,7 +45,7 @@ const CustomizationSection = () => {
             <p className="text-lg text-secondary-foreground/80">
               From material selection to the final finish, we control every step of the process to ensure the highest quality standards.
             </p>
-            <Button size="lg" asChild variant="outline" className="border-white/80 text-white hover:bg-white hover:text-black">
+            <Button size="lg" asChild variant="outline" className="border-secondary-foreground/50 text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary">
                 <Link href="/factory">
                     Explore Our Factory
                 </Link>

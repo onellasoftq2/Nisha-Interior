@@ -46,7 +46,7 @@ const ConsultationCtaSection = () => {
                         <Phone /> Call Now
                     </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
+                <Button size="lg" variant="outline" className="w-full sm:w-auto text-secondary-foreground border-secondary-foreground/50 hover:bg-secondary-foreground hover:text-secondary" asChild>
                     <Link href="https://wa.me/919876543210" target="_blank">
                         <MessageCircle /> WhatsApp Us
                     </Link>

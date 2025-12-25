@@ -115,7 +115,7 @@ export default function ContactPage() {
                       <p className="text-muted-foreground mb-4">
                         See our quality and designs firsthand.
                       </p>
-                      <Button asChild size="lg" variant="outline" className="w-full sm:w-auto">
+                      <Button asChild size="lg" variant="outline" className="w-full sm:w-auto border-foreground/30">
                         <Link href="/showrooms">Find Locations</Link>
                       </Button>
                     </CardContent>

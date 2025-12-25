@@ -341,7 +341,7 @@ export default function ServicesPage() {
                         <p className="text-lg text-secondary-foreground/80">
                             Our in-house manufacturing isn't just a feature—it's our promise of quality. By controlling the entire production process, we deliver superior, customized furniture that's built to last, without the premium price tag.
                         </p>
-                        <Button asChild size="lg" variant="outline" className="border-white/80 text-white hover:bg-white hover:text-black">
+                        <Button asChild size="lg" variant="outline" className="border-secondary-foreground/50 text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary">
                             <Link href="/factory">
                                 Learn More About Our Craft
                             </Link>

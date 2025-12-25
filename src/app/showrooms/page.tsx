@@ -196,7 +196,7 @@ export default function ExperienceCentersPage() {
                                         <Phone className="mr-2" /> Call Now
                                     </Link>
                                 </Button>
-                                <Button size="lg" variant="outline" className="w-full sm:w-auto" asChild>
+                                <Button size="lg" variant="outline" className="w-full sm:w-auto border-foreground/30" asChild>
                                     <Link href={center.mapLink} target="_blank">
                                         <MapPin className="mr-2" /> Get Directions
                                     </Link>
