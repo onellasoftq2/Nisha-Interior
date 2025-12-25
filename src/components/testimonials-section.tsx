@@ -8,7 +8,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
-import { Award, Building, Home, Quote } from 'lucide-react';
+import { Award, Building, Factory, Home, Quote } from 'lucide-react';
 import { Separator } from './ui/separator';
 import { useEffect, useRef } from 'react';
 
@@ -54,6 +54,7 @@ const metrics = [
     { icon: Award, value: 15, label: "Years of Experience", suffix: "+" },
     { icon: Home, value: 1200, label: "Homes Delivered", suffix: "+" },
     { icon: Building, value: 4, label: "Experience Centers" },
+    { icon: Factory, value: 1, label: "In-House Factory" }
 ];
 
 const containerVariants = {
@@ -106,7 +107,7 @@ const MetricCounter = ({ to, prefix = '', suffix = '' }: { to: number, prefix?: 
 const TestimonialsSection = () => {
   return (
     <motion.section
-      className="bg-secondary text-secondary-foreground py-16 md:py-24"
+      className="bg-background py-16 md:py-24"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
@@ -117,10 +118,10 @@ const TestimonialsSection = () => {
           variants={itemVariants}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl font-semibold tracking-tight text-secondary-foreground sm:text-4xl md:text-5xl font-headline">
+          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
             Homes We’ve Been Trusted With
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-secondary-foreground/80">
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
             What our clients say about designing and building their homes with us.
           </p>
         </motion.div>
@@ -144,7 +145,7 @@ const TestimonialsSection = () => {
                     whileHover={{ y: -4, scale: 1.01 }}
                     transition={{ duration: 0.3, ease: 'easeOut' }}
                   >
-                    <Card className="h-full bg-background/80 shadow-sm hover:shadow-lg transition-shadow duration-300">
+                    <Card className="h-full bg-secondary/30 shadow-sm hover:shadow-lg transition-shadow duration-300">
                       <CardContent className="p-6 flex flex-col h-full">
                         <Quote className="w-8 h-8 text-primary/30 mb-4" />
                         <p className="flex-grow text-foreground/90 text-base mb-6">
@@ -173,7 +174,7 @@ const TestimonialsSection = () => {
             variants={itemVariants}
             className="mt-20"
         >
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
                  {metrics.map((metric, index) => (
                     <motion.div 
                         key={metric.label}

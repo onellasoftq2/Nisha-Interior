@@ -1,5 +1,5 @@
 'use client';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { InteractiveImage } from './interactive-image';
@@ -84,7 +84,7 @@ const InteractiveHighlightsSection = () => {
                 key={highlight.id}
                 onViewportEnter={() => setActiveIndex(index)}
                 viewport={{ amount: 0.5, root: null }}
-                className="relative cursor-pointer p-4 rounded-lg h-[24rem] flex flex-col justify-center"
+                className="relative cursor-default p-4 rounded-lg h-[18rem] md:h-[24rem] flex flex-col justify-center"
               >
                 <motion.h3
                   className="text-2xl sm:text-3xl font-semibold font-headline"
@@ -119,7 +119,7 @@ const InteractiveHighlightsSection = () => {
           </div>
 
           {/* Right Side - Image */}
-          <div className="hidden md:block sticky top-24 h-[calc(100vh-12rem)]">
+          <div className="hidden md:block sticky top-24 h-[calc(100vh-12rem)] min-h-[500px]">
             <AnimatePresence mode='wait'>
                 {activeImage && (
                     <motion.div
