@@ -48,7 +48,7 @@ const ServicesSection = () => {
   return (
     <motion.section 
         id="services" 
-        className="bg-background py-20 md:py-32"
+        className="bg-background py-16 md:py-24"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}

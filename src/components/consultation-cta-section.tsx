@@ -14,7 +14,7 @@ const ConsultationCtaSection = () => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.5, ease: 'easeOut' }}
     >
-      <div className="container px-4 md:px-6 py-20 md:py-32">
+      <div className="container px-4 md:px-6 py-16 md:py-24">
         <div className="max-w-3xl mx-auto text-center">
             <motion.h2 
                 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline"

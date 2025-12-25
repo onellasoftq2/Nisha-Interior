@@ -54,7 +54,7 @@ const InteractiveHighlightsSection = () => {
   };
 
   return (
-    <section id="about" className="bg-background py-20 md:py-32">
+    <section id="about" className="bg-background py-16 md:py-24">
       <div className="container px-4 md:px-6">
         <motion.div 
             initial={{ opacity: 0, y: 20 }}

@@ -37,7 +37,7 @@ const ShowroomsSection = () => {
   return (
     <motion.section
       id="showrooms"
-      className="bg-background py-20 md:py-32"
+      className="bg-background py-16 md:py-24"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}

@@ -25,7 +25,7 @@ const CustomizationSection = () => {
 
   return (
     <motion.section 
-      className="bg-secondary text-secondary-foreground py-20 md:py-32"
+      className="bg-secondary text-secondary-foreground py-16 md:py-24"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
