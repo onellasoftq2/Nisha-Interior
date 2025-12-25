@@ -90,7 +90,7 @@ export default function ExperienceCentersPage() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="pt-20 pb-12 md:pt-24 md:pb-16"
+          className="pt-24 pb-16"
         >
           <div className="container px-4 md:px-6 text-center">
             <motion.h1
@@ -114,7 +114,7 @@ export default function ExperienceCentersPage() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={itemVariants}
-            className="pb-12 md:pb-20"
+            className="pb-16 md:pb-24"
         >
             <div className="container px-4 md:px-6">
                 <Card className="bg-secondary border-none overflow-hidden">
@@ -149,7 +149,7 @@ export default function ExperienceCentersPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
-          className="py-12 md:py-20"
+          className="py-16 md:py-24"
         >
           <div className="container px-4 md:px-6">
             <div className="text-center mb-16">
@@ -195,9 +195,9 @@ export default function ExperienceCentersPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
-          className="pb-12 md:pb-20 bg-secondary"
+          className="pb-16 md:pb-24 bg-secondary"
         >
-          <div className="container px-4 md:px-6 py-12 md:py-20 space-y-16">
+          <div className="container px-4 md:px-6 py-16 md:py-24 space-y-16">
              {experienceCenters.map((center, index) => {
                  const image = PlaceHolderImages.find((img) => img.id === center.imageId);
                  const isReversed = index % 2 === 1;

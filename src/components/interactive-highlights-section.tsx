@@ -62,7 +62,7 @@ const InteractiveHighlightsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.4, ease: 'easeOut' }}
-            className="text-center mb-16"
+            className="text-center mb-12 md:mb-16"
         >
             <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
               Why Choose Nisha Interior?
@@ -71,7 +71,7 @@ const InteractiveHighlightsSection = () => {
               The four key pillars that define our commitment to excellence.
             </p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start min-h-[30rem]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start md:min-h-[30rem]">
           {/* Left Side - Titles */}
           <div className="relative flex flex-col justify-center gap-2">
             {highlights.map((highlight, index) => (
@@ -137,7 +137,7 @@ const InteractiveHighlightsSection = () => {
                           alt={activeImage.description}
                           width={800}
                           height={600}
-                          className="w-full h-full mb-8"
+                          className="w-full h-full"
                           data-ai-hint={activeImage.imageHint}
                       />
                   )}

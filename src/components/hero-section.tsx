@@ -57,7 +57,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative h-[85vh] min-h-[600px] md:h-[calc(100vh-80px)] w-full overflow-hidden">
+    <section className="relative h-[85vh] min-h-[600px] md:min-h-[calc(100vh-64px)] w-full overflow-hidden">
       <div className="absolute inset-0">
         <AnimatePresence initial={false}>
           {heroImage && (

@@ -44,7 +44,7 @@ const ShowroomsSection = () => {
       variants={containerVariants}
     >
       <div className="container px-4 md:px-6">
-        <motion.div variants={itemVariants} className="text-center mb-16">
+        <motion.div variants={itemVariants} className="text-center mb-12 md:mb-16">
           <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
             Visit Our Experience Centers
           </h2>

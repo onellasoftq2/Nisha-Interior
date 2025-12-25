@@ -89,7 +89,7 @@ export default function AboutUsPage() {
           initial="hidden"
           animate="visible"
           variants={sectionVariants}
-          className="pt-20 pb-12 md:pt-24 md:pb-16"
+          className="pt-24 pb-16"
         >
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
@@ -107,7 +107,7 @@ export default function AboutUsPage() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={sectionVariants}
-            className="pb-12 md:pb-20"
+            className="pb-16"
         >
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -146,7 +146,7 @@ export default function AboutUsPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
-          className="py-12 md:py-20"
+          className="py-16 md:py-24"
         >
           <div className="container px-4 md:px-6">
             <div className="grid md:grid-cols-2 items-center gap-16">
@@ -184,7 +184,7 @@ export default function AboutUsPage() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.2 }}
             variants={sectionVariants}
-            className="py-12 md:py-20 bg-secondary"
+            className="py-16 md:py-24 bg-secondary"
         >
           <div className="container px-4 md:px-6">
             <div className="text-center mb-16">
@@ -222,7 +222,7 @@ export default function AboutUsPage() {
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
-          className="py-12 md:py-20"
+          className="py-16 md:py-24"
         >
           <div className="container px-4 md:px-6">
             <div className="grid md:grid-cols-2 items-center gap-16">
