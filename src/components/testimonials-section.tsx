@@ -1,5 +1,5 @@
 'use client';
-import { motion } from 'framer-motion';
+import { motion, useAnimation, useInView } from 'framer-motion';
 import {
   Carousel,
   CarouselContent,
@@ -8,8 +8,9 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { Card, CardContent } from '@/components/ui/card';
-import { Quote } from 'lucide-react';
+import { Award, Building, Home, Quote } from 'lucide-react';
 import { Separator } from './ui/separator';
+import { useEffect, useRef } from 'react';
 
 const testimonials = [
   {
@@ -49,6 +50,12 @@ const testimonials = [
   },
 ];
 
+const metrics = [
+    { icon: Award, value: 15, label: "Years of Experience", suffix: "+" },
+    { icon: Home, value: 1200, label: "Homes Delivered", suffix: "+" },
+    { icon: Building, value: 4, label: "Experience Centers" },
+];
+
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -65,6 +72,36 @@ const itemVariants = {
     transition: { duration: 0.5, ease: 'easeOut' },
   },
 };
+
+const MetricCounter = ({ to, prefix = '', suffix = '' }: { to: number, prefix?: string, suffix?: string }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const controls = useAnimation();
+  
+  useEffect(() => {
+    if (isInView) {
+      controls.start({
+        value: to,
+        transition: { duration: 2, ease: "easeOut" },
+      });
+    }
+  }, [isInView, to, controls]);
+
+  return (
+    <motion.div ref={ref}>
+      <motion.span
+        initial={{ value: 0 }}
+        animate={controls}
+        onUpdate={(latest) => {
+          if (ref.current) {
+            (ref.current as any).textContent = `${prefix}${Math.round(latest.value)}${suffix}`;
+          }
+        }}
+      />
+    </motion.div>
+  );
+};
+
 
 const TestimonialsSection = () => {
   return (
@@ -134,14 +171,24 @@ const TestimonialsSection = () => {
         
         <motion.div 
             variants={itemVariants}
-            className="mt-16 text-center"
+            className="mt-20"
         >
-            <div className="flex items-center justify-center space-x-4 md:space-x-8 text-secondary-foreground/70">
-                <span className="text-sm md:text-base">15+ Years Experience</span>
-                <Separator orientation="vertical" className="h-4 bg-secondary-foreground/40" />
-                <span className="text-sm md:text-base">1200+ Homes Delivered</span>
-                <Separator orientation="vertical" className="h-4 bg-secondary-foreground/40" />
-                <span className="text-sm md:text-base">4 Experience Centers</span>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                 {metrics.map((metric, index) => (
+                    <motion.div 
+                        key={metric.label}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
+                    >
+                        <metric.icon className="h-10 w-10 text-primary mx-auto mb-4" />
+                        <div className="text-4xl md:text-5xl font-bold text-primary">
+                          <MetricCounter to={metric.value} suffix={metric.suffix || ''} />
+                        </div>
+                        <p className="text-muted-foreground mt-1">{metric.label}</p>
+                    </motion.div>
+                ))}
             </div>
         </motion.div>
       </div>
