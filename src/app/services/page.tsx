@@ -118,18 +118,16 @@ const sectionVariants = {
   },
 };
 
-const imageVariants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: {
-      duration: 0.5,
-      ease: 'easeOut',
-      delay: 0.2,
-    },
-  },
-};
+const imageVariants = (direction: 'left' | 'right') => ({
+    hidden: { opacity: 0, x: direction === 'left' ? -30 : 30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut', delay: 0.2 } },
+});
+
+const textVariants = (direction: 'left' | 'right') => ({
+    hidden: { opacity: 0, x: direction === 'left' ? -30 : 30 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut', delay: 0.2 } },
+});
+
 
 export default function ServicesPage() {
   const factoryImage = PlaceHolderImages.find((img) => img.id === 'factory-process');
@@ -157,6 +155,7 @@ export default function ServicesPage() {
         <div className="container px-4 md:px-6 space-y-24 md:space-y-32 mb-24 md:mb-32">
           {services.map((service, index) => {
             const image = PlaceHolderImages.find((img) => img.id === service.imageId);
+            const isReversed = index % 2 === 1;
             return (
               <motion.div
                 id={service.id}
@@ -167,7 +166,10 @@ export default function ServicesPage() {
                 variants={sectionVariants}
                 className="grid grid-cols-1 items-center gap-12 md:gap-16 md:grid-cols-2"
               >
-                <div className={`space-y-6 ${index % 2 === 1 ? 'md:order-last' : ''}`}>
+                <motion.div 
+                    className={`space-y-6 ${isReversed ? 'md:order-last' : ''}`}
+                    variants={textVariants(isReversed ? 'right' : 'left')}
+                >
                   <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">
                     {service.title}
                   </h2>
@@ -183,13 +185,20 @@ export default function ServicesPage() {
                    <Button size="lg" variant="link" className="px-0 group text-lg" asChild>
                      <Link href="/contact">
                         {service.cta}
-                        <span className="inline-block transition-transform duration-300 group-hover:translate-x-1 ml-2">→</span>
+                        <motion.span 
+                            className="inline-block ml-2"
+                            initial={{ x: 0 }}
+                            whileHover={{ x: 4 }}
+                            transition={{ duration: 0.2, ease: 'easeOut' }}
+                        >
+                            →
+                        </motion.span>
                      </Link>
                    </Button>
-                </div>
+                </motion.div>
                 <motion.div
-                  variants={imageVariants}
-                  className="rounded-lg overflow-hidden shadow-xl"
+                  variants={imageVariants(isReversed ? 'left' : 'right')}
+                  className="rounded-lg overflow-hidden shadow-lg transition-shadow duration-300 hover:shadow-2xl group"
                 >
                   {image && (
                     <Image
@@ -197,7 +206,7 @@ export default function ServicesPage() {
                       alt={image.description}
                       width={800}
                       height={533}
-                      className="w-full h-full object-cover"
+                      className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
                       data-ai-hint={image.imageHint}
                     />
                   )}
@@ -302,7 +311,7 @@ export default function ServicesPage() {
             <div className="container px-4 md:px-6">
                 <div className="grid md:grid-cols-2 items-center gap-12 md:gap-24 py-20 md:py-24">
                     <motion.div 
-                        className="rounded-lg overflow-hidden shadow-xl"
+                        className="rounded-lg overflow-hidden shadow-xl group"
                         initial={{ opacity: 0, scale: 0.95 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true, amount: 0.3 }}
@@ -314,7 +323,7 @@ export default function ServicesPage() {
                             alt={factoryImage.description}
                             width={800}
                             height={600}
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover transition-transform duration-300 ease-out group-hover:scale-105"
                             data-ai-hint={factoryImage.imageHint}
                         />
                         )}
@@ -346,3 +355,5 @@ export default function ServicesPage() {
     </div>
   );
 }
+
+    
