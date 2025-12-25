@@ -76,6 +76,20 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 };
 
+const glanceItemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.35, ease: 'easeOut' },
+  },
+};
+
+const glanceHoverVariants = {
+  rest: { y: 0, scale: 1 },
+  hover: { y: -6, scale: 1.03 },
+};
+
 const imageVariants = {
   hidden: { opacity: 0, scale: 0.95 },
   visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: 'easeOut' } },
@@ -115,7 +129,7 @@ export default function FactoryPage() {
         <motion.section
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.3 }}
             variants={containerVariants}
             className="pb-24 md:pb-32"
         >
@@ -124,20 +138,37 @@ export default function FactoryPage() {
               {glanceItems.map((item, index) => (
                 <motion.div
                   key={item.title}
-                  variants={itemVariants}
+                  variants={glanceItemVariants}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <Card className="h-full bg-card border-none shadow-none text-center p-0">
-                    <CardHeader className="items-center p-0">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
-                        <item.icon className="h-7 w-7" />
-                      </div>
-                      <CardTitle className="font-headline text-lg md:text-xl">{item.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-0 mt-2">
-                      <p className="text-muted-foreground text-sm md:text-base">{item.description}</p>
-                    </CardContent>
-                  </Card>
+                  <motion.div
+                    className="group h-full"
+                    variants={glanceHoverVariants}
+                    whileHover="hover"
+                    initial="rest"
+                    transition={{ duration: 0.25, ease: 'easeOut' }}
+                  >
+                    <Card className="h-full bg-card border-none shadow-none text-center p-0 transition-colors duration-300 group-hover:bg-secondary">
+                        <CardHeader className="items-center p-0">
+                        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4 transition-transform duration-300 group-hover:scale-110">
+                            <item.icon className="h-7 w-7" />
+                        </div>
+                        <CardTitle className="font-headline text-lg md:text-xl relative">
+                            {item.title}
+                            <motion.span 
+                                className="absolute bottom-[-4px] left-0 right-0 h-[2px] bg-primary origin-center"
+                                initial={{ scaleX: 0 }}
+                                animate={{ scaleX: 0 }}
+                                whileHover={{ scaleX: 1 }}
+                                transition={{ duration: 0.3, ease: 'easeOut' }}
+                            />
+                        </CardTitle>
+                        </CardHeader>
+                        <CardContent className="p-0 mt-2">
+                        <p className="text-muted-foreground text-sm md:text-base">{item.description}</p>
+                        </CardContent>
+                    </Card>
+                  </motion.div>
                 </motion.div>
               ))}
             </div>
