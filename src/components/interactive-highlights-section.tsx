@@ -49,9 +49,9 @@ const InteractiveHighlightsSection = () => {
   };
   
   const contentVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.3, ease: 'easeOut' } },
-    exit: { opacity: 0, y: -10, transition: { duration: 0.2, ease: 'easeIn' } },
+    hidden: { opacity: 0, y: 10, height: 0 },
+    visible: { opacity: 1, y: 0, height: 'auto', transition: { duration: 0.4, ease: 'easeOut' } },
+    exit: { opacity: 0, y: -10, height: 0, transition: { duration: 0.3, ease: 'easeIn' } },
   };
 
   return (
@@ -71,18 +71,17 @@ const InteractiveHighlightsSection = () => {
               The four key pillars that define our commitment to excellence.
             </p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center min-h-[30rem]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start min-h-[30rem]">
           {/* Left Side - Titles */}
-          <div className="relative flex flex-col justify-center gap-8">
+          <div className="relative flex flex-col justify-center gap-2">
             {highlights.map((highlight, index) => (
               <motion.div
                 key={highlight.id}
-                onMouseEnter={() => setActiveIndex(index)}
-                onClick={() => setActiveIndex(index)}
-                className="relative cursor-pointer p-4 -m-4 rounded-lg"
+                onViewportEnter={() => setActiveIndex(index)}
+                viewport={{ amount: 0.8 }}
+                className="relative cursor-pointer p-4 rounded-lg"
                 initial={{x: -20, opacity: 0}}
                 whileInView={{x: 0, opacity: 1}}
-                viewport={{once: true, amount: 0.2}}
                 transition={{ duration: 0.3, ease: 'easeOut', delay: index * 0.1 }}
               >
                 <motion.h3
@@ -96,24 +95,24 @@ const InteractiveHighlightsSection = () => {
                 </motion.h3>
                 <AnimatePresence>
                   {activeIndex === index && (
-                    <div className="block md:hidden mt-2">
-                       <motion.p
-                          className="text-muted-foreground"
-                          variants={contentVariants}
-                          initial="hidden"
-                          animate="visible"
-                          exit="hidden"
-                        >
+                    <motion.div 
+                      className="overflow-hidden"
+                      variants={contentVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                       <p className="text-muted-foreground mt-2 pr-4">
                           {highlight.description}
-                        </motion.p>
-                    </div>
+                        </p>
+                    </motion.div>
                   )}
                 </AnimatePresence>
                 {activeIndex === index && (
                   <motion.div
-                    className="absolute left-0 top-0 bottom-0 h-full w-1 bg-primary hidden md:block"
+                    className="absolute left-0 top-0 bottom-0 h-full w-1 bg-primary"
                     layoutId="active-highlight-indicator"
-                    transition={{ duration: 0.3, ease: 'easeOut' }}
+                    transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                   />
                 )}
               </motion.div>
@@ -121,7 +120,7 @@ const InteractiveHighlightsSection = () => {
           </div>
 
           {/* Right Side - Content */}
-          <div className="hidden md:flex flex-col items-start justify-center text-left min-h-[20rem] relative">
+          <div className="hidden md:flex flex-col items-start justify-center text-left min-h-[20rem] relative sticky top-24">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeIndex}
@@ -143,9 +142,6 @@ const InteractiveHighlightsSection = () => {
                       />
                   )}
                 </div>
-                <p className="text-xl text-foreground/90 leading-relaxed max-w-md mt-8">
-                  {activeHighlight.description}
-                </p>
               </motion.div>
             </AnimatePresence>
           </div>
