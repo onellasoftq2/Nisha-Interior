@@ -35,10 +35,7 @@ const CustomizationSection = () => {
               Made for Your Exact Space.
             </h2>
             <p className="text-lg text-secondary-foreground/80">
-              Our own manufacturing unit gives us the unique ability to create furniture that fits your dimensions perfectly. No compromises, no wasted space—just flawless integration into your home.
-            </p>
-            <p className="text-lg text-secondary-foreground/80">
-              From material selection to the final finish, we control every step of the process to ensure the highest quality standards.
+              Our own factory gives us the unique ability to create furniture that fits your space to the millimeter. From material selection to final finish, we control every step to ensure superior quality and a perfect fit.
             </p>
             <Button size="lg" asChild variant="outline" className="border-secondary-foreground/50 text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary">
                 <Link href="/factory">
