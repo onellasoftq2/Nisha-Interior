@@ -11,28 +11,28 @@ const services = [
   {
     id: 'modular-kitchens',
     title: 'Modular Kitchens',
-    description: 'Experience the perfect blend of functionality and style with our custom modular kitchens. Designed for modern living, we create ergonomic spaces that make cooking a pleasure.',
+    description: 'The heart of your home, reimagined. We create ergonomic, stylish kitchens that blend clever storage with a beautiful aesthetic, making your daily routines a joy.',
     imageId: 'services-kitchens',
     cta: 'Explore Kitchen Designs',
   },
   {
     id: 'wardrobes-storage',
     title: 'Wardrobes & Storage',
-    description: 'Maximize your space with intelligent and elegant storage solutions. Our custom wardrobes are designed to fit your lifestyle, offering a seamless blend of form and function.',
+    description: 'Bring calm and order to your home with our intelligent storage solutions. From walk-in closets to sleek media units, we design storage that fits your life, not the other way around.',
     imageId: 'services-wardrobes',
     cta: 'Discover Storage Solutions',
   },
   {
     id: 'complete-home-interiors',
     title: 'Complete Home Interiors',
-    description: 'Transform your house into a dream home with our end-to-end interior design services. From concept to execution, we handle every detail to create a space that is uniquely yours.',
+    description: 'A seamless journey from a blank canvas to your dream home. We manage every detail, ensuring a cohesive design that reflects your personality across every single room.',
     imageId: 'services-interiors',
     cta: 'View Interior Projects',
   },
   {
     id: 'interior-design-consultation',
     title: 'Interior Design Consultation',
-    description: 'Our expert designers work with you to bring your vision to life. We provide personalized consultations to help you create a home that reflects your taste and personality.',
+    description: 'Have a vision but need a guide? Our expert designers partner with you to refine your ideas, select materials, and create a clear roadmap for your project.',
     imageId: 'services-consultation',
     cta: 'Book a Consultation',
   },
@@ -76,10 +76,10 @@ export default function ServicesPage() {
         >
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
-              Our Services
+              End-to-End Design Solutions
             </h1>
             <p className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground">
-              Crafting beautiful and functional spaces, tailored to your needs.
+              From a single room to a complete home makeover, we tailor our services to fit your unique needs, all backed by our own factory.
             </p>
           </div>
         </motion.section>

@@ -31,10 +31,10 @@ export default function AboutUsPage() {
         >
           <div className="container px-4 md:px-6 text-center">
             <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
-              Designing Spaces, Building Trust.
+              From Our Family to Yours.
             </h1>
             <p className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground">
-              Based in Pune, Nisha Interior is a leading name in custom furniture and interior design, known for our commitment to quality and a customer-first approach.
+              What started as a small workshop in Pune has grown into a leading name in interior design, but our core values remain the same: quality craftsmanship and a commitment to the families we serve.
             </p>
           </div>
         </motion.section>
@@ -59,15 +59,15 @@ export default function AboutUsPage() {
           <div className="container px-4 md:px-6">
             <div className="grid md:grid-cols-2 items-center gap-16">
               <div className="space-y-6 text-lg text-muted-foreground">
-                <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">Our Philosophy</h2>
+                <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">Our Design Philosophy</h2>
                 <p>
-                  We believe that a home is more than just a place to live; it's a reflection of who you are. Our philosophy is rooted in creating personalized, functional, and beautiful spaces that stand the test of time.
+                  We see every home as a canvas for life’s moments. Our philosophy is simple: create spaces that are not only beautiful and functional but also deeply personal. It's about designing a backdrop for your family's story.
                 </p>
                 <p>
-                  By combining expert craftsmanship with a deep understanding of our clients' needs, we deliver interiors that are not only aesthetically pleasing but also a joy to live in.
+                  By listening carefully and collaborating closely, we translate your needs and dreams into a tangible reality. Our factory-backed model gives us the freedom to perfect every detail, ensuring your home is a place you’ll love for years to come.
                 </p>
                 <p>
-                  Our factory-backed model ensures that every piece of furniture is crafted with precision and care, giving you a home that is both elegant and enduring.
+                  It’s more than just furniture; it’s about building trust and crafting a home that is as unique and enduring as your family.
                 </p>
               </div>
               <motion.div 

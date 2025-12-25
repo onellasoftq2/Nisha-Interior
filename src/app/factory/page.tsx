@@ -9,18 +9,18 @@ import Footer from '@/components/footer';
 const features = [
   {
     icon: Ruler,
-    title: 'Precision Sizing for a Perfect Fit',
-    description: 'Our in-house manufacturing allows us to create furniture that fits your space with millimeter precision. No awkward gaps, no wasted space—just a flawless, integrated look.',
+    title: 'Precision Engineering',
+    description: 'Using advanced machinery, we craft furniture to your exact specifications. This means a perfect, built-in look that maximizes every inch of your space.',
   },
   {
     icon: CheckCircle,
-    title: 'Uncompromising Quality Control',
-    description: 'We oversee every step of the production process, from sourcing premium materials to applying the final touches. This ensures your furniture meets the highest standards of quality and durability.',
+    title: 'Hands-On Quality Control',
+    description: 'Because we make it ourselves, we can stand behind it. We inspect every joint, hinge, and surface to ensure your furniture is flawless and built to last a lifetime.',
   },
   {
     icon: Gem,
-    title: 'Bespoke Finishes and Materials',
-    description: 'Your vision is our blueprint. Choose from a curated selection of laminates, veneers, and finishes to create furniture that is a true reflection of your personal style.',
+    title: 'Limitless Customization',
+    description: 'Your home should be a reflection of you. Our factory allows us to offer an extensive range of materials, finishes, and hardware to create a look that’s entirely your own.',
   },
 ];
 
@@ -60,13 +60,13 @@ export default function FactoryPage() {
               variants={itemVariants}
               className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
             >
-              Factory-Backed Precision
+              Where Design Meets Craft
             </motion.h1>
             <motion.p
               variants={itemVariants}
               className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground"
             >
-              Our state-of-the-art factory is the heart of our operation, giving us unparalleled control over quality, customization, and delivery.
+              Our state-of-the-art factory is where your vision takes shape. It's how we guarantee quality, offer true customization, and deliver on our promises.
             </motion.p>
           </div>
         </motion.section>
@@ -82,10 +82,10 @@ export default function FactoryPage() {
             <div className="grid md:grid-cols-2 items-center gap-16">
               <motion.div variants={itemVariants} className="space-y-8">
                 <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">
-                  The Art of Custom Manufacturing
+                  The Art of Making
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Why settle for standard when you can have perfection? Our factory empowers us to move beyond one-size-fits-all solutions and create pieces that are truly made for you.
+                  Owning our manufacturing isn't just a business model—it's our commitment to you. It means we're not just designers; we are makers. This control allows us to deliver bespoke solutions without compromising on quality.
                 </p>
                 <div className="space-y-6">
                   {features.map((feature, index) => (
