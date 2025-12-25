@@ -8,6 +8,7 @@ import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
 import { useBookingModal } from '@/hooks/use-booking-modal';
+import { Separator } from '@/components/ui/separator';
 
 const Header = () => {
   const pathname = usePathname();
