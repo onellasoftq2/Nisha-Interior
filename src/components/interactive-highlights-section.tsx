@@ -54,6 +54,11 @@ const InteractiveHighlightsSection = () => {
     exit: { opacity: 0, y: -10, height: 0, transition: { duration: 0.3, ease: 'easeIn' } },
   };
 
+  const imageContainerVariants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { duration: 0.5, delay: 0.2 } },
+  };
+
   return (
     <section id="about" className="bg-background py-16 md:py-24">
       <div className="container px-4 md:px-6">
@@ -71,18 +76,15 @@ const InteractiveHighlightsSection = () => {
               The four key pillars that define our commitment to excellence.
             </p>
         </motion.div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start md:min-h-[30rem]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
           {/* Left Side - Titles */}
-          <div className="relative flex flex-col justify-center gap-2">
+          <div className="relative flex flex-col justify-center gap-2 md:pt-8">
             {highlights.map((highlight, index) => (
               <motion.div
                 key={highlight.id}
                 onViewportEnter={() => setActiveIndex(index)}
-                viewport={{ amount: 0.5 }}
-                className="relative cursor-pointer p-4 rounded-lg"
-                initial={{x: -20, opacity: 0}}
-                whileInView={{x: 0, opacity: 1}}
-                transition={{ duration: 0.3, ease: 'easeOut', delay: index * 0.1 }}
+                viewport={{ amount: 0.5, root: null }}
+                className="relative cursor-pointer p-4 rounded-lg h-[24rem] flex flex-col justify-center"
               >
                 <motion.h3
                   className="text-2xl sm:text-3xl font-semibold font-headline"
@@ -93,20 +95,17 @@ const InteractiveHighlightsSection = () => {
                 >
                   {highlight.title}
                 </motion.h3>
-                <AnimatePresence>
-                  {activeIndex === index && (
+                 <AnimatePresence mode="wait">
                     <motion.div 
                       className="overflow-hidden"
-                      variants={contentVariants}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: activeIndex === index ? 'auto' : 0, opacity: activeIndex === index ? 1 : 0 }}
+                      transition={{ duration: 0.4, ease: 'easeOut' }}
                     >
                        <p className="text-muted-foreground mt-2 pr-4">
                           {highlight.description}
                         </p>
                     </motion.div>
-                  )}
                 </AnimatePresence>
                 {activeIndex === index && (
                   <motion.div
@@ -119,30 +118,28 @@ const InteractiveHighlightsSection = () => {
             ))}
           </div>
 
-          {/* Right Side - Content */}
-          <div className="hidden md:flex flex-col items-start justify-center text-left min-h-[20rem] relative sticky top-24">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeIndex}
-                variants={contentVariants}
-                initial="hidden"
-                animate="visible"
-                exit="exit"
-                className="flex flex-col items-center justify-center text-center w-full"
-              >
-                <div className="w-full aspect-[4/3]">
-                  {activeImage && (
-                      <InteractiveImage
-                          src={activeImage.imageUrl}
-                          alt={activeImage.description}
-                          width={800}
-                          height={600}
-                          className="w-full h-full"
-                          data-ai-hint={activeImage.imageHint}
-                      />
-                  )}
-                </div>
-              </motion.div>
+          {/* Right Side - Image */}
+          <div className="hidden md:block sticky top-24 h-[calc(100vh-12rem)]">
+            <AnimatePresence mode='wait'>
+                {activeImage && (
+                    <motion.div
+                        key={activeIndex}
+                        className="w-full h-full"
+                        variants={imageContainerVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="hidden"
+                    >
+                        <InteractiveImage
+                            src={activeImage.imageUrl}
+                            alt={activeImage.description}
+                            width={800}
+                            height={600}
+                            className="w-full h-full"
+                            data-ai-hint={activeImage.imageHint}
+                        />
+                    </motion.div>
+                )}
             </AnimatePresence>
           </div>
         </div>
