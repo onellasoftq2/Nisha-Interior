@@ -111,17 +111,17 @@ const TestimonialsColumn = (props: {
                   key={`${index}-${i}`}
                   aria-hidden={index === 1 ? "true" : "false"}
                   tabIndex={index === 1 ? -1 : 0}
-                  className="group min-h-[300px] w-[320px] [perspective:1000px]"
+                  className="group w-[320px] [perspective:1000px] min-h-[300px]"
                 >
                   <div className="relative flex flex-col h-full rounded-[50px] bg-gradient-to-br from-secondary/40 to-background/30 shadow-2xl transition-all duration-500 ease-in-out [transform-style:preserve-3d] group-hover:[box-shadow:rgba(0,0,0,0.3)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px] group-hover:[transform:rotate3d(1,1,0,15deg)]">
                     <div className="absolute inset-2 rounded-[40px] border-b border-l border-white/20 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-sm [transform-style:preserve-3d] [transform:translate3d(0,0,25px)]"></div>
                     
                     <div className="absolute top-0 right-0 [transform-style:preserve-3d]">
                       <div
-                        className="absolute grid aspect-square w-[50px] place-content-center rounded-full bg-white/80 shadow-[rgba(100,100,111,0.2)_-10px_10px_20px_0px] transition-all duration-500 ease-in-out [transform:translate3d(0,0,90px)] group-hover:[transform:translate3d(0,0,120px)]"
+                        className="absolute grid aspect-square w-[50px] place-content-center rounded-full bg-background/80 shadow-[rgba(100,100,111,0.2)_-10px_10px_20px_0px] transition-all duration-500 ease-in-out [transform:translate3d(0,0,90px)] group-hover:[transform:translate3d(0,0,120px)]"
                         style={{ top: "30px", right: "30px" }}
                       >
-                         <Quote className="w-5 h-5 fill-black/80 stroke-none" />
+                         <Quote className="w-5 h-5 text-primary" />
                       </div>
                     </div>
                     
@@ -131,7 +131,7 @@ const TestimonialsColumn = (props: {
                           {quote}
                         </p>
                       </div>
-                      <footer className="mt-auto flex-shrink-0">
+                      <footer className="mt-auto flex-shrink-0 pt-8">
                         <div className="flex flex-col">
                            <cite className="font-bold not-italic tracking-tight leading-5 text-foreground">
                                 {name}
