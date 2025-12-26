@@ -113,7 +113,7 @@ const TestimonialsColumn = (props: {
                   tabIndex={index === 1 ? -1 : 0}
                   className="group h-[300px] w-[320px] [perspective:1000px]"
                 >
-                  <div className="relative h-full rounded-[50px] bg-gradient-to-br from-secondary/50 to-background/30 shadow-2xl transition-all duration-500 ease-in-out [transform-style:preserve-3d] group-hover:[box-shadow:rgba(0,0,0,0.3)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px] group-hover:[transform:rotate3d(1,1,0,15deg)]">
+                  <div className="relative h-full rounded-[50px] bg-gradient-to-br from-secondary/40 to-background/30 shadow-2xl transition-all duration-500 ease-in-out [transform-style:preserve-3d] group-hover:[box-shadow:rgba(0,0,0,0.3)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px] group-hover:[transform:rotate3d(1,1,0,15deg)]">
                     <div className="absolute inset-2 rounded-[40px] border-b border-l border-white/20 bg-gradient-to-b from-white/20 to-white/10 backdrop-blur-sm [transform-style:preserve-3d] [transform:translate3d(0,0,25px)]"></div>
                     
                     <div className="absolute top-0 right-0 [transform-style:preserve-3d]">
