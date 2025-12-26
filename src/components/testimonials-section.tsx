@@ -133,12 +133,12 @@ const TestimonialsColumn = (props: {
                       </div>
                       <footer className="mt-auto flex-shrink-0">
                         <div className="flex flex-col">
-                          <cite className="font-bold not-italic tracking-tight leading-5 text-foreground">
-                            {name}
-                          </cite>
-                          <span className="text-sm leading-5 tracking-tight text-muted-foreground mt-0.5">
-                            {project} &bull; {location}
-                          </span>
+                           <cite className="font-bold not-italic tracking-tight leading-5 text-foreground">
+                                {name}
+                           </cite>
+                           <span className="text-sm leading-5 tracking-tight text-muted-foreground mt-0.5">
+                                {project} &bull; {location}
+                           </span>
                         </div>
                       </footer>
                     </div>
