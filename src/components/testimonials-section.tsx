@@ -101,47 +101,51 @@ const TestimonialsColumn = (props: {
           ease: "linear",
           repeatType: "loop",
         }}
-        className="flex flex-col gap-6 pb-6 bg-transparent transition-colors duration-300 list-none m-0 p-0"
+        className="flex flex-col gap-8 pb-8 bg-transparent transition-colors duration-300 list-none m-0 p-0"
       >
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
               {props.testimonials.map(({ quote, name, project, location }, i) => (
-                <motion.li 
+                <li 
                   key={`${index}-${i}`}
                   aria-hidden={index === 1 ? "true" : "false"}
                   tabIndex={index === 1 ? -1 : 0}
-                  whileHover={{ 
-                    scale: 1.03,
-                    y: -8,
-                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                    transition: { type: "spring", stiffness: 400, damping: 17 }
-                  }}
-                  whileFocus={{ 
-                    scale: 1.03,
-                    y: -8,
-                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
-                    transition: { type: "spring", stiffness: 400, damping: 17 }
-                  }}
-                  className="p-8 rounded-2xl border border-white/10 shadow-lg max-w-xs w-full bg-secondary/40 backdrop-blur-sm transition-all duration-300 cursor-default select-none group focus:outline-none focus:ring-2 focus:ring-primary/30" 
+                  className="group h-[300px] w-[320px] [perspective:1000px]"
                 >
-                  <blockquote className="m-0 p-0">
-                    <Quote className="w-8 h-8 text-primary/30 mb-4" />
-                    <p className="text-muted-foreground leading-relaxed font-normal m-0 transition-colors duration-300">
-                      {quote}
-                    </p>
-                    <footer className="mt-6">
-                      <div className="flex flex-col">
-                        <cite className="font-semibold not-italic tracking-tight leading-5 text-foreground transition-colors duration-300">
-                          {name}
-                        </cite>
-                        <span className="text-sm leading-5 tracking-tight text-muted-foreground mt-0.5 transition-colors duration-300">
-                          {project} &bull; {location}
-                        </span>
+                  <div className="relative h-full rounded-[50px] bg-gradient-to-br from-zinc-800 to-black shadow-2xl transition-all duration-500 ease-in-out [transform-style:preserve-3d] group-hover:[box-shadow:rgba(0,0,0,0.3)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px] group-hover:[transform:rotate3d(1,1,0,15deg)]">
+                    <div className="absolute inset-2 rounded-[40px] border-b border-l border-white/20 bg-gradient-to-b from-white/20 to-white/10 backdrop-blur-sm [transform-style:preserve-3d] [transform:translate3d(0,0,25px)]"></div>
+                    
+                    <div className="absolute top-0 right-0 [transform-style:preserve-3d]">
+                      <div
+                        className="absolute grid aspect-square w-[50px] place-content-center rounded-full bg-white/80 shadow-[rgba(100,100,111,0.2)_-10px_10px_20px_0px] transition-all duration-500 ease-in-out [transform:translate3d(0,0,90px)] group-hover:[transform:translate3d(0,0,120px)]"
+                        style={{ top: "30px", right: "30px" }}
+                      >
+                         <Quote className="w-5 h-5 fill-black/80 stroke-none" />
                       </div>
-                    </footer>
-                  </blockquote>
-                </motion.li>
+                    </div>
+
+                    <div className="absolute top-16 px-8 [transform:translate3d(0,0,26px)]">
+                      <p className="text-zinc-200 text-lg leading-relaxed">
+                        {quote}
+                      </p>
+                    </div>
+
+                    <div className="absolute bottom-8 left-8 right-8 [transform:translate3d(0,0,26px)]">
+                       <footer className="mt-6">
+                        <div className="flex flex-col">
+                          <cite className="font-bold not-italic tracking-tight leading-5 text-white">
+                            {name}
+                          </cite>
+                          <span className="text-sm leading-5 tracking-tight text-zinc-400 mt-0.5">
+                            {project} &bull; {location}
+                          </span>
+                        </div>
+                      </footer>
+                    </div>
+                    
+                  </div>
+                </li>
               ))}
             </React.Fragment>
           )),
