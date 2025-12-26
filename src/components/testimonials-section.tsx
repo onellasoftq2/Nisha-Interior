@@ -7,7 +7,6 @@ import { Quote } from 'lucide-react';
 interface Testimonial {
   id: number;
   quote: string;
-  image: string;
   name: string;
   project: string;
   location: string;
@@ -18,7 +17,6 @@ const testimonials: Testimonial[] = [
   {
     id: 1,
     quote: 'The attention to detail was remarkable. Our kitchen is now the heart of our home, both beautiful and incredibly functional. The team understood our vision perfectly.',
-    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Rohan & Priya Sharma',
     project: 'Modular Kitchen',
     location: 'Wakad, Pune',
@@ -26,7 +24,6 @@ const testimonials: Testimonial[] = [
   {
     id: 2,
     quote: 'From design to handover, the process was seamless. Nisha Interior managed everything, and the quality of their in-house manufacturing is evident in every corner of our home.',
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Anjali Verma',
     project: 'Complete Home Interior',
     location: 'Kharadi, Pune',
@@ -34,7 +31,6 @@ const testimonials: Testimonial[] = [
   {
     id: 3,
     quote: 'Our custom wardrobes are a dream come true. The team optimized the space brilliantly, and the finish is absolutely flawless. It’s beyond what we expected.',
-    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Sameer Patel',
     project: 'Wardrobes & Storage',
     location: 'Nanded City, Pune',
@@ -42,7 +38,6 @@ const testimonials: Testimonial[] = [
   {
     id: 4,
     quote: 'As an architect, I appreciate their technical skill. The precision of the custom furniture built in their own factory is something you don’t find with aggregators.',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Meera Desai',
     project: 'Custom Furniture',
     location: 'Pune',
@@ -50,7 +45,6 @@ const testimonials: Testimonial[] = [
   {
     id: 5,
     quote: 'Visiting their experience center was a game-changer. Seeing the materials and quality in person gave us the confidence to go ahead. We couldn’t be happier with the result.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'The Joshi Family',
     project: 'Complete Home Interior',
     location: 'Kharadi Annex, Pune',
@@ -58,7 +52,6 @@ const testimonials: Testimonial[] = [
   {
     id: 6,
     quote: 'The smooth implementation exceeded expectations. It streamlined processes, improving overall business performance.',
-    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Aliza Khan',
     project: 'Business Analyst',
     location: 'Pune',
@@ -66,7 +59,6 @@ const testimonials: Testimonial[] = [
   {
     id: 7,
     quote: 'Our business functions improved with a user-friendly design and positive customer feedback.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Farhan Siddiqui',
     project: 'Marketing Director',
     location: 'Pune',
@@ -74,7 +66,6 @@ const testimonials: Testimonial[] = [
   {
     id: 8,
     quote: 'They delivered a solution that exceeded expectations, understanding our needs and enhancing our operations.',
-    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Sana Sheikh',
     project: 'Sales Manager',
     location: 'Pune',
@@ -82,7 +73,6 @@ const testimonials: Testimonial[] = [
   {
     id: 9,
     quote: 'Using this ERP, our online presence and conversions significantly improved, boosting business performance.',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Hassan Ali',
     project: 'E-commerce Manager',
     location: 'Pune',
@@ -116,7 +106,7 @@ const TestimonialsColumn = (props: {
         {[
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
-              {props.testimonials.map(({ quote, image, name, project, location }, i) => (
+              {props.testimonials.map(({ quote, name, project, location }, i) => (
                 <motion.li 
                   key={`${index}-${i}`}
                   aria-hidden={index === 1 ? "true" : "false"}
@@ -133,21 +123,14 @@ const TestimonialsColumn = (props: {
                     boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
                     transition: { type: "spring", stiffness: 400, damping: 17 }
                   }}
-                  className="p-8 rounded-2xl border border-border shadow-sm max-w-xs w-full bg-card transition-all duration-300 cursor-default select-none group focus:outline-none focus:ring-2 focus:ring-primary/30" 
+                  className="p-8 rounded-2xl border border-white/10 shadow-lg max-w-xs w-full bg-secondary/40 backdrop-blur-sm transition-all duration-300 cursor-default select-none group focus:outline-none focus:ring-2 focus:ring-primary/30" 
                 >
                   <blockquote className="m-0 p-0">
-                    <Quote className="w-8 h-8 text-primary/20 mb-4" />
+                    <Quote className="w-8 h-8 text-primary/30 mb-4" />
                     <p className="text-muted-foreground leading-relaxed font-normal m-0 transition-colors duration-300">
                       {quote}
                     </p>
-                    <footer className="flex items-center gap-3 mt-6">
-                      <img
-                        width={40}
-                        height={40}
-                        src={image}
-                        alt={`Avatar of ${name}`}
-                        className="h-10 w-10 rounded-full object-cover ring-2 ring-background group-hover:ring-primary/30 transition-all duration-300 ease-in-out"
-                      />
+                    <footer className="mt-6">
                       <div className="flex flex-col">
                         <cite className="font-semibold not-italic tracking-tight leading-5 text-foreground transition-colors duration-300">
                           {name}
