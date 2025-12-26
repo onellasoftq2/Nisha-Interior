@@ -107,14 +107,14 @@ const TestimonialsColumn = (props: {
           ...new Array(2).fill(0).map((_, index) => (
             <React.Fragment key={index}>
               {props.testimonials.map(({ quote, name, project, location }, i) => (
-                <li 
+                <li
                   key={`${index}-${i}`}
                   aria-hidden={index === 1 ? "true" : "false"}
                   tabIndex={index === 1 ? -1 : 0}
                   className="group h-[300px] w-[320px] [perspective:1000px]"
                 >
                   <div className="relative flex flex-col h-full rounded-[50px] bg-gradient-to-br from-secondary/40 to-background/30 shadow-2xl transition-all duration-500 ease-in-out [transform-style:preserve-3d] group-hover:[box-shadow:rgba(0,0,0,0.3)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px] group-hover:[transform:rotate3d(1,1,0,15deg)]">
-                    <div className="absolute inset-2 rounded-[40px] border-b border-l border-white/20 bg-gradient-to-b from-white/20 to-white/10 backdrop-blur-sm [transform-style:preserve-3d] [transform:translate3d(0,0,25px)]"></div>
+                    <div className="absolute inset-2 rounded-[40px] border-b border-l border-white/20 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-sm [transform-style:preserve-3d] [transform:translate3d(0,0,25px)]"></div>
                     
                     <div className="absolute top-0 right-0 [transform-style:preserve-3d]">
                       <div
@@ -125,14 +125,13 @@ const TestimonialsColumn = (props: {
                       </div>
                     </div>
                     
-                    <div className="flex-1 p-8 pt-16 [transform:translate3d(0,0,26px)]">
-                      <p className="text-foreground/80 text-lg leading-relaxed">
-                        {quote}
-                      </p>
-                    </div>
-
-                    <div className="flex-shrink-0 p-8 pt-0 [transform:translate3d(0,0,26px)]">
-                       <footer className="mt-auto">
+                    <div className="flex flex-col flex-1 p-8 [transform:translate3d(0,0,26px)]">
+                      <div className="flex-1 pt-8">
+                        <p className="text-foreground/80 text-lg leading-relaxed">
+                          {quote}
+                        </p>
+                      </div>
+                      <footer className="mt-auto flex-shrink-0">
                         <div className="flex flex-col">
                           <cite className="font-bold not-italic tracking-tight leading-5 text-foreground">
                             {name}
