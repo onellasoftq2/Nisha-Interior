@@ -1,13 +1,24 @@
 'use client';
-import { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Card, CardContent } from '@/components/ui/card';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { Quote } from 'lucide-react';
 
-const initialTestimonials = [
+// --- Types ---
+interface Testimonial {
+  id: number;
+  quote: string;
+  image: string;
+  name: string;
+  project: string;
+  location: string;
+}
+
+// --- Data ---
+const testimonials: Testimonial[] = [
   {
     id: 1,
     quote: 'The attention to detail was remarkable. Our kitchen is now the heart of our home, both beautiful and incredibly functional. The team understood our vision perfectly.',
+    image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Rohan & Priya Sharma',
     project: 'Modular Kitchen',
     location: 'Wakad, Pune',
@@ -15,6 +26,7 @@ const initialTestimonials = [
   {
     id: 2,
     quote: 'From design to handover, the process was seamless. Nisha Interior managed everything, and the quality of their in-house manufacturing is evident in every corner of our home.',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Anjali Verma',
     project: 'Complete Home Interior',
     location: 'Kharadi, Pune',
@@ -22,168 +34,172 @@ const initialTestimonials = [
   {
     id: 3,
     quote: 'Our custom wardrobes are a dream come true. The team optimized the space brilliantly, and the finish is absolutely flawless. It’s beyond what we expected.',
+    image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Sameer Patel',
     project: 'Wardrobes & Storage',
     location: 'Nanded City, Pune',
   },
-   {
+  {
     id: 4,
-    quote:
-      'As an architect, I appreciate their technical skill. The precision of the custom furniture built in their own factory is something you don’t find with aggregators.',
+    quote: 'As an architect, I appreciate their technical skill. The precision of the custom furniture built in their own factory is something you don’t find with aggregators.',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'Meera Desai',
     project: 'Custom Furniture',
     location: 'Pune',
   },
   {
     id: 5,
-    quote:
-      'Visiting their experience center was a game-changer. Seeing the materials and quality in person gave us the confidence to go ahead. We couldn’t be happier with the result.',
+    quote: 'Visiting their experience center was a game-changer. Seeing the materials and quality in person gave us the confidence to go ahead. We couldn’t be happier with the result.',
+    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=150&h=150',
     name: 'The Joshi Family',
     project: 'Complete Home Interior',
     location: 'Kharadi Annex, Pune',
   },
+  {
+    id: 6,
+    quote: 'The smooth implementation exceeded expectations. It streamlined processes, improving overall business performance.',
+    image: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=150&h=150',
+    name: 'Aliza Khan',
+    project: 'Business Analyst',
+    location: 'Pune',
+  },
+  {
+    id: 7,
+    quote: 'Our business functions improved with a user-friendly design and positive customer feedback.',
+    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=150&h=150',
+    name: 'Farhan Siddiqui',
+    project: 'Marketing Director',
+    location: 'Pune',
+  },
+  {
+    id: 8,
+    quote: 'They delivered a solution that exceeded expectations, understanding our needs and enhancing our operations.',
+    image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150',
+    name: 'Sana Sheikh',
+    project: 'Sales Manager',
+    location: 'Pune',
+  },
+  {
+    id: 9,
+    quote: 'Using this ERP, our online presence and conversions significantly improved, boosting business performance.',
+    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=150&h=150',
+    name: 'Hassan Ali',
+    project: 'E-commerce Manager',
+    location: 'Pune',
+  },
 ];
 
+const firstColumn = testimonials.slice(0, 3);
+const secondColumn = testimonials.slice(3, 6);
+const thirdColumn = testimonials.slice(6, 9);
 
-const positionStyles = [
-  { scale: 1, y: 0, opacity: 1 },
-  { scale: 0.95, y: -40, opacity: 1 },
-  { scale: 0.9, y: -80, opacity: 1 },
-  { scale: 0.85, y: -120, opacity: 0 },
-]
-
-const exitAnimation = {
-  y: 100,
-  opacity: 0,
-  scale: 0.9,
-  transition: {
-    duration: 0.2,
-    ease: 'easeIn',
-  },
+// --- Sub-Components ---
+const TestimonialsColumn = (props: {
+  className?: string;
+  testimonials: Testimonial[];
+  duration?: number;
+}) => {
+  return (
+    <div className={props.className}>
+      <motion.ul
+        animate={{
+          translateY: "-50%",
+        }}
+        transition={{
+          duration: props.duration || 10,
+          repeat: Infinity,
+          ease: "linear",
+          repeatType: "loop",
+        }}
+        className="flex flex-col gap-6 pb-6 bg-transparent transition-colors duration-300 list-none m-0 p-0"
+      >
+        {[
+          ...new Array(2).fill(0).map((_, index) => (
+            <React.Fragment key={index}>
+              {props.testimonials.map(({ quote, image, name, project, location }, i) => (
+                <motion.li 
+                  key={`${index}-${i}`}
+                  aria-hidden={index === 1 ? "true" : "false"}
+                  tabIndex={index === 1 ? -1 : 0}
+                  whileHover={{ 
+                    scale: 1.03,
+                    y: -8,
+                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                    transition: { type: "spring", stiffness: 400, damping: 17 }
+                  }}
+                  whileFocus={{ 
+                    scale: 1.03,
+                    y: -8,
+                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)",
+                    transition: { type: "spring", stiffness: 400, damping: 17 }
+                  }}
+                  className="p-8 rounded-2xl border border-border shadow-sm max-w-xs w-full bg-card transition-all duration-300 cursor-default select-none group focus:outline-none focus:ring-2 focus:ring-primary/30" 
+                >
+                  <blockquote className="m-0 p-0">
+                    <Quote className="w-8 h-8 text-primary/20 mb-4" />
+                    <p className="text-muted-foreground leading-relaxed font-normal m-0 transition-colors duration-300">
+                      {quote}
+                    </p>
+                    <footer className="flex items-center gap-3 mt-6">
+                      <img
+                        width={40}
+                        height={40}
+                        src={image}
+                        alt={`Avatar of ${name}`}
+                        className="h-10 w-10 rounded-full object-cover ring-2 ring-background group-hover:ring-primary/30 transition-all duration-300 ease-in-out"
+                      />
+                      <div className="flex flex-col">
+                        <cite className="font-semibold not-italic tracking-tight leading-5 text-foreground transition-colors duration-300">
+                          {name}
+                        </cite>
+                        <span className="text-sm leading-5 tracking-tight text-muted-foreground mt-0.5 transition-colors duration-300">
+                          {project} &bull; {location}
+                        </span>
+                      </div>
+                    </footer>
+                  </blockquote>
+                </motion.li>
+              ))}
+            </React.Fragment>
+          )),
+        ]}
+      </motion.ul>
+    </div>
+  );
 };
 
-
-const enterAnimation = (index: number) => ({
-  y: positionStyles[index].y,
-  scale: positionStyles[index].scale,
-  opacity: positionStyles[index].opacity,
-  transition: {
-    type: 'spring',
-    duration: 0.6,
-    bounce: 0.2,
-  },
-});
-
-function TestimonialCardContent({ testimonial }: { testimonial: typeof initialTestimonials[0] }) {
-  return (
-    <Card className="h-full bg-secondary/50 shadow-sm border-none">
-      <CardContent className="p-6 flex flex-col h-full">
-        <Quote className="w-8 h-8 text-primary/30 mb-4" />
-        <p className="flex-grow text-foreground/90 text-base md:text-lg mb-6">
-          "{testimonial.quote}"
-        </p>
-        <div className="text-right">
-          <p className="font-semibold text-foreground">
-            {testimonial.name}
-          </p>
-          <p className="text-sm text-muted-foreground">
-            {testimonial.project} • {testimonial.location}
-          </p>
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function AnimatedCard({
-  testimonial,
-  index,
-}: {
-  testimonial: typeof initialTestimonials[0]
-  index: number
-}) {
-  const style = positionStyles[index] ?? positionStyles[positionStyles.length - 1];
-  const zIndex = 3 - index
-
-  return (
-    <motion.div
-      key={testimonial.id}
-      initial={{ y: 0, scale: style.scale, opacity: 0 }}
-      animate={enterAnimation(index)}
-      exit={exitAnimation}
-      style={{
-        zIndex,
-        left: "50%",
-        x: "-50%",
-        bottom: 0,
-      }}
-      className="absolute flex h-[320px] w-[90%] max-w-[500px] items-center justify-center overflow-hidden will-change-transform"
-    >
-      <TestimonialCardContent testimonial={testimonial} />
-    </motion.div>
-  )
-}
-
 export default function TestimonialsSection() {
-  const [testimonials, setTestimonials] = useState(initialTestimonials);
-  const [nextId, setNextId] = useState(initialTestimonials.length + 1);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const newTestimonial = { 
-          ...initialTestimonials[(nextId - 1) % initialTestimonials.length], 
-          id: nextId 
-      };
-
-      setTestimonials((prev) => [...prev.slice(1), newTestimonial]);
-      setNextId((prev) => prev + 1);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [nextId]);
-
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
-  };
-
-
   return (
-     <motion.section
-      className="bg-background py-16 md:py-24 overflow-hidden"
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      variants={containerVariants}
+    <section 
+      aria-labelledby="testimonials-heading"
+      className="bg-background py-16 md:py-24 relative overflow-hidden"
     >
-      <div className="container px-4 md:px-6">
-        <motion.div
-          variants={itemVariants}
-          className="text-center mb-12 md:mb-16"
-        >
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
+      <motion.div 
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className="container px-4 z-10 mx-auto"
+      >
+        <div className="flex flex-col items-center justify-center max-w-2xl mx-auto mb-16 text-center">
+          <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline transition-colors">
             Homes We’ve Been Trusted With
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+          <p className="text-center mt-4 text-muted-foreground text-lg leading-relaxed transition-colors">
             What our clients say about designing and building their homes with us.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div variants={itemVariants} className="flex w-full flex-col items-center justify-center pt-2">
-            <div className="relative h-[360px] w-full max-w-[644px]">
-                <AnimatePresence initial={false}>
-                {testimonials.slice(0, 3).map((testimonial, index) => (
-                    <AnimatedCard key={testimonial.id} testimonial={testimonial} index={index} />
-                ))}
-                </AnimatePresence>
-            </div>
-        </motion.div>
-      </div>
-    </motion.section>
+        <div 
+          className="flex justify-center gap-8 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] max-h-[740px] overflow-hidden"
+          role="region"
+          aria-label="Scrolling Testimonials"
+        >
+          <TestimonialsColumn testimonials={firstColumn} duration={25} />
+          <TestimonialsColumn testimonials={secondColumn} className="hidden md:block" duration={30} />
+          <TestimonialsColumn testimonials={thirdColumn} className="hidden lg:block" duration={28} />
+        </div>
+      </motion.div>
+    </section>
   );
-}
+};
