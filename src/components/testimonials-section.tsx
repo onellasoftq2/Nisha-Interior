@@ -124,7 +124,7 @@ const TestimonialsColumn = (props: {
                          <Quote className="w-5 h-5 fill-black/80 stroke-none" />
                       </div>
                     </div>
-
+                    
                     <div className="absolute top-16 px-8 [transform:translate3d(0,0,26px)]">
                       <p className="text-foreground/80 text-lg leading-relaxed">
                         {quote}
@@ -143,7 +143,6 @@ const TestimonialsColumn = (props: {
                         </div>
                       </footer>
                     </div>
-                    
                   </div>
                 </li>
               ))}
