@@ -1,5 +1,5 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -7,6 +7,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import { cn } from '@/lib/utils';
+import { Mouse } from 'lucide-react';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -45,7 +46,7 @@ const TransformationStage = ({ room }: { room: RoomType }) => {
   useGSAP(() => {
     if (!containerRef.current) return;
     
-    const layers = gsap.utils.toArray('.reveal-layer') as HTMLElement[];
+    const layers = gsap.utils.toArray('.reveal-layer', containerRef.current) as HTMLElement[];
     if (layers.length <= 1) return;
 
     const tl = gsap.timeline({
@@ -110,31 +111,30 @@ const TransformationStage = ({ room }: { room: RoomType }) => {
           ))}
         </div>
         <div className="w-full max-w-4xl mt-8 px-4">
-            <div className="relative">
-                <div className="absolute top-1/2 left-0 w-full h-1 bg-border rounded-full -translate-y-1/2">
-                     <div 
-                        className="h-1 bg-primary rounded-full transition-all duration-300 ease-linear"
-                        style={{ width: `${(activeStep / (imageLayers.length - 1)) * 100}%` }}
-                    />
-                </div>
-                <div className="relative flex justify-between items-center">
+            <div className="relative mt-4 h-8">
+                <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full flex justify-between items-center z-10">
                     {imageLayers.map((step, index) => (
-                        <div key={step.id} className="flex flex-col items-center gap-2 z-10">
+                        <div key={step.id} className="flex flex-col items-center gap-2 text-center">
                             <div className={cn(
                                 "w-4 h-4 rounded-full transition-colors duration-300 bg-background border-2",
                                 index <= activeStep ? "border-primary" : "border-border"
                             )}>
                                 <div className={cn("w-full h-full rounded-full transition-transform duration-300", index <= activeStep ? 'scale-100 bg-primary' : 'scale-0 bg-transparent')} />
                             </div>
-                            <p className={cn(
-                                "text-sm font-medium transition-colors duration-300 text-center",
-                                index <= activeStep ? "text-primary" : "text-muted-foreground"
+                             <p className={cn(
+                                "text-xs md:text-sm font-medium transition-colors duration-300 mt-2",
+                                index === activeStep ? "text-primary" : "text-muted-foreground"
                             )}>
                                 {step.label}
                             </p>
                         </div>
                     ))}
                 </div>
+                <div className="absolute top-[calc(50%+8px)] -translate-y-1/2 left-0 w-full h-1 bg-border rounded-full" />
+                <div 
+                    className="absolute top-[calc(50%+8px)] -translate-y-1/2 left-0 h-1 bg-primary rounded-full transition-all duration-300 ease-linear"
+                    style={{ width: `${(activeStep / (imageLayers.length - 1)) * 100}%` }}
+                />
             </div>
         </div>
     </div>
@@ -154,9 +154,12 @@ const TransformationSection = () => {
               From Empty to Elevated
             </h2>
             <p className="mt-4 text-lg max-w-2xl mx-auto leading-relaxed tracking-tight text-secondary-foreground/80">
-              Watch how thoughtful design and craftsmanship transform everyday
-              spaces. Scroll to see the change.
+              Just scroll down to watch how thoughtful design and craftsmanship transform everyday spaces.
             </p>
+            <div className="mt-4 inline-flex items-center gap-2 text-secondary-foreground/60 animate-bounce">
+                <Mouse className="w-5 h-5" />
+                <span className="text-sm">Scroll to discover</span>
+            </div>
           </div>
           <Tabs defaultValue={activeTab} onValueChange={(value) => setActiveTab(value as RoomType)} className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
