@@ -46,7 +46,7 @@ const Header = () => {
             <span className={cn("font-bold sm:inline-block", isScrolled ? "text-foreground" : "text-foreground")}>Nisha Interior</span>
           </Link>
           <nav className="flex items-center gap-6 text-sm">
-            {navItems.slice(0, 5).map((item) => ( // Hide Contact from main nav
+            {navItems.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
