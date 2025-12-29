@@ -158,15 +158,19 @@ const MatterBody = ({
     })
 
     return () => context.unregisterElement(idRef.current)
-  }, [props, children, matterBodyOptions, isDraggable])
+  }, [props, children, matterBodyOptions, isDraggable, angle, bodyType, context, sampleLength, x, y])
 
   return (
     <div
       ref={elementRef}
       className={cn(
-        "absolute",
+        "absolute pointer-events-auto",
         className
       )}
+      style={{
+        userSelect: 'none',
+        WebkitUserSelect: 'none',
+      }}
     >
       {children}
     </div>
@@ -220,8 +224,8 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
             ...props.matterBodyOptions,
             angle: angle,
             render: {
-              fillStyle: debug ? "#888888" : "#00000000",
-              strokeStyle: debug ? "#333333" : "#00000000",
+              fillStyle: debug ? "#888888" : "transparent",
+              strokeStyle: debug ? "#333333" : "transparent",
               lineWidth: debug ? 3 : 0,
             },
           })
@@ -239,8 +243,8 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
             ...props.matterBodyOptions,
             angle: angle,
             render: {
-              fillStyle: debug ? "#888888" : "#00000000",
-              strokeStyle: debug ? "#333333" : "#00000000",
+              fillStyle: debug ? "#888888" : "transparent",
+              strokeStyle: debug ? "#333333" : "transparent",
               lineWidth: debug ? 3 : 0,
             },
           })
@@ -249,8 +253,8 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
             ...props.matterBodyOptions,
             angle: angle,
             render: {
-              fillStyle: debug ? "#888888" : "#00000000",
-              strokeStyle: debug ? "#333333" : "#00000000",
+              fillStyle: debug ? "#888888" : "transparent",
+              strokeStyle: debug ? "#333333" : "transparent",
               lineWidth: debug ? 3 : 0,
             },
           })
@@ -296,7 +300,7 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
       try {
         Common.setDecomp(require("poly-decomp"))
       } catch (e) {
-        console.error("poly-decomp not found. Please install it.", e);
+        // poly-decomp is optional, so we can ignore this error
       }
       
 
@@ -310,7 +314,7 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
           width,
           height,
           wireframes: false,
-          background: "#00000000",
+          background: "transparent",
         },
       })
 
@@ -391,7 +395,6 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
         const handleMouseDown = (event: MouseEvent) => {
             mouseDown.current = true;
             if (touchingMouse()) {
-                event.preventDefault(); // Prevent text selection
                 if (canvas.current) {
                     canvas.current.style.cursor = "grabbing";
                 }
@@ -424,7 +427,7 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
         runner.current.enabled = true
         startEngine()
       }
-    }, [updateElements, debug, autoStart])
+    }, [updateElements, debug, autoStart, addTopWall, grabCursor, gravity.x, gravity.y])
 
     // Clear the Matter.js world
     const clearRenderer = useCallback(() => {
@@ -478,7 +481,7 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
       }
       frameId.current = requestAnimationFrame(updateElements)
       isRunning.current = true
-    }, [updateElements, canvasSize])
+    }, [updateElements])
 
     const stopEngine = useCallback(() => {
       if (!isRunning.current) return
@@ -515,7 +518,7 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
       })
       updateElements()
       handleResize()
-    }, [])
+    }, [canvasSize.height, canvasSize.width, handleResize, stopEngine, updateElements])
 
     useImperativeHandle(
       ref,
@@ -524,7 +527,7 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
         stop: stopEngine,
         reset,
       }),
-      [startEngine, stopEngine]
+      [startEngine, stopEngine, reset]
     )
 
     useEffect(() => {
@@ -548,7 +551,7 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
       <GravityContext.Provider value={{ registerElement, unregisterElement }}>
         <div
           ref={canvas}
-          className={cn(className, "absolute top-0 left-0 w-full h-full")}
+          className={cn(className, "absolute top-0 left-0 w-full h-full pointer-events-none")}
           {...props}
         >
           {children}
