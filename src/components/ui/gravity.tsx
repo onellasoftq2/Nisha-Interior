@@ -165,8 +165,7 @@ const MatterBody = ({
       ref={elementRef}
       className={cn(
         "absolute",
-        className,
-        isDraggable && "pointer-events-none"
+        className
       )}
     >
       {children}
@@ -550,7 +549,7 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
       <GravityContext.Provider value={{ registerElement, unregisterElement }}>
         <div
           ref={canvas}
-          className={cn(className, "absolute top-0 left-0 w-full h-full")}
+          className={cn(className, "absolute top-0 left-0 w-full h-full pointer-events-none")}
           {...props}
         >
           {children}

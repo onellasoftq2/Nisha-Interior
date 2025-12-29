@@ -17,13 +17,13 @@ const ConsultationCtaSection = () => {
   return (
     <motion.section 
         id="contact" 
-        className="bg-secondary text-secondary-foreground relative overflow-hidden"
+        className="bg-secondary text-secondary-foreground relative overflow-hidden min-h-[500px] flex items-center justify-center"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="container relative z-10 px-4 md:px-6 py-16 md:py-24">
+      <div className="container relative z-10 px-4 md:px-6 py-24 md:py-32">
         <div className="max-w-3xl mx-auto text-center">
             <motion.h2 
                 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline"
@@ -72,7 +72,7 @@ const ConsultationCtaSection = () => {
                     angle={word.angle}
                     matterBodyOptions={{ friction: 0.1, restitution: 0.6 }}
                 >
-                    <div className={`text-sm md:text-base rounded-full hover:cursor-grab px-5 py-2 font-semibold ${word.className}`}>
+                    <div className={`text-sm md:text-base rounded-full hover:cursor-grab px-5 py-2 font-semibold pointer-events-auto ${word.className}`}>
                         {word.text}
                     </div>
                 </MatterBody>
