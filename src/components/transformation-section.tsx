@@ -1,189 +1,109 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
-import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Button } from '@/components/ui/button';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { cn } from '@/lib/utils';
-import { useIsMobile } from '@/hooks/use-mobile';
-import Image from 'next/image';
-import { ChevronRight } from 'lucide-react';
+import { useState } from "react";
+import Image from "next/image";
+import { Badge } from "@/components/ui/badge";
+import { GripVertical } from "lucide-react";
+import { PlaceHolderImages } from "@/lib/placeholder-images";
 
-const roomTransformations = {
-  livingRoom: {
-    title: 'Living Room',
-    layers: [
-      { id: 'living-base', label: 'Empty Room', imageId: 'transform-living-base' },
-      { id: 'living-sofa', label: 'Comfortable Seating', imageId: 'transform-living-sofa' },
-      { id: 'living-storage', label: 'Custom Storage', imageId: 'transform-living-storage' },
-      { id: 'living-decor', label: 'Finishing Touches', imageId: 'transform-living-decor' },
-    ],
-  },
-  kitchen: {
-    title: 'Kitchen',
-    layers: [
-      { id: 'kitchen-base', label: 'Empty Space', imageId: 'transform-kitchen-base' },
-      { id: 'kitchen-cabinets', label: 'Ergonomic Cabinetry', imageId: 'transform-kitchen-cabinets' },
-      { id: 'kitchen-countertops', label: 'Durable Countertops', imageId: 'transform-kitchen-countertops' },
-      { id: 'kitchen-lighting', label: 'Ambient Lighting', imageId: 'transform-kitchen-lighting' },
-    ],
-  },
-  bedroom: {
-    title: 'Bedroom',
-    layers: [
-      { id: 'bedroom-base', label: 'Bare Walls', imageId: 'transform-bedroom-base' },
-      { id: 'bedroom-bed', label: 'Serene Bed Area', imageId: 'transform-bedroom-bed' },
-      { id: 'bedroom-wardrobe', label: 'Seamless Wardrobe', imageId: 'transform-bedroom-wardrobe' },
-      { id: 'bedroom-details', label: 'Personal Details', imageId: 'transform-bedroom-details' },
-    ],
-  },
-};
+const TransformationSection = () => {
+  const [inset, setInset] = useState<number>(50);
+  const [onMouseDown, setOnMouseDown] = useState<boolean>(false);
 
-const TransformationLayer = ({ imageId, isVisible }: { imageId: string, isVisible: boolean }) => {
-  const image = PlaceHolderImages.find((img) => img.id === imageId);
+  const beforeImage = PlaceHolderImages.find((img) => img.id === 'transform-living-decor');
+  const afterImage = PlaceHolderImages.find((img) => img.id === 'transform-living-base');
 
-  if (!image) return null;
+  const onMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!onMouseDown) return;
 
-  return (
-    <AnimatePresence>
-      {isVisible && (
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } }}
-          exit={{ opacity: 0, y: -12, transition: { duration: 0.4, ease: 'easeIn' } }}
-          className="absolute inset-0"
-        >
-          <Image
-            src={image.imageUrl}
-            alt={image.description}
-            fill
-            className="object-cover"
-            data-ai-hint={image.imageHint}
-          />
-        </motion.div>
-      )}
-    </AnimatePresence>
-  );
-};
+    const rect = e.currentTarget.getBoundingClientRect();
+    let x = 0;
 
-const RoomTransformation = ({ transformation }: { transformation: typeof roomTransformations.livingRoom }) => {
-  const isMobile = useIsMobile();
-  const targetRef = useRef<HTMLDivElement>(null);
-  const [activeStep, setActiveStep] = useState(0);
-
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ['start start', 'end end'],
-  });
-
-  useEffect(() => {
-    if (!isMobile) {
-      const unsubscribe = scrollYProgress.on('change', (latest) => {
-        const step = Math.min(
-          transformation.layers.length - 1,
-          Math.floor(latest * transformation.layers.length)
-        );
-        setActiveStep(step);
-      });
-      return () => unsubscribe();
+    if ("touches" in e && e.touches.length > 0) {
+      x = e.touches[0].clientX - rect.left;
+    } else if ("clientX" in e) {
+      x = e.clientX - rect.left;
     }
-  }, [scrollYProgress, transformation.layers.length, isMobile]);
-
-  const handleNextStep = () => {
-    setActiveStep((prev) => (prev + 1) % transformation.layers.length);
+    
+    const percentage = (x / rect.width) * 100;
+    setInset(Math.max(0, Math.min(100, percentage)));
   };
   
-  const currentStepLabel = transformation.layers[activeStep]?.label || '';
+  const handleInteractionStart = (e: React.MouseEvent | React.TouchEvent) => {
+    setOnMouseDown(true);
+    // We call onMouseMove here to immediately update the position if the click/touch starts the drag
+    onMouseMove(e);
+  };
+
+  const handleInteractionEnd = () => {
+    setOnMouseDown(false);
+  };
+
+  if (!beforeImage || !afterImage) {
+    return null; // Or a fallback UI
+  }
 
   return (
-    <div className="relative" ref={targetRef} style={{ height: isMobile ? 'auto' : '300vh' }}>
-      <div className="sticky top-0 h-screen w-full flex flex-col">
-        <div className="relative flex-grow w-full overflow-hidden rounded-lg shadow-lg">
-          {transformation.layers.map((layer, index) => (
-            <TransformationLayer key={layer.id} imageId={layer.imageId} isVisible={activeStep >= index} />
-          ))}
+    <div className="w-full py-20 lg:py-40 bg-secondary">
+      <div className="container mx-auto">
+        <div className="flex flex-col gap-4">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-5xl tracking-tighter font-semibold font-headline text-secondary-foreground">
+              From Empty to Elevated
+            </h2>
+            <p className="mt-4 text-lg max-w-2xl mx-auto leading-relaxed tracking-tight text-secondary-foreground/80">
+              Watch how thoughtful design and craftsmanship transform everyday spaces. Drag the slider to see the change.
+            </p>
+          </div>
+          <div className="pt-12 w-full">
+            <div
+              className="relative aspect-video w-full h-full overflow-hidden rounded-2xl select-none"
+              onMouseMove={onMouseMove}
+              onMouseLeave={handleInteractionEnd}
+              onMouseUp={handleInteractionEnd}
+              onTouchMove={onMouseMove}
+              onTouchEnd={handleInteractionEnd}
+            >
+              <div
+                className="bg-primary h-full w-1 absolute z-20 top-0 -ml-0.5 select-none"
+                style={{
+                  left: inset + "%",
+                }}
+              >
+                <button
+                  className="bg-primary rounded-full text-primary-foreground hover:scale-110 transition-all w-10 h-10 select-none -translate-y-1/2 absolute top-1/2 -ml-5 z-30 cursor-ew-resize flex justify-center items-center"
+                  onTouchStart={handleInteractionStart}
+                  onMouseDown={handleInteractionStart}
+                >
+                  <GripVertical className="h-5 w-5 select-none" />
+                </button>
+              </div>
+              <Image
+                src={beforeImage.imageUrl}
+                alt={beforeImage.description}
+                width={1920}
+                height={1080}
+                priority
+                className="absolute left-0 top-0 z-10 w-full h-full aspect-video rounded-2xl select-none"
+                style={{
+                  clipPath: "inset(0 " + (100 - inset) + "% 0 0)",
+                }}
+                data-ai-hint={beforeImage.imageHint}
+              />
+              <Image
+                src={afterImage.imageUrl}
+                alt={afterImage.description}
+                width={1920}
+                height={1080}
+                priority
+                className="absolute left-0 top-0 w-full h-full aspect-video rounded-2xl select-none"
+                data-ai-hint={afterImage.imageHint}
+              />
+            </div>
+          </div>
         </div>
-        {isMobile ? (
-          <div className="mt-4">
-             <div className="flex justify-between items-center mb-2">
-                <span className="text-sm font-medium text-muted-foreground">{currentStepLabel}</span>
-                <span className="text-sm text-muted-foreground">{activeStep + 1} / {transformation.layers.length}</span>
-            </div>
-            <Button onClick={handleNextStep} className="w-full">
-              {activeStep === transformation.layers.length - 1 ? 'Reset' : 'Reveal Next Step'}
-              <ChevronRight className="ml-2 h-4 w-4" />
-            </Button>
-          </div>
-        ) : (
-          <div className="hidden md:flex justify-center items-center py-6">
-            <div className="flex items-center gap-4 text-sm">
-              {transformation.layers.map((layer, index) => (
-                <div key={layer.id} className="flex items-center gap-2">
-                  <motion.div
-                    className="h-2 w-2 rounded-full"
-                    animate={{
-                      backgroundColor: activeStep >= index ? 'hsl(var(--primary))' : 'hsl(var(--muted))',
-                    }}
-                  />
-                  <motion.span
-                    className="font-medium"
-                    animate={{
-                      color: activeStep >= index ? 'hsl(var(--foreground))' : 'hsl(var(--muted-foreground))',
-                    }}
-                  >
-                    {layer.label}
-                  </motion.span>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
       </div>
     </div>
   );
-};
-
-
-const TransformationSection = () => {
-  return (
-    <section className="bg-secondary py-16 md:py-24">
-      <div className="container px-4 md:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-12"
-        >
-          <h2 className="text-3xl font-semibold tracking-tight text-secondary-foreground sm:text-4xl md:text-5xl font-headline">
-            From Empty to Elevated
-          </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-secondary-foreground/80">
-            Watch how thoughtful design and craftsmanship transform everyday spaces.
-          </p>
-        </motion.div>
-
-        <Tabs defaultValue="livingRoom" className="w-full">
-          <div className="flex justify-center mb-8">
-            <TabsList>
-              <TabsTrigger value="livingRoom">{roomTransformations.livingRoom.title}</TabsTrigger>
-              <TabsTrigger value="kitchen">{roomTransformations.kitchen.title}</TabsTrigger>
-              <TabsTrigger value="bedroom">{roomTransformations.bedroom.title}</TabsTrigger>
-            </TabsList>
-          </div>
-          <TabsContent value="livingRoom">
-            <RoomTransformation transformation={roomTransformations.livingRoom} />
-          </TabsContent>
-          <TabsContent value="kitchen">
-            <RoomTransformation transformation={roomTransformations.kitchen} />
-          </TabsContent>
-          <TabsContent value="bedroom">
-            <RoomTransformation transformation={roomTransformations.bedroom} />
-          </TabsContent>
-        </Tabs>
-      </div>
-    </section>
-  );
-};
+}
 
 export default TransformationSection;
