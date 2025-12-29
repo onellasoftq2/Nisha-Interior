@@ -7,6 +7,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
+import { renderCanvas } from '@/components/ui/canvas';
 
 const heroImages = PlaceHolderImages.filter((img) =>
   img.id.startsWith('hero-background')
@@ -15,6 +16,10 @@ const heroImages = PlaceHolderImages.filter((img) =>
 const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const router = useRouter();
+
+  useEffect(() => {
+    renderCanvas();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -58,6 +63,10 @@ const HeroSection = () => {
 
   return (
     <section className="relative h-[85vh] min-h-[600px] md:min-h-[calc(100vh-64px)] w-full overflow-hidden">
+      <canvas
+        className="absolute inset-0 z-20 pointer-events-none"
+        id="canvas"
+      ></canvas>
       <div className="absolute inset-0">
         <AnimatePresence initial={false}>
           {heroImage && (
