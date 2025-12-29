@@ -12,13 +12,13 @@ const ConsultationCtaSection = () => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
     >
       <div className="container px-4 md:px-6 py-16 md:py-24">
         <div className="max-w-3xl mx-auto text-center">
             <motion.h2 
                 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, ease: 'easeOut', delay: 0.1 }}
@@ -27,7 +27,7 @@ const ConsultationCtaSection = () => {
             </motion.h2>
             <motion.p 
                 className="mt-6 max-w-2xl mx-auto text-lg text-secondary-foreground/80"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, ease: 'easeOut', delay: 0.2 }}
@@ -36,7 +36,7 @@ const ConsultationCtaSection = () => {
             </motion.p>
             <motion.div 
                 className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, ease: 'easeOut', delay: 0.3 }}

@@ -12,8 +12,8 @@ import { useBookingModal } from '@/hooks/use-booking-modal';
 import { InteractiveImage } from '@/components/interactive-image';
 
 const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
 };
 
 const dividerVariants = {
@@ -114,7 +114,7 @@ export default function AboutUsPage() {
                 {metrics.map((metric, index) => (
                     <motion.div 
                         key={metric.label}
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 16 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
@@ -199,11 +199,11 @@ export default function AboutUsPage() {
               {differentiators.map((item, index) => (
                 <motion.div
                   key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
-                  className="bg-background/80 rounded-lg p-8 text-center transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-2"
+                  className="bg-background/80 rounded-lg p-8 text-center transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1.5"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-6 mx-auto">
                     <item.icon className="h-7 w-7" />

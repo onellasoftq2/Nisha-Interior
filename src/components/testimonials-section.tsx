@@ -116,18 +116,10 @@ const TestimonialsColumn = (props: {
                   <div className="relative flex flex-col h-full rounded-[50px] bg-gradient-to-br from-secondary/40 to-background/30 shadow-2xl transition-all duration-500 ease-in-out [transform-style:preserve-3d] group-hover:[box-shadow:rgba(0,0,0,0.3)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px] group-hover:[transform:rotate3d(1,1,0,15deg)]">
                     <div className="absolute inset-2 rounded-[40px] border-b border-l border-white/20 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-sm [transform-style:preserve-3d] [transform:translate3d(0,0,25px)]"></div>
                     
-                    <div className="absolute top-0 right-0 [transform-style:preserve-3d]">
-                      <div
-                        className="absolute grid aspect-square w-[50px] place-content-center rounded-full bg-background/80 shadow-[rgba(100,100,111,0.2)_-10px_10px_20px_0px] transition-all duration-500 ease-in-out [transform:translate3d(0,0,90px)] group-hover:[transform:translate3d(0,0,120px)]"
-                        style={{ top: "30px", right: "30px" }}
-                      >
-                         <Quote className="w-5 h-5 text-primary" />
-                      </div>
-                    </div>
-                    
-                    <div className="flex flex-col flex-1 p-8 [transform:translate3d(0,0,26px)]">
-                      <div className="flex-1 pt-8">
-                        <p className="text-foreground/80 text-lg leading-relaxed">
+                    <div className="p-8 flex flex-col flex-1 [transform-style:preserve-3d] [transform:translate3d(0,0,26px)]">
+                      <div className="relative flex-1">
+                        <Quote className="absolute -top-2 -left-2 w-8 h-8 text-primary/70" />
+                        <p className="text-foreground/80 text-lg leading-relaxed pt-8">
                           {quote}
                         </p>
                       </div>
@@ -160,10 +152,10 @@ export default function TestimonialsSection() {
       className="bg-background py-16 md:py-24 relative overflow-hidden"
     >
       <motion.div 
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
         className="container px-4 z-10 mx-auto"
       >
         <div className="flex flex-col items-center justify-center max-w-2xl mx-auto mb-16 text-center">

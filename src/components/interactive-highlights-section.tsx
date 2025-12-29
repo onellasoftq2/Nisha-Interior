@@ -63,10 +63,10 @@ const InteractiveHighlightsSection = () => {
     <section id="about" className="bg-background py-16 md:py-24">
       <div className="container px-4 md:px-6">
         <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.4, ease: 'easeOut' }}
+            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
             className="text-center mb-12 md:mb-16"
         >
             <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">

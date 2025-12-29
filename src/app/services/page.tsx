@@ -137,13 +137,13 @@ const faqs = [
 
 
 const sectionVariants = {
-  hidden: { opacity: 0, y: 40 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.5,
-      ease: 'easeOut',
+      duration: 0.45,
+      ease: [0.16, 1, 0.3, 1],
     },
   },
 };
@@ -260,7 +260,7 @@ export default function ServicesPage() {
               {whatYouGet.map((item, index) => (
                 <motion.div
                   key={item.label}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
@@ -300,7 +300,7 @@ export default function ServicesPage() {
               {processSteps.map((step, index) => (
                 <motion.div
                   key={step.title}
-                  initial={{ opacity: 0, y: 20 }}
+                  initial={{ opacity: 0, y: 16 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}

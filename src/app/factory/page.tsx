@@ -72,22 +72,17 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  hidden: { opacity: 0, y: 16 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] } },
 };
 
 const glanceItemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 16 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.35, ease: 'easeOut' },
+    transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] },
   },
-};
-
-const glanceHoverVariants = {
-  rest: { y: 0, scale: 1 },
-  hover: { y: -6, scale: 1.03 },
 };
 
 export default function FactoryPage() {
@@ -138,9 +133,8 @@ export default function FactoryPage() {
                 >
                   <motion.div
                     className="group h-full"
-                    variants={glanceHoverVariants}
-                    whileHover="hover"
-                    initial="rest"
+                    whileHover={{ y: -6, scale: 1.03 }}
+                    initial={{ y: 0, scale: 1 }}
                     transition={{ duration: 0.25, ease: 'easeOut' }}
                   >
                     <Card className="h-full bg-card border-none shadow-none text-center p-0 transition-colors duration-300 group-hover:bg-secondary">
