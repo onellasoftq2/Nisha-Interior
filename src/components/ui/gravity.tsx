@@ -387,30 +387,29 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
             }
           }
         })
-
-        canvas.current.addEventListener("mousedown", (event) => {
-          mouseDown.current = true
-
-          if (canvas.current) {
+        
+        const handleMouseDown = (event: MouseEvent) => {
+            mouseDown.current = true;
             if (touchingMouse()) {
-              canvas.current.style.cursor = "grabbing"
-            } else {
-              canvas.current.style.cursor = "default"
+                event.preventDefault(); // Prevent text selection
+                if (canvas.current) {
+                    canvas.current.style.cursor = "grabbing";
+                }
             }
-          }
-        })
-        canvas.current.addEventListener("mouseup", (event) => {
-          mouseDown.current = false
+        };
 
-          if (canvas.current) {
-            if (touchingMouse()) {
-              canvas.current.style.cursor = "grab"
-            } else {
-              canvas.current.style.cursor = "default"
+        const handleMouseUp = () => {
+            mouseDown.current = false;
+            if (canvas.current && touchingMouse()) {
+                canvas.current.style.cursor = "grab";
             }
-          }
-        })
+        };
+        
+        const currentCanvas = canvas.current;
+        currentCanvas.addEventListener("mousedown", handleMouseDown)
+        window.addEventListener("mouseup", handleMouseUp)
       }
+
 
       World.add(engine.current.world, [mouseConstraint.current, ...walls])
 
