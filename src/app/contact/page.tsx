@@ -1,3 +1,4 @@
+
 'use client';
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
@@ -9,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Link from 'next/link';
+import { Gravity, MatterBody } from '@/components/ui/gravity';
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -27,32 +29,58 @@ const itemVariants = {
   },
 };
 
+const words = [
+    { text: 'Design', x: '20%', y: '10%', angle: -15, className: 'bg-primary text-primary-foreground' },
+    { text: 'Craft', x: '80%', y: '15%', angle: 10, className: 'bg-secondary text-secondary-foreground' },
+    { text: 'Quality', x: '50%', y: '5%', angle: 5, className: 'bg-foreground text-background' },
+    { text: 'Style', x: '35%', y: '30%', angle: -5, className: 'bg-primary/80 text-primary-foreground' },
+    { text: 'Function', x: '65%', y: '25%', angle: 20, className: 'bg-secondary/80 text-secondary-foreground' },
+    { text: 'Beauty', x: '15%', y: '40%', angle: 15, className: 'bg-foreground/90 text-background' },
+];
+
 export default function ContactPage() {
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
       <main className="flex-1">
-        <motion.section
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}
-          className="py-24 md:py-32"
+        <section
+          className="relative py-24 md:py-32 min-h-[500px]"
         >
-          <div className="container px-4 md:px-6 text-center">
-            <motion.h1
-              variants={itemVariants}
-              className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
-            >
-              Get in Touch
-            </motion.h1>
-            <motion.p
-              variants={itemVariants}
-              className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground"
-            >
-              Ready to start your project or have a question? We're here to help. Reach out via your preferred method.
-            </motion.p>
-          </div>
-        </motion.section>
+            <div className="container px-4 md:px-6 text-center z-10 relative">
+                <motion.h1
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+                className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
+                >
+                Get in Touch
+                </motion.h1>
+                <motion.p
+                variants={itemVariants}
+                initial="hidden"
+                animate="visible"
+                transition={{delay: 0.1}}
+                className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground"
+                >
+                Ready to start your project or have a question? We're here to help. Reach out via your preferred method.
+                </motion.p>
+            </div>
+            <Gravity gravity={{ x: 0, y: 0.8 }} className="w-full h-full" addTopWall={false}>
+                {words.map((word) => (
+                    <MatterBody
+                        key={word.text}
+                        x={word.x}
+                        y={word.y}
+                        angle={word.angle}
+                        matterBodyOptions={{ friction: 0.1, restitution: 0.8 }}
+                    >
+                        <div className={`text-lg sm:text-xl md:text-2xl rounded-full hover:cursor-grab px-6 py-3 font-semibold ${word.className}`}>
+                            {word.text}
+                        </div>
+                    </MatterBody>
+                ))}
+            </Gravity>
+        </section>
 
         <motion.section
           initial="hidden"
