@@ -23,7 +23,7 @@ const ConsultationCtaSection = () => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
     >
-       <Gravity gravity={{ x: 0, y: 0.4 }} className="w-full h-full" addTopWall={false}>
+       <Gravity gravity={{ x: 0, y: 0.4 }} className="w-full h-full">
             {words.map((word) => (
                 <MatterBody
                     key={word.text}
@@ -32,7 +32,7 @@ const ConsultationCtaSection = () => {
                     angle={word.angle}
                     matterBodyOptions={{ friction: 0.1, restitution: 0.6 }}
                 >
-                    <div className={`text-sm md:text-base rounded-full hover:cursor-grab px-5 py-2 font-semibold pointer-events-auto select-none ${word.className}`}>
+                    <div className={`text-sm md:text-base rounded-full hover:cursor-grab px-5 py-2 font-semibold select-none ${word.className}`}>
                         {word.text}
                     </div>
                 </MatterBody>

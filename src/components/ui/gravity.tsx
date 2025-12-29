@@ -1,4 +1,3 @@
-
 'use client';
 import {
   createContext,
@@ -551,7 +550,7 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
       <GravityContext.Provider value={{ registerElement, unregisterElement }}>
         <div
           ref={canvas}
-          className={cn(className, "absolute top-0 left-0 w-full h-full pointer-events-none")}
+          className={cn(className, "absolute top-0 left-0 w-full h-full")}
           {...props}
         >
           {children}
