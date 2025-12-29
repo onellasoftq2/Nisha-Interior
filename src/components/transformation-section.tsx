@@ -1,146 +1,113 @@
 'use client';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { useGSAP } from '@gsap/react';
 import { cn } from '@/lib/utils';
-import { Mouse } from 'lucide-react';
+import { GripVertical } from 'lucide-react';
 
-gsap.registerPlugin(ScrollTrigger);
+type RoomType = 'living' | 'kitchen' | 'bedroom';
 
-const transformationData = {
-  living: [
-    { id: 'transform-living-base', zIndex: 0, label: 'Empty Room' },
-    { id: 'transform-living-sofa', zIndex: 1, label: 'Sofa' },
-    { id: 'transform-living-storage', zIndex: 2, label: 'Storage Unit' },
-    { id: 'transform-living-decor', zIndex: 3, label: 'Final Touches' },
-  ],
-  kitchen: [
-    { id: 'transform-kitchen-base', zIndex: 0, label: 'Empty Room' },
-    { id: 'transform-kitchen-cabinets', zIndex: 1, label: 'Cabinets' },
-    { id: 'transform-kitchen-countertops', zIndex: 2, label: 'Countertops' },
-    { id: 'transform-kitchen-lighting', zIndex: 3, label: 'Lighting & Decor' },
-  ],
-  bedroom: [
-    { id: 'transform-bedroom-base', zIndex: 0, label: 'Empty Room' },
-    { id: 'transform-bedroom-bed', zIndex: 1, label: 'Bed' },
-    { id: 'transform-bedroom-wardrobe', zIndex: 2, label: 'Wardrobe' },
-    { id: 'transform-bedroom-details', zIndex: 3, label: 'Decor & Details' },
-  ],
+const transformationData: Record<RoomType, { before: string; after: string }> = {
+  living: {
+    before: 'transform-living-decor', // Furnished
+    after: 'transform-living-base',   // Empty
+  },
+  kitchen: {
+    before: 'transform-kitchen-lighting', // Furnished
+    after: 'transform-kitchen-base',    // Empty
+  },
+  bedroom: {
+    before: 'transform-bedroom-details', // Furnished
+    after: 'transform-bedroom-base',    // Empty
+  },
 };
 
-type RoomType = keyof typeof transformationData;
+const ComparisonSlider = ({ room }: { room: RoomType }) => {
+  const [inset, setInset] = useState<number>(50);
+  const [onMouseDown, setOnMouseDown] = useState<boolean>(false);
 
-const TransformationStage = ({ room }: { room: RoomType }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const imageLayers = transformationData[room].map(item => ({
-    ...item,
-    data: PlaceHolderImages.find((img) => img.id === item.id)
-  }));
+  const beforeImage = PlaceHolderImages.find((img) => img.id === transformationData[room].before);
+  const afterImage = PlaceHolderImages.find((img) => img.id === transformationData[room].after);
+
+  const onMouseMove = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!onMouseDown) return;
+
+    const rect = e.currentTarget.getBoundingClientRect();
+    let x = 0;
+
+    if ('touches' in e && e.touches.length > 0) {
+      x = e.touches[0].clientX - rect.left;
+    } else if ('clientX' in e) {
+      x = (e as React.MouseEvent).clientX - rect.left;
+    }
+
+    const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+    setInset(percentage);
+  };
+
+  if (!beforeImage || !afterImage) {
+    return <div className="aspect-video w-full bg-muted rounded-2xl flex items-center justify-center"><p>Images not found.</p></div>;
+  }
   
-  const [activeStep, setActiveStep] = useState(0);
-
-  useGSAP(() => {
-    if (!containerRef.current) return;
-    
-    const layers = gsap.utils.toArray('.reveal-layer', containerRef.current) as HTMLElement[];
-    if (layers.length <= 1) return;
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: 'top top',
-        end: `+=${layers.length * 700}`,
-        scrub: 1,
-        pin: true,
-        anticipatePin: 1,
-        onUpdate: (self) => {
-          const progress = self.progress;
-          const step = Math.min(layers.length - 1, Math.floor(progress * layers.length));
-          setActiveStep(step);
-        },
-      },
-      defaults: {
-        ease: 'power1.inOut',
-        duration: 1,
-      },
-    });
-
-    layers.forEach((layer, index) => {
-      if (index > 0) { // Don't animate the base layer
-        tl.fromTo(
-          layer,
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0 },
-          index * 0.8 // Stagger the animations
-        );
-      }
-    });
-
-    return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
-    };
-
-  }, { scope: containerRef, dependencies: [room] });
-
-
   return (
-    <div ref={containerRef} className="w-full min-h-screen flex flex-col items-center justify-center">
-        <div className="relative aspect-video w-full max-w-6xl rounded-2xl overflow-hidden shadow-2xl bg-secondary">
-          {imageLayers.map((layer, index) => (
-            layer.data && (
-              <div 
-                key={layer.id} 
-                className={cn("absolute inset-0 reveal-layer", index > 0 && "opacity-0")}
-                style={{ zIndex: layer.zIndex }}
-              >
-                <Image
-                  src={layer.data.imageUrl}
-                  alt={layer.data.description}
-                  width={1920}
-                  height={1080}
-                  priority
-                  className="w-full h-full object-cover"
-                  data-ai-hint={layer.data.imageHint}
-                />
-              </div>
-            )
-          ))}
+    <div
+      className="relative aspect-video w-full max-w-6xl h-full overflow-hidden rounded-2xl select-none cursor-ew-resize"
+      onMouseMove={onMouseMove}
+      onMouseLeave={() => setOnMouseDown(false)}
+      onMouseUp={() => setOnMouseDown(false)}
+      onTouchMove={onMouseMove}
+      onTouchEnd={() => setOnMouseDown(false)}
+      onMouseDown={(e) => {
+        setOnMouseDown(true);
+        onMouseMove(e);
+      }}
+      onTouchStart={(e) => {
+        setOnMouseDown(true);
+        onMouseMove(e);
+      }}
+    >
+      {/* After Image (Bottom Layer) */}
+      <Image
+        src={afterImage.imageUrl}
+        alt={afterImage.description}
+        width={1920}
+        height={1080}
+        priority
+        className="absolute left-0 top-0 w-full h-full object-cover"
+        data-ai-hint={afterImage.imageHint}
+      />
+      
+      {/* Before Image (Top Layer, Clipped) */}
+      <div
+        className="absolute left-0 top-0 w-full h-full overflow-hidden"
+        style={{ clipPath: `inset(0 ${100 - inset}% 0 0)` }}
+      >
+        <Image
+          src={beforeImage.imageUrl}
+          alt={beforeImage.description}
+          width={1920}
+          height={1080}
+          priority
+          className="absolute left-0 top-0 w-full h-full object-cover"
+          data-ai-hint={beforeImage.imageHint}
+        />
+      </div>
+
+      {/* Slider Handle */}
+      <div
+        className="absolute top-0 h-full w-1 bg-white/80 shadow-md z-10 select-none pointer-events-none"
+        style={{ left: `calc(${inset}% - 2px)` }}
+      >
+        <div
+          className="bg-white rounded-md w-10 h-10 absolute top-1/2 -translate-y-1/2 -ml-5 flex justify-center items-center shadow-xl text-foreground"
+        >
+          <GripVertical className="h-6 w-6" />
         </div>
-        <div className="w-full max-w-4xl mt-8 px-4">
-            <div className="relative mt-4 h-8">
-                <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full flex justify-between items-center z-10">
-                    {imageLayers.map((step, index) => (
-                        <div key={step.id} className="flex flex-col items-center gap-2 text-center">
-                            <div className={cn(
-                                "w-4 h-4 rounded-full transition-colors duration-300 bg-background border-2",
-                                index <= activeStep ? "border-primary" : "border-border"
-                            )}>
-                                <div className={cn("w-full h-full rounded-full transition-transform duration-300", index <= activeStep ? 'scale-100 bg-primary' : 'scale-0 bg-transparent')} />
-                            </div>
-                             <p className={cn(
-                                "text-xs md:text-sm font-medium transition-colors duration-300 mt-2",
-                                index === activeStep ? "text-primary" : "text-muted-foreground"
-                            )}>
-                                {step.label}
-                            </p>
-                        </div>
-                    ))}
-                </div>
-                <div className="absolute top-[calc(50%+8px)] -translate-y-1/2 left-0 w-full h-1 bg-border rounded-full" />
-                <div 
-                    className="absolute top-[calc(50%+8px)] -translate-y-1/2 left-0 h-1 bg-primary rounded-full transition-all duration-300 ease-linear"
-                    style={{ width: `${(activeStep / (imageLayers.length - 1)) * 100}%` }}
-                />
-            </div>
-        </div>
+      </div>
     </div>
   );
 };
-
 
 const TransformationSection = () => {
   const [activeTab, setActiveTab] = useState<RoomType>('living');
@@ -154,12 +121,8 @@ const TransformationSection = () => {
               From Empty to Elevated
             </h2>
             <p className="mt-4 text-lg max-w-2xl mx-auto leading-relaxed tracking-tight text-secondary-foreground/80">
-              Just scroll down to watch how thoughtful design and craftsmanship transform everyday spaces.
+              Drag the slider to see how thoughtful design and craftsmanship transform everyday spaces.
             </p>
-            <div className="mt-4 inline-flex items-center gap-2 text-secondary-foreground/60 animate-bounce">
-                <Mouse className="w-5 h-5" />
-                <span className="text-sm">Scroll to discover</span>
-            </div>
           </div>
           <Tabs defaultValue={activeTab} onValueChange={(value) => setActiveTab(value as RoomType)} className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-3">
@@ -167,15 +130,15 @@ const TransformationSection = () => {
               <TabsTrigger value="kitchen">Kitchen</TabsTrigger>
               <TabsTrigger value="bedroom">Bedroom</TabsTrigger>
             </TabsList>
-            <div className="pt-8 w-full">
-                <TabsContent value="living" forceMount={true} className={cn(activeTab !== 'living' && 'hidden')}>
-                    <TransformationStage room="living" />
+            <div className="pt-8 w-full flex justify-center">
+                <TabsContent value="living" forceMount={true} className={cn("w-full", activeTab !== 'living' && 'hidden')}>
+                    <ComparisonSlider room="living" />
                 </TabsContent>
-                <TabsContent value="kitchen" forceMount={true} className={cn(activeTab !== 'kitchen' && 'hidden')}>
-                    <TransformationStage room="kitchen" />
+                <TabsContent value="kitchen" forceMount={true} className={cn("w-full", activeTab !== 'kitchen' && 'hidden')}>
+                    <ComparisonSlider room="kitchen" />
                 </TabsContent>
-                <TabsContent value="bedroom" forceMount={true} className={cn(activeTab !== 'bedroom' && 'hidden')}>
-                    <TransformationStage room="bedroom" />
+                <TabsContent value="bedroom" forceMount={true} className={cn("w-full", activeTab !== 'bedroom' && 'hidden')}>
+                    <ComparisonSlider room="bedroom" />
                 </TabsContent>
             </div>
           </Tabs>
