@@ -1,4 +1,3 @@
-
 'use client';
 import Header from '@/components/header';
 import HeroSection from '@/components/hero-section';
@@ -10,6 +9,7 @@ import ConsultationCtaSection from '@/components/consultation-cta-section';
 import Footer from '@/components/footer';
 import TestimonialsSection from '@/components/testimonials-section';
 import ScrollFAQAccordion from '@/components/ui/scroll-faq-accordion';
+import TransformationSection from '@/components/transformation-section';
 
 const faqs = [
     {
@@ -48,6 +48,7 @@ export default function Home() {
         <HeroSection />
         <InteractiveHighlightsSection />
         <ServicesSection />
+        <TransformationSection />
         <TestimonialsSection />
         <CustomizationSection />
         <ShowroomsSection />

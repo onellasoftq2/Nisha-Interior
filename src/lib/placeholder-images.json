@@ -89,6 +89,78 @@
       "description": "The interior of a modern, high-end furniture showroom.",
       "imageUrl": "https://images.unsplash.com/photo-1588699297839-84335442b781?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmdXJuaXR1cmUlMjBzaG93cm9vbXxlbnwwfHx8fHwxNzIxOTMwMzQ3fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "furniture showroom"
+    },
+    {
+      "id": "transform-living-base",
+      "description": "An empty modern living room with large windows and concrete floors.",
+      "imageUrl": "https://images.unsplash.com/photo-1615875605825-5eb9bb5c697e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxBbSUyMGVtcHR5JTIwbGl2aW5nJTIwcm9vbXxlbnwwfHx8fDE3MjI1Mzg3MDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "empty living room"
+    },
+    {
+      "id": "transform-living-sofa",
+      "description": "A modern living room with a sleek, comfortable sofa added.",
+      "imageUrl": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2ZhJTIwaW4lMjBsaXZpbmclMjByb29tfGVufDB8fHx8fDE3MjI1Mzg3MzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sofa living room"
+    },
+    {
+      "id": "transform-living-storage",
+      "description": "A living room with a sofa and a stylish, custom media console.",
+      "imageUrl": "https://images.unsplash.com/photo-1611210133488-832675a3a4e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsaXZpbmclMjByb29tJTIwdHYlMjBzdG9yYWdlfGVufDB8fHx8fDE3MjI1Mzg3NjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "living room storage"
+    },
+    {
+      "id": "transform-living-decor",
+      "description": "A fully furnished living room with sofa, storage, lighting, and decor.",
+      "imageUrl": "https://images.unsplash.com/photo-1618220179428-22790b461013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxsaXZpbmclMjByb29tfGVufDB8fHx8MTc2NjMxMjcyNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "living room"
+    },
+    {
+      "id": "transform-kitchen-base",
+      "description": "An empty space designated for a kitchen installation.",
+      "imageUrl": "https://images.unsplash.com/photo-1560440021-33f9b867899d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbXB0eSUyMGtpdGNoZW4lMjBzcGFjZXxlbnwwfHx8fDE3MjI1Mzg4MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "empty kitchen space"
+    },
+    {
+      "id": "transform-kitchen-cabinets",
+      "description": "The kitchen space with newly installed modern cabinets.",
+      "imageUrl": "https://images.unsplash.com/photo-1598135326889-7868f3192d19?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBraXRjaGVuJTIwY2FiaW5ldHN8ZW58MHx8fHwxNzIyNTM4ODUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "kitchen cabinets"
+    },
+    {
+      "id": "transform-kitchen-countertops",
+      "description": "The kitchen with cabinets and sleek marble countertops.",
+      "imageUrl": "https://images.unsplash.com/photo-1604239332198-31189c4a56a6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBraXRjaGVuJTIwY291bnRlcnRvcHN8ZW58MHx8fHwxNzIyNTM4ODc2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "kitchen countertops"
+    },
+    {
+      "id": "transform-kitchen-lighting",
+      "description": "A fully completed modern kitchen with cabinets, countertops, and ambient lighting.",
+      "imageUrl": "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBraXRjaGVufGVufDB8fHx8fDE3MjE5MzA4MjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern kitchen"
+    },
+    {
+      "id": "transform-bedroom-base",
+      "description": "An empty bedroom with plain walls and a window.",
+      "imageUrl": "https://images.unsplash.com/photo-1540518614846-7eded433c457?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbXB0eSUyMGJlZHJvb218ZW58MHx8fHwxNzIyNTM4OTQxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "empty bedroom"
+    },
+    {
+      "id": "transform-bedroom-bed",
+      "description": "The bedroom with a comfortable bed and headboard installed.",
+      "imageUrl": "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiZWQlMjBpbiUyMGJlZHJvb218ZW58MHx8fHwxNzIyNTM4OTY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bed in bedroom"
+    },
+    {
+      "id": "transform-bedroom-wardrobe",
+      "description": "A bedroom with a bed and a sleek, modern, built-in wardrobe.",
+      "imageUrl": "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHx3YXJkcm9iZXxlbnwwfHx8fDE3MjI0MzkxNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern wardrobe"
+    },
+    {
+      "id": "transform-bedroom-details",
+      "description": "A fully decorated bedroom with bed, wardrobe, and personal decor details.",
+      "imageUrl": "https://images.unsplash.com/photo-1571575173723-8316361a3b44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBiZWRyb29tfGVufDB8fHx8fDE3MjE5MzA4NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "luxury bedroom"
     }
   ]
 }
