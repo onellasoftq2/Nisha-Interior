@@ -3,6 +3,7 @@ import { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { InteractiveImage } from './interactive-image';
+import { cn } from '@/lib/utils';
 
 interface Highlight {
   id: string;
@@ -13,35 +14,41 @@ interface Highlight {
 
 const highlights: Highlight[] = [
   {
+    id: 'consultation',
+    imageId: 'transform-living-base',
+    title: 'Expert Consultation',
+    description: 'Our experienced designers help you create a home that truly reflects your personal style and functional needs.',
+  },
+  {
     id: 'manufacturing',
-    imageId: 'highlight-manufacturing',
+    imageId: 'transform-living-sofa',
     title: 'Own Manufacturing',
     description: 'Quality control and timely delivery from our state-of-the-art facility gives you peace of mind and ensures perfection.',
   },
   {
     id: 'furniture',
-    imageId: 'highlight-furniture',
+    imageId: 'transform-living-storage',
     title: 'Custom Furniture',
     description: 'Perfectly fitting furniture for your unique spaces, crafted to your exact specifications for a truly bespoke home.',
   },
   {
     id: 'showrooms',
-    imageId: 'highlight-showrooms',
+    imageId: 'transform-living-decor',
     title: '4 Pune Showrooms',
     description: 'Experience our craftsmanship firsthand at any of our convenient locations across Pune. See and feel the quality for yourself.',
   },
-  {
-    id: 'consultation',
-    imageId: 'services-consultation',
-    title: 'Expert Consultation',
-    description: 'Our experienced designers help you create a home that truly reflects your personal style and functional needs.',
-  },
 ];
+
+const imageLayers = [
+  PlaceHolderImages.find((img) => img.id === 'transform-living-base'),
+  PlaceHolderImages.find((img) => img.id === 'transform-living-sofa'),
+  PlaceHolderImages.find((img) => img.id === 'transform-living-storage'),
+  PlaceHolderImages.find((img) => img.id === 'transform-living-decor'),
+].filter(Boolean) as any[];
+
 
 const InteractiveHighlightsSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const activeHighlight = highlights[activeIndex];
-  const activeImage = PlaceHolderImages.find((img) => img.id === activeHighlight.imageId);
 
   const titleVariants = {
     inactive: { color: 'hsl(var(--muted-foreground))' },
@@ -54,9 +61,9 @@ const InteractiveHighlightsSection = () => {
     exit: { opacity: 0, y: -10, height: 0, transition: { duration: 0.3, ease: 'easeIn' } },
   };
 
-  const imageContainerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.5, delay: 0.2 } },
+  const imageVariants = {
+    hidden: { opacity: 0, transition: { duration: 0.5, ease: 'easeOut' } },
+    visible: { opacity: 1, transition: { duration: 0.5, ease: 'easeIn' } },
   };
 
   return (
@@ -120,27 +127,26 @@ const InteractiveHighlightsSection = () => {
 
           {/* Right Side - Image */}
           <div className="hidden md:block sticky top-24 h-[calc(100vh-12rem)] min-h-[500px]">
-            <AnimatePresence mode='wait'>
-                {activeImage && (
-                    <motion.div
-                        key={activeIndex}
-                        className="w-full h-full"
-                        variants={imageContainerVariants}
-                        initial="hidden"
-                        animate="visible"
-                        exit="hidden"
-                    >
-                        <InteractiveImage
-                            src={activeImage.imageUrl}
-                            alt={activeImage.description}
-                            width={800}
-                            height={600}
-                            className="w-full h-full"
-                            data-ai-hint={activeImage.imageHint}
-                        />
-                    </motion.div>
-                )}
-            </AnimatePresence>
+            <div className="relative w-full h-full">
+              {imageLayers.map((image, index) => (
+                <motion.div
+                  key={image.id}
+                  className="absolute inset-0 w-full h-full"
+                  variants={imageVariants}
+                  initial="hidden"
+                  animate={index <= activeIndex ? 'visible' : 'hidden'}
+                >
+                   <InteractiveImage
+                      src={image.imageUrl}
+                      alt={image.description}
+                      width={800}
+                      height={1000}
+                      className="w-full h-full"
+                      data-ai-hint={image.imageHint}
+                  />
+                </motion.div>
+              ))}
+            </div>
           </div>
         </div>
       </div>
