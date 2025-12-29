@@ -27,7 +27,7 @@ const services = [
         "Families wanting a durable, easy-to-maintain kitchen for daily use.",
         "Individuals who love cooking and desire a beautiful, inspiring culinary space.",
     ],
-    imageId: 'services-kitchens',
+    imageId: 'service-kitchens',
     cta: 'Explore Kitchen Designs',
   },
   {
@@ -44,7 +44,7 @@ const services = [
         "Homeowners with awkward spaces that require custom-fit solutions.",
         "Design-conscious individuals who want storage to be a feature, not an afterthought."
     ],
-    imageId: 'services-wardrobes',
+    imageId: 'service-wardrobes',
     cta: 'Discover Storage Solutions',
   },
   {
@@ -61,7 +61,7 @@ const services = [
         "Clients undertaking a major renovation who need a unified design vision.",
         "Busy professionals who value a single, reliable partner to manage the entire process."
     ],
-    imageId: 'services-interiors',
+    imageId: 'service-interiors',
     cta: 'View Interior Projects',
   },
 ];
