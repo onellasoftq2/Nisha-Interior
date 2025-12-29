@@ -32,7 +32,7 @@ const ConsultationCtaSection = () => {
                     angle={word.angle}
                     matterBodyOptions={{ friction: 0.1, restitution: 0.6 }}
                 >
-                    <div className={`text-sm md:text-base rounded-full hover:cursor-grab px-5 py-2 font-semibold pointer-events-auto ${word.className}`}>
+                    <div className={`text-sm md:text-base rounded-full hover:cursor-grab px-5 py-2 font-semibold pointer-events-auto select-none ${word.className}`}>
                         {word.text}
                     </div>
                 </MatterBody>
