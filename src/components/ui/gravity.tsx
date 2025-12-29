@@ -408,8 +408,10 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
         };
         
         const currentCanvas = canvas.current;
-        currentCanvas.addEventListener("mousedown", handleMouseDown)
-        window.addEventListener("mouseup", handleMouseUp)
+        if(currentCanvas){
+            currentCanvas.addEventListener("mousedown", handleMouseDown)
+            window.addEventListener("mouseup", handleMouseUp)
+        }
       }
 
 
@@ -441,7 +443,9 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
       if (render.current) {
         Mouse.clearSourceEvents(render.current.mouse)
         Render.stop(render.current)
-        render.current.canvas.remove()
+        if(render.current.canvas){
+            render.current.canvas.remove()
+        }
       }
 
       if (runner.current) {
@@ -562,3 +566,5 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
 
 Gravity.displayName = "Gravity"
 export { Gravity, MatterBody }
+
+    
