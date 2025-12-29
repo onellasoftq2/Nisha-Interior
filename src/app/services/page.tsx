@@ -126,12 +126,12 @@ const faqs = [
         answer: "Almost anything is possible. Since we manufacture everything in-house, we can customize dimensions to the millimeter, and you have a vast choice of materials, colors, and finishes. We build to fit your space and style perfectly."
     },
     {
-        question: "What kind of warranty do you offer?",
-        answer: "We stand by our craftsmanship. All our work is covered by a 10-year warranty against any manufacturing defects. We also provide post-installation support to address any issues that may arise."
-    },
-    {
         question: "Can I just get a design consultation?",
         answer: "Absolutely. We offer a standalone Interior Design Consultation service where our experts help you refine your ideas, select materials, and create an actionable plan, whether you decide to proceed with us or not."
+    },
+    {
+        question: "Do I need to have a clear idea before the consultation?",
+        answer: "Not at all! Many of our clients come to us with just a basic idea. Our designers are experts at helping you discover and refine your vision. The consultation is a collaborative process to explore possibilities."
     }
 ];
 
