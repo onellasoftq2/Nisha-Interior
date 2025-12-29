@@ -83,7 +83,7 @@ const TransformationStage = ({ room }: { room: RoomType }) => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
 
-  }, [room]);
+  }, { scope: containerRef, dependencies: [room] });
 
 
   return (
@@ -109,28 +109,32 @@ const TransformationStage = ({ room }: { room: RoomType }) => {
             )
           ))}
         </div>
-        <div className="w-full max-w-4xl mt-8">
-            <div className="flex justify-between items-center px-4">
-                {imageLayers.map((step, index) => (
-                    <div key={step.id} className="flex flex-col items-center gap-2 relative flex-1">
-                        <div className={cn(
-                            "w-4 h-4 rounded-full transition-colors duration-300",
-                            index <= activeStep ? "bg-primary" : "bg-border"
-                        )} />
-                        <p className={cn(
-                            "text-sm font-medium transition-colors duration-300",
-                             index <= activeStep ? "text-primary" : "text-muted-foreground"
-                        )}>
-                            {step.label}
-                        </p>
-                    </div>
-                ))}
-            </div>
-            <div className="w-full h-1 bg-border rounded-full mt-[-1.5rem] relative -z-10">
-                <div 
-                    className="h-1 bg-primary rounded-full transition-all duration-300 ease-linear"
-                    style={{ width: `${(activeStep / (imageLayers.length - 1)) * 100}%` }}
-                />
+        <div className="w-full max-w-4xl mt-8 px-4">
+            <div className="relative">
+                <div className="absolute top-1/2 left-0 w-full h-1 bg-border rounded-full -translate-y-1/2">
+                     <div 
+                        className="h-1 bg-primary rounded-full transition-all duration-300 ease-linear"
+                        style={{ width: `${(activeStep / (imageLayers.length - 1)) * 100}%` }}
+                    />
+                </div>
+                <div className="relative flex justify-between items-center">
+                    {imageLayers.map((step, index) => (
+                        <div key={step.id} className="flex flex-col items-center gap-2 z-10">
+                            <div className={cn(
+                                "w-4 h-4 rounded-full transition-colors duration-300 bg-background border-2",
+                                index <= activeStep ? "border-primary" : "border-border"
+                            )}>
+                                <div className={cn("w-full h-full rounded-full transition-transform duration-300", index <= activeStep ? 'scale-100 bg-primary' : 'scale-0 bg-transparent')} />
+                            </div>
+                            <p className={cn(
+                                "text-sm font-medium transition-colors duration-300 text-center",
+                                index <= activeStep ? "text-primary" : "text-muted-foreground"
+                            )}>
+                                {step.label}
+                            </p>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     </div>
