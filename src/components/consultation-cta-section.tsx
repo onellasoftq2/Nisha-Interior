@@ -17,13 +17,28 @@ const ConsultationCtaSection = () => {
   return (
     <motion.section 
         id="contact" 
-        className="bg-secondary text-secondary-foreground relative overflow-hidden min-h-[500px] flex items-center justify-center"
+        className="bg-secondary text-secondary-foreground relative overflow-hidden min-h-[500px] flex items-center justify-center py-24 md:py-32"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="container relative z-10 px-4 md:px-6 py-24 md:py-32">
+       <Gravity gravity={{ x: 0, y: 0.4 }} className="w-full h-full" addTopWall={false}>
+            {words.map((word) => (
+                <MatterBody
+                    key={word.text}
+                    x={word.x}
+                    y={word.y}
+                    angle={word.angle}
+                    matterBodyOptions={{ friction: 0.1, restitution: 0.6 }}
+                >
+                    <div className={`text-sm md:text-base rounded-full hover:cursor-grab px-5 py-2 font-semibold pointer-events-auto ${word.className}`}>
+                        {word.text}
+                    </div>
+                </MatterBody>
+            ))}
+        </Gravity>
+      <div className="container relative z-10 px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center">
             <motion.h2 
                 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline"
@@ -63,21 +78,6 @@ const ConsultationCtaSection = () => {
             </motion.div>
         </div>
       </div>
-       <Gravity gravity={{ x: 0, y: 0.4 }} className="w-full h-full" addTopWall={false}>
-            {words.map((word) => (
-                <MatterBody
-                    key={word.text}
-                    x={word.x}
-                    y={word.y}
-                    angle={word.angle}
-                    matterBodyOptions={{ friction: 0.1, restitution: 0.6 }}
-                >
-                    <div className={`text-sm md:text-base rounded-full hover:cursor-grab px-5 py-2 font-semibold pointer-events-auto ${word.className}`}>
-                        {word.text}
-                    </div>
-                </MatterBody>
-            ))}
-        </Gravity>
     </motion.section>
   );
 };
