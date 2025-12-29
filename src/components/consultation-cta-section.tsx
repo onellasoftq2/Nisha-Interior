@@ -3,18 +3,27 @@ import { motion } from 'framer-motion';
 import { Button } from './ui/button';
 import { Phone, MessageCircle } from 'lucide-react';
 import Link from 'next/link';
+import { Gravity, MatterBody } from './ui/gravity';
+
+const words = [
+    { text: 'Design', x: '20%', y: '15%', angle: -15, className: 'bg-primary text-primary-foreground' },
+    { text: 'Craft', x: '80%', y: '20%', angle: 10, className: 'bg-foreground text-background' },
+    { text: 'Quality', x: '50%', y: '10%', angle: 5, className: 'bg-background text-foreground border' },
+    { text: 'Beauty', x: '15%', y: '40%', angle: 15, className: 'bg-primary/80 text-primary-foreground' },
+    { text: 'Trust', x: '85%', y: '45%', angle: -10, className: 'bg-foreground/90 text-background' },
+];
 
 const ConsultationCtaSection = () => {
   return (
     <motion.section 
         id="contact" 
-        className="bg-secondary text-secondary-foreground"
+        className="bg-secondary text-secondary-foreground relative overflow-hidden"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
     >
-      <div className="container px-4 md:px-6 py-16 md:py-24">
+      <div className="container relative z-10 px-4 md:px-6 py-16 md:py-24">
         <div className="max-w-3xl mx-auto text-center">
             <motion.h2 
                 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline"
@@ -54,6 +63,21 @@ const ConsultationCtaSection = () => {
             </motion.div>
         </div>
       </div>
+       <Gravity gravity={{ x: 0, y: 0.4 }} className="w-full h-full" addTopWall={false}>
+            {words.map((word) => (
+                <MatterBody
+                    key={word.text}
+                    x={word.x}
+                    y={word.y}
+                    angle={word.angle}
+                    matterBodyOptions={{ friction: 0.1, restitution: 0.6 }}
+                >
+                    <div className={`text-sm md:text-base rounded-full hover:cursor-grab px-5 py-2 font-semibold ${word.className}`}>
+                        {word.text}
+                    </div>
+                </MatterBody>
+            ))}
+        </Gravity>
     </motion.section>
   );
 };
