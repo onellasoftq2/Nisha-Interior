@@ -30,7 +30,6 @@ const TransformationSection = () => {
   
   const handleInteractionStart = (e: React.MouseEvent | React.TouchEvent) => {
     setOnMouseDown(true);
-    // We call onMouseMove here to immediately update the position if the click/touch starts the drag
     onMouseMove(e);
   };
 
@@ -85,7 +84,7 @@ const TransformationSection = () => {
                 priority
                 className="absolute left-0 top-0 z-10 w-full h-full aspect-video rounded-2xl select-none"
                 style={{
-                  clipPath: "inset(0 " + (100 - inset) + "% 0 0)",
+                  clipPath: `inset(0 ${100 - inset}% 0 0)`,
                 }}
                 data-ai-hint={beforeImage.imageHint}
               />
