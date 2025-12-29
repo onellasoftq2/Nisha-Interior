@@ -38,7 +38,7 @@ const ConsultationCtaSection = () => {
                 </MatterBody>
             ))}
         </Gravity>
-      <div className="container relative z-10 px-4 md:px-6">
+      <div className="container relative z-10 px-4 md:px-6 pointer-events-none">
         <div className="max-w-3xl mx-auto text-center">
             <motion.h2 
                 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline"
@@ -59,7 +59,7 @@ const ConsultationCtaSection = () => {
                 Ready to take the next step? Our design consultants are here to help you bring your vision to life.
             </motion.p>
             <motion.div 
-                className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+                className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 pointer-events-auto"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
