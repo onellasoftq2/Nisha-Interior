@@ -15,12 +15,11 @@ const services = [
   {
     id: 'modular-kitchens',
     title: 'Modular Kitchens',
-    description: 'The heart of your home, reimagined. We create ergonomic, stylish kitchens that blend clever storage with a beautiful aesthetic, making your daily routines a joy. Our designs are tailored to your cooking style and family needs, ensuring a perfect balance of form and function.',
+    description: 'The heart of your home, reimagined. We create ergonomic, stylish kitchens that blend clever storage with a beautiful aesthetic, making daily routines a joy.',
     benefits: [
-      'Perfectly optimized for your workflow and space.',
-      'Durable, moisture-resistant materials for longevity.',
-      'Endless customization of finishes, colors, and hardware.',
-      'Smart storage solutions to keep your kitchen organized.',
+      'Optimized for your workflow and space.',
+      'Durable, moisture-resistant materials.',
+      'Endless customization of finishes and hardware.',
     ],
     imageId: 'services-kitchens',
     cta: 'Explore Kitchen Designs',
@@ -28,12 +27,11 @@ const services = [
   {
     id: 'wardrobes-storage',
     title: 'Wardrobes & Storage',
-    description: 'Bring calm and order to your home with our intelligent storage solutions. From luxurious walk-in closets to sleek, space-saving media units, we design storage that fits your life, not the other way around. Say goodbye to clutter and hello to seamless organization.',
+    description: 'Bring calm and order to your home with our intelligent storage solutions, from luxurious walk-in closets to sleek, space-saving media units.',
     benefits: [
-      'Customized to your exact space and storage needs.',
-      'High-quality hinges and hardware for smooth operation.',
-      'A wide range of finishes to match your room’s decor.',
-      'Designed to maximize every inch of available space.',
+      'Customized to your exact space and needs.',
+      'High-quality hardware for smooth operation.',
+      'Wide range of finishes to match your decor.',
     ],
     imageId: 'services-wardrobes',
     cta: 'Discover Storage Solutions',
@@ -41,12 +39,11 @@ const services = [
   {
     id: 'complete-home-interiors',
     title: 'Complete Home Interiors',
-    description: 'A seamless, end-to-end journey from a blank canvas to your dream home. We manage every detail, ensuring a cohesive design that reflects your personality across every single room. Trust us to handle the entire process, so you can relax and watch your vision come to life.',
+    description: 'A seamless, end-to-end journey from a blank canvas to your dream home. We manage every detail, ensuring a cohesive design that reflects your personality.',
     benefits: [
       'A single point of contact for the entire project.',
       'Cohesive design language throughout your home.',
       'Hassle-free execution, from design to handover.',
-      'Guaranteed quality, backed by our own factory.',
     ],
     imageId: 'services-interiors',
     cta: 'View Interior Projects',
@@ -54,12 +51,11 @@ const services = [
   {
     id: 'interior-design-consultation',
     title: 'Interior Design Consultation',
-    description: 'Have a vision but need a professional guide? Our expert designers partner with you to refine your ideas, select materials, and create a clear, actionable roadmap for your project. We help you make confident decisions and avoid costly mistakes.',
+    description: 'Have a vision but need a professional guide? Our expert designers partner with you to refine your ideas, select materials, and create an actionable roadmap.',
     benefits: [
-      'Expert guidance to refine your ideas and vision.',
-      'Professional advice on material and color selection.',
-      'Detailed 2D and 3D plans to visualize your space.',
-      'A clear project plan to ensure a smooth process.',
+      'Expert guidance to refine your vision.',
+      'Professional advice on material & color selection.',
+      'Detailed plans to visualize your space.',
     ],
     imageId: 'services-consultation',
     cta: 'Book a Consultation',
@@ -149,7 +145,7 @@ export default function ServicesPage() {
           </div>
         </motion.section>
 
-        <div className="container px-4 md:px-6 space-y-16 md:space-y-24 mb-16 md:mb-24">
+        <div className="container px-4 md:px-6">
           {services.map((service, index) => {
             const image = PlaceHolderImages.find((img) => img.id === service.imageId);
             const isReversed = index % 2 === 1;
@@ -161,41 +157,29 @@ export default function ServicesPage() {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
                 variants={sectionVariants}
-                className="grid grid-cols-1 items-center gap-12 md:gap-16 md:grid-cols-2"
+                className="w-full flex items-center md:min-h-[90vh] py-16 md:py-24"
               >
-                <motion.div 
-                    className={`space-y-6 ${isReversed ? 'md:order-last' : ''}`}
-                    variants={textVariants(isReversed ? 'right' : 'left')}
-                >
-                  <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">
-                    {service.title}
-                  </h2>
-                  <p className="text-lg text-muted-foreground">{service.description}</p>
-                  <ul className="space-y-3 text-muted-foreground">
-                    {service.benefits.map((benefit, i) =>(
-                        <li key={i} className='flex items-start gap-3'>
-                            <Check className='h-5 w-5 text-primary mt-1 flex-shrink-0'/>
-                            <span>{benefit}</span>
-                        </li>
-                    ))}
-                  </ul>
-                  {service.id === 'interior-design-consultation' ? (
-                      <Button size="lg" variant="default" className="text-lg group" onClick={() => setShowBookingModal(true)}>
-                        <Video className="mr-2 h-5 w-5" />
-                        Book Video Consultation
-                        <motion.span 
-                            className="inline-block ml-2"
-                            initial={{ x: 0 }}
-                            whileHover={{ x: 4 }}
-                            transition={{ duration: 0.2, ease: 'easeOut' }}
-                        >
-                            →
-                        </motion.span>
-                      </Button>
-                  ) : (
-                    <Button size="lg" variant="link" className="px-0 group text-lg" asChild>
-                      <Link href="/contact">
-                          {service.cta}
+                <div className="w-full grid grid-cols-1 items-center gap-12 md:gap-16 md:grid-cols-2">
+                  <motion.div 
+                      className={`space-y-6 ${isReversed ? 'md:order-last' : ''}`}
+                      variants={textVariants(isReversed ? 'right' : 'left')}
+                  >
+                    <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">
+                      {service.title}
+                    </h2>
+                    <p className="text-lg text-muted-foreground">{service.description}</p>
+                    <ul className="space-y-3 text-muted-foreground">
+                      {service.benefits.map((benefit, i) =>(
+                          <li key={i} className='flex items-start gap-3'>
+                              <Check className='h-5 w-5 text-primary mt-1 flex-shrink-0'/>
+                              <span>{benefit}</span>
+                          </li>
+                      ))}
+                    </ul>
+                    {service.id === 'interior-design-consultation' ? (
+                        <Button size="lg" variant="default" className="text-lg group" onClick={() => setShowBookingModal(true)}>
+                          <Video className="mr-2 h-5 w-5" />
+                          Book Video Consultation
                           <motion.span 
                               className="inline-block ml-2"
                               initial={{ x: 0 }}
@@ -204,21 +188,35 @@ export default function ServicesPage() {
                           >
                               →
                           </motion.span>
-                      </Link>
-                    </Button>
-                  )}
-                </motion.div>
-                <div className="aspect-video md:aspect-[4/3]">
-                  {image && (
-                    <InteractiveImage
-                      src={image.imageUrl}
-                      alt={image.description}
-                      width={800}
-                      height={600}
-                      className="w-full h-full"
-                      data-ai-hint={image.imageHint}
-                    />
-                  )}
+                        </Button>
+                    ) : (
+                      <Button size="lg" variant="link" className="px-0 group text-lg" asChild>
+                        <Link href="/contact">
+                            {service.cta}
+                            <motion.span 
+                                className="inline-block ml-2"
+                                initial={{ x: 0 }}
+                                whileHover={{ x: 4 }}
+                                transition={{ duration: 0.2, ease: 'easeOut' }}
+                            >
+                                →
+                            </motion.span>
+                        </Link>
+                      </Button>
+                    )}
+                  </motion.div>
+                  <div className="aspect-video md:aspect-[4/3]">
+                    {image && (
+                      <InteractiveImage
+                        src={image.imageUrl}
+                        alt={image.description}
+                        width={800}
+                        height={600}
+                        className="w-full h-full"
+                        data-ai-hint={image.imageHint}
+                      />
+                    )}
+                  </div>
                 </div>
               </motion.div>
             );
