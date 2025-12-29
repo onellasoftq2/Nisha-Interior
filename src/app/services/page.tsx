@@ -6,10 +6,11 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
-import { Check, DraftingCompass, Factory, Handshake, MessagesSquare, Smile, Video } from 'lucide-react';
+import { Check, DraftingCompass, Factory, Handshake, MessagesSquare, Smile, Video, Wallet, Clock, Ruler, ShieldCheck, Users, Lightbulb, MessageCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useBookingModal } from '@/hooks/use-booking-modal';
 import { InteractiveImage } from '@/components/interactive-image';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 const services = [
   {
@@ -20,6 +21,11 @@ const services = [
       'Optimized for your workflow and space.',
       'Durable, moisture-resistant materials.',
       'Endless customization of finishes and hardware.',
+    ],
+    whoItIsFor: [
+        "Homeowners looking to maximize kitchen functionality and storage.",
+        "Families wanting a durable, easy-to-maintain kitchen for daily use.",
+        "Individuals who love cooking and desire a beautiful, inspiring culinary space.",
     ],
     imageId: 'services-kitchens',
     cta: 'Explore Kitchen Designs',
@@ -33,6 +39,11 @@ const services = [
       'High-quality hardware for smooth operation.',
       'Wide range of finishes to match your decor.',
     ],
+    whoItIsFor: [
+        "Anyone needing to organize clothes and belongings efficiently.",
+        "Homeowners with awkward spaces that require custom-fit solutions.",
+        "Design-conscious individuals who want storage to be a feature, not an afterthought."
+    ],
     imageId: 'services-wardrobes',
     cta: 'Discover Storage Solutions',
   },
@@ -45,63 +56,85 @@ const services = [
       'Cohesive design language throughout your home.',
       'Hassle-free execution, from design to handover.',
     ],
+    whoItIsFor: [
+        "New homeowners wanting a turnkey solution to furnish their entire space.",
+        "Clients undertaking a major renovation who need a unified design vision.",
+        "Busy professionals who value a single, reliable partner to manage the entire process."
+    ],
     imageId: 'services-interiors',
     cta: 'View Interior Projects',
   },
-  {
-    id: 'interior-design-consultation',
-    title: 'Interior Design Consultation',
-    description: 'Have a vision but need a professional guide? Our expert designers partner with you to refine your ideas, select materials, and create an actionable roadmap.',
-    benefits: [
-      'Expert guidance to refine your vision.',
-      'Professional advice on material & color selection.',
-      'Detailed plans to visualize your space.',
-    ],
-    imageId: 'services-consultation',
-    cta: 'Book a Consultation',
-  },
+];
+
+const whatYouGet = [
+    {
+        icon: Users,
+        label: "Designer-Led Planning"
+    },
+    {
+        icon: Factory,
+        label: "Factory-Made Furniture"
+    },
+    {
+        icon: Handshake,
+        label: "End-to-End Execution"
+    },
+    {
+        icon: ShieldCheck,
+        label: "Post-Installation Support"
+    }
 ];
 
 const processSteps = [
     {
       icon: MessagesSquare,
       title: "Consultation & Design",
-      description: "We start by listening. Our designers work with you to understand your needs, style, and budget to craft the perfect design concept."
+      description: "We start by listening to craft the perfect design concept for your needs, style, and budget.",
+      duration: "1-2 Weeks"
     },
     {
       icon: DraftingCompass,
       title: "Material & Finish Selection",
-      description: "With your design in place, we help you choose from our wide range of high-quality materials and finishes to bring your vision to life."
+      description: "We help you choose from our wide range of high-quality materials to bring your vision to life.",
+      duration: "1 Week"
     },
     {
       icon: Factory,
       title: "In-House Manufacturing",
-      description: "Your custom furniture is built in our state-of-the-art factory, ensuring precision, quality, and timely delivery."
+      description: "Your custom furniture is built in our state-of-the-art factory, ensuring precision and quality.",
+      duration: "3-4 Weeks"
     },
     {
       icon: Handshake,
       title: "Installation & Handover",
-      description: "Our professional team handles the installation with care, and we walk you through the final space to ensure your complete satisfaction."
+      description: "Our professional team handles the installation with care, ensuring your complete satisfaction.",
+      duration: "1-2 Weeks"
     }
   ];
 
-  const differentiators = [
+const faqs = [
     {
-      icon: Factory,
-      title: 'Factory-Owned, Not an Aggregator',
-      description: 'We manufacture our own products in Pune, giving us complete control over quality, timelines, and cost. No middlemen, no surprises.',
+        question: "How does your pricing work?",
+        answer: "Our pricing is transparent and based on the materials, finishes, and complexity of your project. We provide a detailed quote after the design consultation, with no hidden costs. Because we own our factory, we can offer premium quality without the premium price tag."
     },
     {
-      icon: Check,
-      title: 'True, Bespoke Customization',
-      description: 'Since we are the makers, we can create furniture that fits your space to the millimeter. Your home, your dimensions, your style.',
+        question: "What is the typical timeline for a project?",
+        answer: "A typical project, from design to handover, takes about 6-8 weeks. This includes design finalization, manufacturing in our factory, and on-site installation. We provide a more precise timeline once your design is confirmed."
     },
     {
-      icon: Smile,
-      title: 'Local Pune Expertise',
-      description: 'With four showrooms across Pune, our team understands local tastes and is always available for in-person consultations and support.',
+        question: "How much customization is possible?",
+        answer: "Almost anything is possible. Since we manufacture everything in-house, we can customize dimensions to the millimeter, and you have a vast choice of materials, colors, and finishes. We build to fit your space and style perfectly."
     },
-  ];
+    {
+        question: "What kind of warranty do you offer?",
+        answer: "We stand by our craftsmanship. All our work is covered by a 10-year warranty against any manufacturing defects. We also provide post-installation support to address any issues that may arise."
+    },
+    {
+        question: "Can I just get a design consultation?",
+        answer: "Absolutely. We offer a standalone Interior Design Consultation service where our experts help you refine your ideas, select materials, and create an actionable plan, whether you decide to proceed with us or not."
+    }
+];
+
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 40 },
@@ -122,7 +155,6 @@ const textVariants = (direction: 'left' | 'right') => ({
 
 
 export default function ServicesPage() {
-  const factoryImage = PlaceHolderImages.find((img) => img.id === 'factory-process');
   const { setShowBookingModal } = useBookingModal();
 
   return (
@@ -161,36 +193,29 @@ export default function ServicesPage() {
               >
                 <div className="w-full grid grid-cols-1 items-center gap-12 md:gap-16 md:grid-cols-2">
                   <motion.div 
-                      className={`space-y-6 ${isReversed ? 'md:order-last' : ''}`}
+                      className={`space-y-8 ${isReversed ? 'md:order-last' : ''}`}
                       variants={textVariants(isReversed ? 'right' : 'left')}
                   >
-                    <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">
-                      {service.title}
-                    </h2>
-                    <p className="text-lg text-muted-foreground">{service.description}</p>
-                    <ul className="space-y-3 text-muted-foreground">
-                      {service.benefits.map((benefit, i) =>(
-                          <li key={i} className='flex items-start gap-3'>
-                              <Check className='h-5 w-5 text-primary mt-1 flex-shrink-0'/>
-                              <span>{benefit}</span>
-                          </li>
-                      ))}
-                    </ul>
-                    {service.id === 'interior-design-consultation' ? (
-                        <Button size="lg" variant="default" className="text-lg group" onClick={() => setShowBookingModal(true)}>
-                          <Video className="mr-2 h-5 w-5" />
-                          Book Video Consultation
-                          <motion.span 
-                              className="inline-block ml-2"
-                              initial={{ x: 0 }}
-                              whileHover={{ x: 4 }}
-                              transition={{ duration: 0.2, ease: 'easeOut' }}
-                          >
-                              →
-                          </motion.span>
-                        </Button>
-                    ) : (
-                      <Button size="lg" variant="link" className="px-0 group text-lg" asChild>
+                    <div>
+                        <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">
+                        {service.title}
+                        </h2>
+                        <p className="mt-4 text-lg text-muted-foreground">{service.description}</p>
+                    </div>
+
+                    <div>
+                        <h3 className="font-semibold text-foreground mb-3">Who This Service Is For:</h3>
+                        <ul className="space-y-2 text-muted-foreground">
+                        {service.whoItIsFor.map((item, i) =>(
+                            <li key={i} className='flex items-start gap-3'>
+                                <Check className='h-5 w-5 text-primary mt-1 flex-shrink-0'/>
+                                <span>{item}</span>
+                            </li>
+                        ))}
+                        </ul>
+                    </div>
+                    
+                    <Button size="lg" variant="link" className="px-0 group text-lg" asChild>
                         <Link href="/contact">
                             {service.cta}
                             <motion.span 
@@ -203,7 +228,6 @@ export default function ServicesPage() {
                             </motion.span>
                         </Link>
                       </Button>
-                    )}
                   </motion.div>
                   <div className="aspect-video md:aspect-[4/3]">
                     {image && (
@@ -223,6 +247,32 @@ export default function ServicesPage() {
           })}
         </div>
 
+        {/* What You Get Section */}
+        <motion.section
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={sectionVariants}
+            className="py-16 md:py-24"
+        >
+          <div className="container px-4 md:px-6">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+              {whatYouGet.map((item, index) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
+                >
+                  <item.icon className="h-10 w-10 text-primary mx-auto mb-4" />
+                  <h4 className="font-semibold text-foreground">{item.label}</h4>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.section>
+
         {/* Our Process Section */}
         <motion.section
           initial="hidden"
@@ -240,7 +290,13 @@ export default function ServicesPage() {
                 We make turning your dream home into a reality a seamless and enjoyable experience.
               </p>
             </div>
-            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+            <div className="relative grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
+               {/* Dashed Line Connector for Desktop */}
+              <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px -translate-y-1/2">
+                <svg width="100%" height="2">
+                  <line x1="0" y1="1" x2="100%" y2="1" strokeWidth="2" className="stroke-current text-border" strokeDasharray="8, 8"/>
+                </svg>
+              </div>
               {processSteps.map((step, index) => (
                 <motion.div
                   key={step.title}
@@ -248,108 +304,79 @@ export default function ServicesPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.5 }}
                   transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
-                  className="flex flex-col items-center text-center"
+                  className="relative flex flex-col items-center text-center z-10"
                 >
                   <div className="relative mb-4">
-                     <Badge variant="outline" className="absolute -top-3 -right-3 bg-background text-primary border-primary">{index + 1}</Badge>
-                     <div className="flex h-16 w-16 items-center justify-center rounded-full bg-background text-primary">
+                     <div className="flex h-20 w-20 items-center justify-center rounded-full bg-background text-primary border-4 border-secondary">
                         <step.icon className="h-8 w-8" />
                      </div>
                   </div>
-                  <h3 className="text-xl font-semibold font-headline">{step.title}</h3>
+                  <h3 className="text-xl font-semibold font-headline text-foreground">{step.title}</h3>
                   <p className="mt-2 text-secondary-foreground/80">{step.description}</p>
+                   <Badge variant="outline" className="mt-4 bg-background/20 border-foreground/30 text-foreground">
+                        {step.duration}
+                    </Badge>
                 </motion.div>
               ))}
             </div>
           </div>
         </motion.section>
 
-        {/* Why Choose Us Section */}
-        <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={sectionVariants}
-            className="py-16 md:py-24"
-        >
-          <div className="container px-4 md:px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline">
-                Why Choose Nisha Interior?
-              </h2>
-              <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-                We're not just another interior design service. We are makers, committed to quality and your complete satisfaction.
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {differentiators.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
-                >
-                  <Card className="h-full text-center p-6 transition-all duration-300 ease-out hover:shadow-xl hover:-translate-y-1">
-                    <CardHeader className="items-center p-0">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4">
-                        <item.icon className="h-7 w-7" />
-                      </div>
-                      <CardTitle className="font-headline text-xl">{item.title}</CardTitle>
-                    </CardHeader>
-                    <CardContent className="p-0 mt-2">
-                      <p className="text-muted-foreground">{item.description}</p>
-                    </CardContent>
-                  </Card>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-        
-        {/* Factory Advantage Section */}
+        {/* Consultation CTA Block */}
         <motion.section
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3 }}
             variants={sectionVariants}
-            className="bg-secondary text-secondary-foreground"
+            className="py-16 md:py-24"
         >
-            <div className="container px-4 md:px-6">
-                <div className="grid md:grid-cols-2 items-center gap-12 md:gap-24 py-16 md:py-24">
-                    <div className="aspect-video md:aspect-[4/3]">
-                        {factoryImage && (
-                        <InteractiveImage
-                            src={factoryImage.imageUrl}
-                            alt={factoryImage.description}
-                            width={800}
-                            height={600}
-                            className="w-full h-full"
-                            data-ai-hint={factoryImage.imageHint}
-                        />
-                        )}
-                    </div>
-                    <motion.div 
-                        className="space-y-6"
-                        initial={{ opacity: 0, x: 20 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true, amount: 0.3 }}
-                        transition={{ duration: 0.5, ease: 'easeOut' }}
-                    >
-                        <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl font-headline">
-                            The Factory Advantage
-                        </h2>
-                        <p className="text-lg text-secondary-foreground/80">
-                            Our in-house manufacturing isn't just a feature—it's our promise of quality. By controlling the entire production process, we deliver superior, customized furniture that's built to last, without the premium price tag.
+            <div className="container px-4 md:px-6 max-w-4xl mx-auto">
+                 <Card className="p-8 md:p-12 text-center bg-secondary border-none">
+                    <CardHeader className="p-0">
+                        <h2 className="text-3xl font-semibold tracking-tight text-secondary-foreground sm:text-4xl font-headline">Ready to Start Your Project?</h2>
+                        <p className="mt-4 text-lg text-secondary-foreground/80 max-w-xl mx-auto">
+                            Book a free, no-obligation consultation with one of our expert designers.
                         </p>
-                        <Button asChild size="lg" variant="outline" className="border-secondary-foreground/50 text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary">
-                            <Link href="/factory">
-                                Learn More About Our Craft
-                            </Link>
+                    </CardHeader>
+                    <CardContent className="p-0 mt-8">
+                         <Button size="lg" className="text-lg" onClick={() => setShowBookingModal(true)}>
+                            <Video className="mr-2 h-5 w-5" />
+                            Book Free Designer-Led Consultation
                         </Button>
-                    </motion.div>
-                </div>
+                        <div className='text-secondary-foreground/80 mt-6 text-sm'>
+                            <p className='font-semibold'>What happens next?</p>
+                            <p>We'll discuss your vision, explain our process, and answer all your questions. It's a supportive conversation, not a sales pitch.</p>
+                        </div>
+                    </CardContent>
+                 </Card>
             </div>
+        </motion.section>
+        
+        {/* FAQs Section */}
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionVariants}
+          className="py-16 md:py-24"
+        >
+          <div className="container px-4 md:px-6 max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline">
+                Frequently Asked Questions
+              </h2>
+            </div>
+            <Accordion type="single" collapsible className="w-full">
+              {faqs.map((faq, index) => (
+                <AccordionItem key={index} value={`item-${index}`}>
+                  <AccordionTrigger className="text-lg text-left hover:no-underline">{faq.question}</AccordionTrigger>
+                  <AccordionContent className="text-base text-muted-foreground">
+                    {faq.answer}
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
         </motion.section>
       </main>
       <Footer />
