@@ -215,6 +215,18 @@
       "description": "A complete bedroom set including a bed, bedside tables, and a dresser.",
       "imageUrl": "https://images.unsplash.com/photo-1595526114035-0d45ed16433d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiZWRyb29tJTIwZnVybml0dXJlfGVufDB8fHx8MTcyMjU0ODU3NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "bedroom furniture"
+    },
+    {
+      "id": "complete-interiors-hero",
+      "description": "A panoramic view of a cohesive, modern open-plan living space and kitchen.",
+      "imageUrl": "https://images.unsplash.com/photo-1615875605825-5eb9bb5c3986?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxvcGVuLXBsYW4lMjBsaXZpbmclMjByb29tfGVufDB8fHx8MTcyMjU1MjM2NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "open-plan living room"
+    },
+    {
+      "id": "complete-interiors-process",
+      "description": "A designer and client collaborating over blueprints and material samples.",
+      "imageUrl": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkZXNpZ24lMjBwcm9jZXNzfGVufDB8fHx8MTcyMjU1MjM5Nnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "design process"
     }
   ]
 }

@@ -23,7 +23,7 @@ const services = [
     title: 'Home Interiors',
     imageId: 'service-interiors',
     description: 'Complete interior solutions creating personalized, functional living spaces.',
-    href: '/services#complete-home-interiors'
+    href: '/services/complete-home-interiors'
   },
 ];
 
@@ -108,5 +108,3 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
-
-    
