@@ -17,16 +17,10 @@ const services = [
   {
     id: 'modular-kitchens',
     title: 'Modular Kitchens',
-    description: 'The heart of your home, reimagined. We create ergonomic, stylish kitchens that blend clever storage with a beautiful aesthetic, making daily routines a joy.',
-    benefits: [
-      'Optimized for your workflow and space.',
-      'Durable, moisture-resistant materials.',
-      'Endless customization of finishes and hardware.',
-    ],
+    description: 'Ergonomic, stylish kitchens that blend clever storage with a beautiful aesthetic.',
     whoItIsFor: [
         "Homeowners looking to maximize kitchen functionality and storage.",
         "Families wanting a durable, easy-to-maintain kitchen for daily use.",
-        "Individuals who love cooking and desire a beautiful, inspiring culinary space.",
     ],
     imageId: 'service-kitchens',
     cta: 'Explore Kitchen Designs',
@@ -35,16 +29,10 @@ const services = [
   {
     id: 'wardrobes-storage',
     title: 'Wardrobes & Storage',
-    description: 'Bring calm and order to your home with our intelligent storage solutions, from luxurious walk-in closets to sleek, space-saving media units.',
-    benefits: [
-      'Customized to your exact space and needs.',
-      'High-quality hardware for smooth operation.',
-      'Wide range of finishes to match your decor.',
-    ],
+    description: 'Intelligent storage solutions, from luxurious walk-in closets to sleek media units.',
     whoItIsFor: [
         "Anyone needing to organize clothes and belongings efficiently.",
-        "Homeowners with awkward spaces that require custom-fit solutions.",
-        "Design-conscious individuals who want storage to be a feature, not an afterthought."
+        "Homeowners who want storage to be a feature, not an afterthought."
     ],
     imageId: 'service-wardrobes',
     cta: 'Discover Storage Solutions',
@@ -53,16 +41,10 @@ const services = [
   {
     id: 'complete-home-interiors',
     title: 'Complete Home Interiors',
-    description: 'A seamless, end-to-end journey from a blank canvas to your dream home. We manage every detail, ensuring a cohesive design that reflects your personality.',
-    benefits: [
-      'A single point of contact for the entire project.',
-      'Cohesive design language throughout your home.',
-      'Hassle-free execution, from design to handover.',
-    ],
+    description: 'A seamless, end-to-end journey from a blank canvas to your dream home.',
     whoItIsFor: [
-        "New homeowners wanting a turnkey solution to furnish their entire space.",
-        "Clients undertaking a major renovation who need a unified design vision.",
-        "Busy professionals who value a single, reliable partner to manage the entire process."
+        "New homeowners wanting a turnkey solution for their entire space.",
+        "Clients who value a single, reliable partner to manage the entire process."
     ],
     imageId: 'service-interiors',
     cta: 'View Interior Projects',
