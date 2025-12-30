@@ -7,7 +7,7 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
-import { Check, DraftingCompass, Factory, Handshake, MessagesSquare, Sparkles } from 'lucide-react';
+import { Check, DraftingCompass, Factory, Handshake, MessagesSquare, Sparkles, Users, ShieldCheck } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useGetStartedModal } from '@/hooks/use-get-started-modal';
 import { InteractiveImage } from '@/components/interactive-image';
