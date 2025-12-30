@@ -6,7 +6,7 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
-import { Check, DraftingCompass, Factory, Handshake, MessagesSquare, Sparkles, Bed, Box, DraftingCompass as DraftingCompassIcon, Droplets, Ruler, ShieldCheck, DoorSliding, DoorOpen, Walkthrough } from 'lucide-react';
+import { Check, DraftingCompass, Factory, Handshake, MessagesSquare, Sparkles, Bed, Box, Droplets, Ruler, ShieldCheck, DoorOpen, Archive, PanelRightOpen } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useGetStartedModal } from '@/hooks/use-get-started-modal';
 import { InteractiveImage } from '@/components/interactive-image';
@@ -37,9 +37,9 @@ const benefits = [
 ];
 
 const wardrobeTypes = [
-    { name: "Sliding Wardrobes", imageId: "wardrobe-sliding", icon: DoorSliding, description: "Sleek and modern, perfect for saving space in compact rooms." },
+    { name: "Sliding Wardrobes", imageId: "wardrobe-sliding", icon: PanelRightOpen, description: "Sleek and modern, perfect for saving space in compact rooms." },
     { name: "Hinged Wardrobes", imageId: "wardrobe-hinged", icon: DoorOpen, description: "Classic and versatile, offering full access to your closet." },
-    { name: "Walk-in Closets", imageId: "wardrobe-walk-in", icon: Walkthrough, description: "The ultimate luxury for organizing your apparel and accessories." },
+    { name: "Walk-in Closets", imageId: "wardrobe-walk-in", icon: Archive, description: "The ultimate luxury for organizing your apparel and accessories." },
 ];
 
 const bedroomEssentials = [
@@ -302,5 +302,3 @@ export default function WardrobesAndBedroomPage() {
     </div>
   );
 }
-
-    
