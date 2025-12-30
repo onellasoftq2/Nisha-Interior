@@ -255,38 +255,40 @@ export default function ServicesPage() {
         <motion.section
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={sectionVariants}
           className="py-16 md:py-24 bg-secondary text-secondary-foreground"
         >
           <div className="container px-4 md:px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline">
-                Our Simple, Transparent Process
-              </h2>
-              <p className="mt-4 max-w-2xl mx-auto text-lg text-secondary-foreground/80">
-                We make turning your dream home into a reality a seamless and enjoyable experience.
-              </p>
+            <div className="grid md:grid-cols-2 md:gap-8 xl:gap-12">
+              <div className="left-0 top-0 md:sticky md:h-svh md:py-12">
+                <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline">
+                  Our Simple, Transparent Process
+                </h2>
+                <p className="mt-4 max-w-2xl text-lg text-secondary-foreground/80">
+                  We make turning your dream home into a reality a seamless and enjoyable experience.
+                </p>
+              </div>
+              <ContainerScroll className="min-h-[400vh] space-y-8 py-12">
+                {processSteps.map((step, index) => (
+                  <CardSticky
+                    key={step.title}
+                    index={index + 2}
+                    className="rounded-2xl border p-8 shadow-md backdrop-blur-md bg-background/80"
+                  >
+                    <div className="flex items-center justify-between gap-4">
+                      <h2 className="my-6 text-2xl font-bold tracking-tighter text-foreground">
+                        {step.title}
+                      </h2>
+                      <Badge variant="outline" className="bg-background/20 border-foreground/30 text-foreground">
+                          {step.duration}
+                      </Badge>
+                    </div>
+                    <p className="text-foreground/80">{step.description}</p>
+                  </CardSticky>
+                ))}
+              </ContainerScroll>
             </div>
-            <ContainerScroll className="min-h-[400vh] space-y-8 py-12">
-              {processSteps.map((step, index) => (
-                <CardSticky
-                  key={step.title}
-                  index={index + 2}
-                  className="rounded-2xl border p-8 shadow-md backdrop-blur-md"
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <h2 className="my-6 text-2xl font-bold tracking-tighter text-foreground">
-                      {step.title}
-                    </h2>
-                     <Badge variant="outline" className="bg-background/20 border-foreground/30 text-foreground">
-                        {step.duration}
-                    </Badge>
-                  </div>
-                  <p className="text-foreground/80">{step.description}</p>
-                </CardSticky>
-              ))}
-            </ContainerScroll>
           </div>
         </motion.section>
 
