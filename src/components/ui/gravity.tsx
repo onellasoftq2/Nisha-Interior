@@ -316,6 +316,10 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
           background: "transparent",
         },
       })
+      
+      if(render.current.canvas){
+          render.current.canvas.style.pointerEvents = "none";
+      }
 
       const mouse = Mouse.create(render.current.canvas)
       mouseConstraint.current = MouseConstraint.create(engine.current, {
@@ -327,6 +331,11 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
           },
         },
       })
+      
+      if (mouseConstraint.current.mouse) {
+        mouseConstraint.current.mouse.element.removeEventListener("mousewheel", (mouseConstraint.current.mouse as any).mousewheel);
+        mouseConstraint.current.mouse.element.removeEventListener("DOMMouseScroll", (mouseConstraint.current.mouse as any).mousewheel);
+      }
 
       // Add walls
       const walls = [
@@ -554,7 +563,7 @@ const Gravity = forwardRef<GravityRef, GravityProps>(
       <GravityContext.Provider value={{ registerElement, unregisterElement }}>
         <div
           ref={canvas}
-          className={cn(className, "absolute top-0 left-0 w-full h-full pointer-events-auto")}
+          className={cn(className, "absolute top-0 left-0 w-full h-full pointer-events-none")}
           {...props}
         >
           {children}

@@ -23,7 +23,7 @@ const ConsultationCtaSection = () => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
     >
-       <div className="absolute inset-0 pointer-events-none">
+       <div className="absolute inset-0">
           <Gravity gravity={{ x: 0, y: 0.4 }} className="w-full h-full">
               {words.map((word) => (
                   <MatterBody
