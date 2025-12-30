@@ -1,7 +1,7 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Sparkles } from 'lucide-react';
+import { Menu } from 'lucide-react';
 import { LogoIcon } from './icons/logo-icon';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
@@ -101,8 +101,7 @@ const Header = () => {
                   ))}
                   <Separator />
                    <Button onClick={() => setShowGetStartedModal(true)} variant="outline" className="text-base">
-                        <Sparkles className="mr-2 h-5 w-5" />
-                        Get Started
+                        Ask Expert
                     </Button>
                 </nav>
               </SheetContent>
@@ -110,7 +109,7 @@ const Header = () => {
           </div>
            <div className="hidden md:flex items-center gap-2">
              <Button onClick={() => setShowGetStartedModal(true)} variant="default" className="text-base">
-                Get Started
+                Ask Expert
              </Button>
            </div>
         </div>
