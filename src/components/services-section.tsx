@@ -11,7 +11,7 @@ const services = [
     title: 'Modular Kitchens',
     imageId: 'service-kitchens',
     description: 'Stylish modular kitchens designed for modern cooking lifestyles.',
-    href: '/services#modular-kitchens'
+    href: '/services/modular-kitchens'
   },
   {
     title: 'Wardrobes & Storage',
