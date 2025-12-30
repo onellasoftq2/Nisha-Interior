@@ -1,11 +1,20 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
-import { Inter } from 'next/font/google';
+import { Libre_Baskerville, Nunito } from 'next/font/google';
 import { cn } from '@/lib/utils';
 import { BookingModalProvider } from '@/components/booking-modal';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
+const libre_baskerville = Libre_Baskerville({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  variable: '--font-libre-baskerville',
+});
+
+const nunito = Nunito({
+  subsets: ['latin'],
+  variable: '--font-nunito',
+});
 
 export const metadata: Metadata = {
   title: 'Nisha Interior',
@@ -19,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn("font-sans antialiased", inter.variable)}>
+      <body className={cn("font-sans antialiased", libre_baskerville.variable, nunito.variable)}>
         <BookingModalProvider>
             {children}
         </BookingModalProvider>
