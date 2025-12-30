@@ -12,6 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useBookingModal } from '@/hooks/use-booking-modal';
 import { InteractiveImage } from '@/components/interactive-image';
 import ScrollFAQAccordion from '@/components/ui/scroll-faq-accordion';
+import { ContainerScroll, CardSticky } from '@/components/ui/cards-stack';
 
 const services = [
   {
@@ -267,35 +268,25 @@ export default function ServicesPage() {
                 We make turning your dream home into a reality a seamless and enjoyable experience.
               </p>
             </div>
-            <div className="relative grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
-               {/* Dashed Line Connector for Desktop */}
-              <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px -translate-y-1/2">
-                <svg width="100%" height="2">
-                  <line x1="0" y1="1" x2="100%" y2="1" strokeWidth="2" className="stroke-current text-border" strokeDasharray="8, 8"/>
-                </svg>
-              </div>
+            <ContainerScroll className="min-h-[400vh] space-y-8 py-12">
               {processSteps.map((step, index) => (
-                <motion.div
+                <CardSticky
                   key={step.title}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.5 }}
-                  transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
-                  className="relative flex flex-col items-center text-center z-10"
+                  index={index + 2}
+                  className="rounded-2xl border p-8 shadow-md backdrop-blur-md"
                 >
-                  <div className="relative mb-4">
-                     <div className="flex h-20 w-20 items-center justify-center rounded-full bg-background text-primary border-4 border-secondary">
-                        <step.icon className="h-8 w-8" />
-                     </div>
-                  </div>
-                  <h3 className="text-xl font-semibold font-headline text-foreground">{step.title}</h3>
-                  <p className="mt-2 text-secondary-foreground/80">{step.description}</p>
-                   <Badge variant="outline" className="mt-4 bg-background/20 border-foreground/30 text-foreground">
+                  <div className="flex items-center justify-between gap-4">
+                    <h2 className="my-6 text-2xl font-bold tracking-tighter text-foreground">
+                      {step.title}
+                    </h2>
+                     <Badge variant="outline" className="bg-background/20 border-foreground/30 text-foreground">
                         {step.duration}
                     </Badge>
-                </motion.div>
+                  </div>
+                  <p className="text-foreground/80">{step.description}</p>
+                </CardSticky>
               ))}
-            </div>
+            </ContainerScroll>
           </div>
         </motion.section>
 
