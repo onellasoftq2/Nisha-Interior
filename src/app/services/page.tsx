@@ -30,6 +30,7 @@ const services = [
     ],
     imageId: 'service-kitchens',
     cta: 'Explore Kitchen Designs',
+    href: '/services/modular-kitchens',
   },
   {
     id: 'wardrobes-storage',
@@ -47,6 +48,7 @@ const services = [
     ],
     imageId: 'service-wardrobes',
     cta: 'Discover Storage Solutions',
+    href: '/services/wardrobes-bedroom-furniture',
   },
   {
     id: 'complete-home-interiors',
@@ -64,6 +66,7 @@ const services = [
     ],
     imageId: 'service-interiors',
     cta: 'View Interior Projects',
+    href: '/services/complete-home-interiors',
   },
 ];
 
@@ -193,7 +196,7 @@ export default function ServicesPage() {
                     </div>
                     
                     <Button size="lg" variant="link" className="px-0 group text-lg" asChild>
-                        <Link href="/contact">
+                        <Link href={service.href}>
                             {service.cta}
                             <motion.span 
                                 className="inline-block ml-2"
