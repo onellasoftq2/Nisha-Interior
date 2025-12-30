@@ -90,7 +90,7 @@ export default function ExperienceCentersPage() {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="pt-24 pb-16"
+          className="pt-32 pb-24"
         >
           <div className="container px-4 md:px-6 text-center">
             <motion.h1

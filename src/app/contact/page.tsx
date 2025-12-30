@@ -36,7 +36,7 @@ export default function ContactPage() {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="py-24 md:py-32"
+          className="pt-32 pb-24"
         >
             <div className="container px-4 md:px-6 text-center">
                 <motion.h1
