@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from "react";
@@ -34,37 +35,33 @@ export default function ScrollFAQAccordion({
   const containerRef = React.useRef<HTMLDivElement>(null);
   const contentRefs = React.useRef<Map<string, HTMLDivElement>>(new Map());
 
-  // Register GSAP plugins
   React.useEffect(() => {
     if (typeof window !== "undefined") {
       gsap.registerPlugin(ScrollTrigger);
     }
   }, []);
 
-  // Set up GSAP animations
   useGSAP(() => {
     if (!containerRef.current || data.length === 0) return;
 
     ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
 
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: `+=${data.length * 200}`, // adjust spacing
-        scrub: 0.3,
-        pin: true,
-        markers: false,
-      },
-    });
+    // Set the first item as open by default
+    if (data.length > 0) {
+      setOpenItem(data[0].id.toString());
+    }
 
     data.forEach((item, index) => {
-      const contentRef = contentRefs.current.get(item.id.toString());
-      if (contentRef) {
-        tl.add(() => {
-          setOpenItem(item.id.toString());
-        }, index * 2); // spacing between triggers
-      }
+        const contentRef = contentRefs.current.get(item.id.toString());
+        if(contentRef) {
+            ScrollTrigger.create({
+                trigger: contentRef,
+                start: "top 60%", 
+                end: "bottom 40%",
+                onEnter: () => setOpenItem(item.id.toString()),
+                onEnterBack: () => setOpenItem(item.id.toString()),
+            });
+        }
     });
 
     return () => {
@@ -73,71 +70,69 @@ export default function ScrollFAQAccordion({
   }, [data]);
 
   return (
-    <div
-      ref={containerRef}
-      className={cn("max-w-3xl mx-auto text-center py-16 md:py-24 h-[150vh]", className)}
-    >
-      <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline mb-6">
-        Frequently Asked Questions
-      </h2>
+    <div className={cn("w-full py-16 md:py-24", className)}>
+        <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline mb-12">
+                Frequently Asked Questions
+            </h2>
+        </div>
       
-      <Accordion.Root type="single" collapsible value={openItem || ""}>
-        {data.map((item) => (
-          <Accordion.Item value={item.id.toString()} key={item.id} className="mb-6">
-            <Accordion.Header>
-              <Accordion.Trigger className="flex w-full items-center justify-start gap-x-4 cursor-default text-left">
-                <div
-                  className={cn(
-                    "relative flex items-center space-x-2 rounded-xl p-3 transition-colors text-lg",
-                    openItem === item.id.toString()
-                      ? "bg-primary/10 text-primary"
-                      : "bg-muted text-foreground",
-                    questionClassName
-                  )}
-                >
-                  <span className="font-medium">{item.question}</span>
-                </div>
-
-                <span
-                  className={cn(
-                    "text-muted-foreground",
-                    openItem === item.id.toString() && "text-primary"
-                  )}
-                >
-                  {openItem === item.id.toString() ? <Minus className="h-5 w-5" /> : <Plus className="h-5 w-5" />}
-                </span>
-              </Accordion.Trigger>
-            </Accordion.Header>
-
-            <Accordion.Content asChild forceMount>
-              <motion.div
-                ref={(el) => {
+      <div className="max-w-3xl mx-auto">
+        <Accordion.Root type="single" collapsible value={openItem || ""} onValueChange={setOpenItem}>
+            {data.map((item) => (
+            <Accordion.Item value={item.id.toString()} key={item.id} className="mb-6 border-b-0" ref={(el) => {
                   if (el) contentRefs.current.set(item.id.toString(), el);
-                }}
-                initial="collapsed"
-                animate={openItem === item.id.toString() ? "open" : "collapsed"}
-                variants={{
-                  open: { opacity: 1, height: "auto" },
-                  collapsed: { opacity: 0, height: 0 },
-                }}
-                transition={{ duration: 0.4 }}
-                className="overflow-hidden"
-              >
-                <div className="flex justify-start ml-7 mt-4 md:ml-16">
-                  <div
+                }}>
+                <Accordion.Header>
+                <Accordion.Trigger className="flex w-full items-center justify-between gap-x-4 cursor-pointer text-left py-2 focus:outline-none">
+                    <span
+                        className={cn(
+                            "text-lg font-medium transition-colors",
+                            openItem === item.id.toString()
+                            ? "text-primary"
+                            : "text-foreground/70 hover:text-foreground",
+                            questionClassName
+                        )}
+                    >
+                    {item.question}
+                    </span>
+
+                    <span
                     className={cn(
-                      "relative max-w-md rounded-2xl px-4 py-3 text-base text-left bg-secondary text-secondary-foreground",
-                      answerClassName
+                        "text-muted-foreground transition-transform duration-300",
+                        openItem === item.id.toString() && "text-primary rotate-45"
                     )}
-                  >
-                    {item.answer}
-                  </div>
-                </div>
-              </motion.div>
-            </Accordion.Content>
-          </Accordion.Item>
-        ))}
-      </Accordion.Root>
+                    >
+                    <Plus className="h-5 w-5" />
+                    </span>
+                </Accordion.Trigger>
+                </Accordion.Header>
+
+                <Accordion.Content asChild forceMount>
+                <motion.div
+                    initial="collapsed"
+                    animate={openItem === item.id.toString() ? "open" : "collapsed"}
+                    variants={{
+                        open: { opacity: 1, height: "auto", marginTop: "16px" },
+                        collapsed: { opacity: 0, height: 0, marginTop: "0px" },
+                    }}
+                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                    className="overflow-hidden"
+                >
+                    <div
+                        className={cn(
+                            "text-base text-left text-muted-foreground pb-4",
+                            answerClassName
+                        )}
+                        >
+                        {item.answer}
+                    </div>
+                </motion.div>
+                </Accordion.Content>
+            </Accordion.Item>
+            ))}
+        </Accordion.Root>
+      </div>
     </div>
   );
 }
