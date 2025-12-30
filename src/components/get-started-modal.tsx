@@ -28,7 +28,7 @@ export const GetStartedModalProvider = ({ children }: { children: React.ReactNod
         <Dialog open={showModal} onOpenChange={handleClose}>
         <AnimatePresence>
         {showModal && (
-            <DialogContent className="max-w-md p-0 border-0 shadow-2xl bg-background overflow-hidden" asChild>
+            <DialogContent className="max-w-md p-0 border-0 shadow-2xl bg-background overflow-hidden">
                  <motion.div
                     variants={modalVariants}
                     initial="hidden"
