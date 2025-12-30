@@ -10,6 +10,7 @@ import { Check, DraftingCompass, Factory, Handshake, MessagesSquare, Sparkles, U
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useGetStartedModal } from '@/hooks/use-get-started-modal';
 import { InteractiveImage } from '@/components/interactive-image';
+import Image from 'next/image';
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 16 },
@@ -160,9 +161,6 @@ export default function ModularKitchensPage() {
                     <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl font-headline text-secondary-foreground">
                         Layouts for Every Space
                     </h2>
-                    <p className="mt-4 max-w-2xl mx-auto text-lg text-secondary-foreground/80">
-                        We design kitchens to perfectly suit your room's shape and your family's workflow.
-                    </p>
                 </motion.div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                     {layouts.map(layout => {
@@ -171,13 +169,13 @@ export default function ModularKitchensPage() {
                             <motion.div key={layout.name} variants={itemVariants}>
                                 <Card className="h-full text-center bg-background/80 hover:bg-background transition-colors duration-300 overflow-hidden group">
                                     {image && (
-                                        <div className="aspect-video">
-                                            <InteractiveImage
+                                        <div className="aspect-video overflow-hidden">
+                                            <Image
                                                 src={image.imageUrl}
                                                 alt={image.description}
                                                 width={600}
                                                 height={400}
-                                                className="w-full h-full"
+                                                className="w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
                                                 data-ai-hint={image.imageHint}
                                             />
                                         </div>
@@ -307,5 +305,3 @@ export default function ModularKitchensPage() {
     </div>
   );
 }
-
-    
