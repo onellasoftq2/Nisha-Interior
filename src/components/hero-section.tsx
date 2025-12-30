@@ -4,10 +4,10 @@ import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from './ui/button';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { useRouter } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import Link from 'next/link';
 import { renderCanvas } from '@/components/ui/canvas';
+import { useGetStartedModal } from '@/hooks/use-get-started-modal';
 
 const heroImages = PlaceHolderImages.filter((img) =>
   img.id.startsWith('hero-background')
@@ -15,7 +15,7 @@ const heroImages = PlaceHolderImages.filter((img) =>
 
 const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const router = useRouter();
+  const { setShowGetStartedModal } = useGetStartedModal();
 
   useEffect(() => {
     renderCanvas();
@@ -118,8 +118,8 @@ const HeroSection = () => {
               className="mt-10 flex flex-col sm:flex-row items-start justify-start gap-4"
               variants={itemVariants}
             >
-              <Button asChild size="lg" className="w-full sm:w-auto">
-                <Link href="/contact">Get Free Consultation</Link>
+              <Button size="lg" className="w-full sm:w-auto" onClick={() => setShowGetStartedModal(true)}>
+                Get Free Consultation
               </Button>
               <Button asChild size="lg" variant="outline" className="text-white bg-transparent border-white/80 hover:bg-white hover:text-black w-full sm:w-auto">
                  <Link href="/showrooms">Visit Experience Centers</Link>

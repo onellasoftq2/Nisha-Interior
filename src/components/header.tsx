@@ -110,7 +110,7 @@ const Header = () => {
           </div>
            <div className="hidden md:flex items-center gap-2">
              <Button onClick={() => setShowGetStartedModal(true)} variant="default" className="text-base">
-                <Sparkles className="mr-2" /> Get Started
+                Get Started
              </Button>
            </div>
         </div>
