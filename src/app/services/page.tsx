@@ -276,11 +276,11 @@ export default function ServicesPage() {
                     index={index + 2}
                     className="rounded-2xl border p-8 shadow-md backdrop-blur-md bg-background/80"
                   >
-                    <div className="flex items-center justify-between gap-4">
-                      <h2 className="my-6 text-2xl font-bold tracking-tighter text-foreground">
+                    <div className="flex items-center justify-between gap-4 py-6">
+                      <h2 className="text-2xl font-bold tracking-tighter text-foreground">
                         {step.title}
                       </h2>
-                      <Badge variant="outline" className="bg-background/20 border-foreground/30 text-foreground">
+                      <Badge variant="outline" className="bg-background/20 border-foreground/30 text-foreground flex-shrink-0">
                           {step.duration}
                       </Badge>
                     </div>
