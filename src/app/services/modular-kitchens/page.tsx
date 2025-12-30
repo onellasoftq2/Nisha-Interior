@@ -30,16 +30,16 @@ const itemVariants = {
 };
 
 const benefits = [
-    { icon: Ruler, title: "Perfect Fit", description: "Factory-made to your exact room dimensions, ensuring no wasted space." },
-    { icon: Gem, title: "Unmatched Durability", description: "High-grade, moisture-resistant plywood and premium hardware for lasting quality." },
-    { icon: Factory, title: "Factory-Direct Price", description: "Superior quality at a fair, transparent price by controlling the entire process." },
+    { icon: Ruler, title: "Perfect Fit", description: "Factory-made to your exact room dimensions." },
+    { icon: Gem, title: "Unmatched Durability", description: "High-grade, moisture-resistant materials." },
+    { icon: Factory, title: "Factory-Direct Price", description: "Superior quality at a fair, transparent price." },
 ];
 
 const layouts = [
-    { name: "L-Shaped", description: "Efficient for corner spaces with ample counter space." },
-    { name: "U-Shaped", description: "Maximum storage and countertop area for larger kitchens." },
-    { name: "Straight Line", description: "Sleek and minimalist, ideal for open-plan living." },
-    { name: "Parallel", description: "Highly efficient layout for long, narrow kitchens." },
+    { name: "L-Shaped", imageId: "layout-l-shaped" },
+    { name: "U-Shaped", imageId: "layout-u-shaped" },
+    { name: "Straight Line", imageId: "layout-straight" },
+    { name: "Parallel", imageId: "layout-parallel" },
 ];
 
 const processSteps = [
@@ -164,19 +164,31 @@ export default function ModularKitchensPage() {
                         We design kitchens to perfectly suit your room's shape and your family's workflow.
                     </p>
                 </motion.div>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
-                    {layouts.map(layout => (
-                        <motion.div key={layout.name} variants={itemVariants}>
-                            <Card className="h-full text-center bg-background/80 hover:bg-background transition-colors duration-300">
-                                <CardHeader>
-                                    <CardTitle className="font-headline text-xl">{layout.name}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                    <p className="text-muted-foreground">{layout.description}</p>
-                                </CardContent>
-                            </Card>
-                        </motion.div>
-                    ))}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    {layouts.map(layout => {
+                        const image = PlaceHolderImages.find(img => img.id === layout.imageId);
+                        return (
+                            <motion.div key={layout.name} variants={itemVariants}>
+                                <Card className="h-full text-center bg-background/80 hover:bg-background transition-colors duration-300 overflow-hidden group">
+                                    {image && (
+                                        <div className="aspect-video">
+                                            <InteractiveImage
+                                                src={image.imageUrl}
+                                                alt={image.description}
+                                                width={600}
+                                                height={400}
+                                                className="w-full h-full"
+                                                data-ai-hint={image.imageHint}
+                                            />
+                                        </div>
+                                    )}
+                                    <CardHeader>
+                                        <CardTitle className="font-headline text-xl group-hover:text-primary transition-colors">{layout.name}</CardTitle>
+                                    </CardHeader>
+                                </Card>
+                            </motion.div>
+                        );
+                    })}
                 </div>
             </div>
         </motion.section>

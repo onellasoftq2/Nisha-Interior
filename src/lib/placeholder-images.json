@@ -75,7 +75,7 @@
     {
       "id": "highlight-manufacturing",
       "description": "A modern furniture factory with precision cutting machinery.",
-      "imageUrl": "https://images.unsplash.com/photo-1562327527-e00512f43854?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmdXJuaXR1cmUlMjBtYW51ZmFjdHVyaW5nfGVufDB8fHx8fDE3MjE5MzAyNTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1562327527-e00512f43854?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxmdXJuaXR1cmUlMjBtYW51ZmFjdHVyaW5nfGVufDB8fHx8fDE3MjE5MzA5MjJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "furniture manufacturing"
     },
     {
@@ -161,6 +161,30 @@
       "description": "A fully decorated bedroom with bed, wardrobe, and personal decor details.",
       "imageUrl": "https://images.unsplash.com/photo-1571575173723-8316361a3b44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBiZWRyb29tfGVufDB8fHx8fDE3MjE5MzA4NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "luxury bedroom"
+    },
+    {
+      "id": "layout-l-shaped",
+      "description": "A modern L-shaped kitchen layout, maximizing corner space.",
+      "imageUrl": "https://images.unsplash.com/photo-1633533439405-a757e7934449?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsLXNoYXBlZCUyMGtpdGNoZW58ZW58MHx8fHwxNzIyNTQzNzQwfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "L-shaped kitchen"
+    },
+    {
+      "id": "layout-u-shaped",
+      "description": "A spacious U-shaped kitchen with ample counter and storage space.",
+      "imageUrl": "https://images.unsplash.com/photo-1600585152225-3579fe9d7ae6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx1LXNoYXBlZCUyMGtpdGNoZW58ZW58MHx8fHwxNzIyNTQzNzY3fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "U-shaped kitchen"
+    },
+    {
+      "id": "layout-straight",
+      "description": "A sleek, single-wall kitchen layout, perfect for open-plan living.",
+      "imageUrl": "https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzaW5nbGUtd2FsbCUyMGtpdGNoZW58ZW58MHx8fHwxNzIyNTQzNzkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "single-wall kitchen"
+    },
+    {
+      "id": "layout-parallel",
+      "description": "An efficient parallel or galley kitchen layout for a narrow space.",
+      "imageUrl": "https://images.unsplash.com/photo-1631758504368-7a87a8fede86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxnYWxsZXklMjBraXRjaGVufGVufDB8fHx8fDE3MjI1NDM4MTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "galley kitchen"
     }
   ]
 }
