@@ -49,7 +49,7 @@ const ComparisonSlider = ({ room }: { room: RoomType }) => {
   if (!beforeImage || !afterImage) {
     return <div className="aspect-video w-full bg-muted rounded-2xl flex items-center justify-center"><p>Images not found.</p></div>;
   }
-  
+
   return (
     <div
       className="relative aspect-video w-full max-w-6xl h-full overflow-hidden rounded-2xl select-none cursor-ew-resize"
@@ -77,7 +77,7 @@ const ComparisonSlider = ({ room }: { room: RoomType }) => {
         className="absolute left-0 top-0 w-full h-full object-cover"
         data-ai-hint={afterImage.imageHint}
       />
-      
+
       {/* Before Image (Top Layer, Clipped) */}
       <div
         className="absolute left-0 top-0 w-full h-full overflow-hidden"
@@ -111,16 +111,16 @@ const ComparisonSlider = ({ room }: { room: RoomType }) => {
 
 const TransformationSection = () => {
   const [activeTab, setActiveTab] = useState<RoomType>('living');
-  
+
   return (
     <div className="w-full py-20 lg:py-24 bg-secondary">
       <div className="container mx-auto">
         <div className="flex flex-col gap-8">
           <div className="text-center">
-            <h2 className="text-3xl md:text-5xl tracking-tighter font-semibold font-headline text-secondary-foreground">
+            <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl font-headline">
               From Empty to Elevated
             </h2>
-            <p className="mt-4 text-lg max-w-2xl mx-auto leading-relaxed tracking-tight text-secondary-foreground/80">
+            <p className="mt-3 max-w-2xl mx-auto text-md text-muted-foreground">
               Drag the slider to see how thoughtful design and craftsmanship transform everyday spaces.
             </p>
           </div>
@@ -131,15 +131,15 @@ const TransformationSection = () => {
               <TabsTrigger value="bedroom">Bedroom</TabsTrigger>
             </TabsList>
             <div className="pt-8 w-full flex justify-center">
-                <TabsContent value="living" forceMount={true} className={cn("w-full", activeTab !== 'living' && 'hidden')}>
-                    <ComparisonSlider room="living" />
-                </TabsContent>
-                <TabsContent value="kitchen" forceMount={true} className={cn("w-full", activeTab !== 'kitchen' && 'hidden')}>
-                    <ComparisonSlider room="kitchen" />
-                </TabsContent>
-                <TabsContent value="bedroom" forceMount={true} className={cn("w-full", activeTab !== 'bedroom' && 'hidden')}>
-                    <ComparisonSlider room="bedroom" />
-                </TabsContent>
+              <TabsContent value="living" forceMount={true} className={cn("w-full", activeTab !== 'living' && 'hidden')}>
+                <ComparisonSlider room="living" />
+              </TabsContent>
+              <TabsContent value="kitchen" forceMount={true} className={cn("w-full", activeTab !== 'kitchen' && 'hidden')}>
+                <ComparisonSlider room="kitchen" />
+              </TabsContent>
+              <TabsContent value="bedroom" forceMount={true} className={cn("w-full", activeTab !== 'bedroom' && 'hidden')}>
+                <ComparisonSlider room="bedroom" />
+              </TabsContent>
             </div>
           </Tabs>
         </div>

@@ -99,19 +99,19 @@
     {
       "id": "transform-living-sofa",
       "description": "A modern living room with a sleek, comfortable sofa added.",
-      "imageUrl": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzb2ZhJTIwaW4lMjBsaXZpbmclMjByb29tfGVufDB8fHx8fDE3MjI1Mzg3MzJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/why-choose-own-manufacturing.png",
       "imageHint": "sofa living room"
     },
     {
       "id": "transform-living-storage",
       "description": "A living room with a sofa and a stylish, custom media console.",
-      "imageUrl": "https://images.unsplash.com/photo-1611210133488-832675a3a4e9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsaXZpbmclMjByb29tJTIwdHYlMjBzdG9yYWdlfGVufDB8fHx8fDE3MjI1Mzg3NjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/why-choose-custom-furniture.png",
       "imageHint": "living room storage"
     },
     {
       "id": "transform-living-decor",
       "description": "A fully furnished living room with sofa, storage, lighting, and decor.",
-      "imageUrl": "https://images.unsplash.com/photo-1618220179428-22790b461013?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxsaXZpbmclMjByb29tfGVufDB8fHx8MTc2NjMxMjcyNXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/why-choose-showroom.png",
       "imageHint": "living room"
     },
     {

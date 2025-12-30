@@ -113,24 +113,24 @@ const TestimonialsColumn = (props: {
                   tabIndex={index === 1 ? -1 : 0}
                   className="group w-[320px] [perspective:1000px] min-h-[300px]"
                 >
-                  <div className="relative flex flex-col h-full rounded-[50px] bg-gradient-to-br from-secondary/40 to-background/30 shadow-2xl transition-all duration-500 ease-in-out [transform-style:preserve-3d] group-hover:[box-shadow:rgba(0,0,0,0.3)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px] group-hover:[transform:rotate3d(1,1,0,15deg)]">
-                    <div className="absolute inset-2 rounded-[40px] border-b border-l border-white/20 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-sm [transform-style:preserve-3d] [transform:translate3d(0,0,25px)]"></div>
-                    
+                  <div className="relative flex flex-col h-full rounded-[10px] bg-gradient-to-br from-secondary/40 to-background/30 shadow-xl transition-all duration-500 ease-in-out [transform-style:preserve-3d] group-hover:[box-shadow:rgba(0,0,0,0.3)_30px_50px_25px_-40px,rgba(0,0,0,0.1)_0px_25px_30px_0px] group-hover:[transform:rotate3d(1,1,0,15deg)]">
+                    <div className="absolute inset-2 rounded-[20px] border-b border-l border-white/20 bg-gradient-to-b from-white/10 to-white/5 backdrop-blur-sm [transform-style:preserve-3d] [transform:translate3d(0,0,25px)]"></div>
+
                     <div className="p-8 flex flex-col flex-1 [transform-style:preserve-3d] [transform:translate3d(0,0,26px)]">
                       <div className="relative flex-1">
-                        <Quote className="absolute -top-2 -left-2 w-8 h-8 text-primary/70" />
-                        <p className="text-foreground/80 text-lg leading-relaxed pt-8">
+                        <Quote className="absolute -top-2 -left-2 w-5 h-5 text-primary/70" />
+                        <p className="text-foreground/80 text-sm leading-relaxed pt-4">
                           {quote}
                         </p>
                       </div>
-                      <footer className="mt-auto flex-shrink-0 pt-8">
+                      <footer className="mt-auto flex-shrink-0 pt-4">
                         <div className="flex flex-col">
-                           <cite className="font-bold not-italic tracking-tight leading-5 text-foreground">
-                                {name}
-                           </cite>
-                           <span className="text-sm leading-5 tracking-tight text-muted-foreground mt-0.5">
-                                {project} &bull; {location}
-                           </span>
+                          <cite className="font-bold not-italic tracking-tight leading-5 text-foreground">
+                            {name}
+                          </cite>
+                          <span className="text-sm leading-5 tracking-tight text-muted-foreground mt-0.5">
+                            {project} &bull; {location}
+                          </span>
                         </div>
                       </footer>
                     </div>
@@ -147,11 +147,11 @@ const TestimonialsColumn = (props: {
 
 export default function TestimonialsSection() {
   return (
-    <section 
+    <section
       aria-labelledby="testimonials-heading"
       className="bg-background py-16 md:py-24 relative overflow-hidden"
     >
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 16 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
@@ -159,15 +159,15 @@ export default function TestimonialsSection() {
         className="container px-4 z-10 mx-auto"
       >
         <div className="flex flex-col items-center justify-center max-w-2xl mx-auto mb-16 text-center">
-          <h2 id="testimonials-heading" className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline transition-colors">
+          <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl font-headline">
             Homes We’ve Been Trusted With
           </h2>
-          <p className="text-center mt-4 text-muted-foreground text-lg leading-relaxed transition-colors">
+          <p className="mt-3 max-w-2xl mx-auto text-md text-muted-foreground">
             What our clients say about designing and building their homes with us.
           </p>
         </div>
 
-        <div 
+        <div
           className="flex justify-center gap-8 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] max-h-[740px] overflow-hidden"
           role="region"
           aria-label="Scrolling Testimonials"

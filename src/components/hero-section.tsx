@@ -101,28 +101,28 @@ const HeroSection = () => {
             animate="visible"
           >
             <motion.h1
-              className="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl lg:text-7xl font-headline leading-none md:leading-[1.05]"
+              className="text-4xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl font-headline leading-none md:leading-[1.05]"
               variants={itemVariants}
             >
-              <span>Designed.</span><br/>
-              <span className="text-white/80">Built In-House.</span><br/>
+              <span>Designed.</span><br />
+              <span className="text-white/80">Built In-House.</span><br />
               <span>Lived In.</span>
             </motion.h1>
             <motion.p
-              className="mt-6 max-w-xl text-lg leading-8 text-gray-200/90"
+              className="mt-6 max-w-xl text-md leading-8 text-gray-200/90"
               variants={itemVariants}
             >
-              Custom interiors crafted in our own factory — designed for real homes and real living.
+              Custom interiors crafted in our own factory & designed for real homes.
             </motion.p>
             <motion.div
-              className="mt-10 flex flex-col sm:flex-row items-start justify-start gap-4"
+              className="mt-6 flex flex-col sm:flex-row items-start justify-start gap-4"
               variants={itemVariants}
             >
               <Button size="lg" className="w-full sm:w-auto" onClick={() => setShowGetStartedModal(true)}>
                 Get Free Consultation
               </Button>
               <Button asChild size="lg" variant="outline" className="text-white bg-transparent border-white/80 hover:bg-white hover:text-black w-full sm:w-auto">
-                 <Link href="/showrooms">Visit Experience Centers</Link>
+                <Link href="/showrooms">Visit Experience Centers</Link>
               </Button>
             </motion.div>
           </motion.div>

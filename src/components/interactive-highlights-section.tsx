@@ -76,10 +76,10 @@ const InteractiveHighlightsSection = () => {
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           className="text-center mb-12 md:mb-16"
         >
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
+          <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl font-headline">
             Why Choose Nisha Interior?
           </h2>
-          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+          <p className="mt-3 max-w-2xl mx-auto text-md text-muted-foreground">
             The four key pillars that define our commitment to excellence.
           </p>
         </motion.div>

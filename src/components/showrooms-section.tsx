@@ -35,28 +35,28 @@ const showrooms = [
 const ShowroomsSection = () => {
   return (
     <section id="showrooms" className="bg-background py-16 md:py-24">
-        <div className="container px-4 md:px-6">
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
-                Visit Our Experience Centers
-              </h2>
-              <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-                Experience our quality and designs in person. Find the Nisha Interior center nearest to you.
-              </p>
-            </div>
-            <div className="divide-y border divide-border border-border rounded-lg overflow-hidden shadow-lg">
-              <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
-                {showrooms.slice(0, 2).map(showroom => (
-                  <ShowroomBox key={showroom.name} {...showroom} />
-                ))}
-              </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
-                {showrooms.slice(2, 4).map(showroom => (
-                  <ShowroomBox key={showroom.name} {...showroom} />
-                ))}
-              </div>
-            </div>
+      <div className="container px-4 md:px-6">
+        <div className="text-center mb-12 md:mb-16">
+          <h2 className="text-xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl font-headline">
+            Visit Our Experience Centers
+          </h2>
+          <p className="mt-3 max-w-2xl mx-auto text-md text-muted-foreground">
+            Experience our quality and designs in person. Find the Nisha Interior center nearest to you.
+          </p>
         </div>
+        <div className="divide-y border divide-border border-border rounded-lg overflow-hidden shadow-lg">
+          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
+            {showrooms.slice(0, 2).map(showroom => (
+              <ShowroomBox key={showroom.name} {...showroom} />
+            ))}
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
+            {showrooms.slice(2, 4).map(showroom => (
+              <ShowroomBox key={showroom.name} {...showroom} />
+            ))}
+          </div>
+        </div>
+      </div>
     </section>
   );
 };
@@ -64,8 +64,8 @@ const ShowroomsSection = () => {
 const ShowroomBox = ({ name, address, phone, mapLink }: { name: string; address: string; phone: string; mapLink: string }) => {
   return (
     <div className="relative flex flex-col p-8 bg-background">
-      <h3 className="text-2xl font-semibold font-headline text-foreground">{name}</h3>
-      <p className="text-muted-foreground mt-1">{address}</p>
+      <h3 className="text-xl font-semibold font-headline text-foreground">{name}</h3>
+      <p className="text-muted-foreground mt-1 text-sm">{address}</p>
       <div className="flex-1" />
       <div className="grid grid-cols-2 divide-x divide-border border border-border rounded-md overflow-hidden mt-6">
         <LinkBox Icon={Phone} text="Call Now" href={`tel:${phone}`} />
@@ -155,12 +155,12 @@ const LinkBox = ({ Icon, href, text }: LinkBoxProps) => {
       rel="noopener noreferrer"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative grid h-20 w-full place-content-center text-foreground bg-background"
+      className="relative grid h-10 w-full place-content-center text-foreground bg-background"
     >
-        <div className="flex items-center gap-3">
-            <Icon className="text-xl" />
-            <span className="text-lg font-medium">{text}</span>
-        </div>
+      <div className="flex items-center gap-3">
+        <Icon className="text-sm" />
+        <span className="text-sm font-medium">{text}</span>
+      </div>
 
       <div
         ref={scope}
@@ -168,8 +168,8 @@ const LinkBox = ({ Icon, href, text }: LinkBoxProps) => {
         className="absolute inset-0 grid place-content-center bg-primary text-primary-foreground"
       >
         <div className="flex items-center gap-3">
-            <Icon className="text-xl" />
-            <span className="text-lg font-medium">{text}</span>
+          <Icon className="text-sm" />
+          <span className="text-sm font-medium">{text}</span>
         </div>
       </div>
     </a>
