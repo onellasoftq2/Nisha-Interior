@@ -30,38 +30,38 @@ const itemVariants = {
 };
 
 const benefits = [
-    { icon: Ruler, title: "Millimeter-Perfect Fit", description: "Our factory-made kitchens are crafted to your exact room dimensions, ensuring no wasted space." },
-    { icon: Gem, title: "Unmatched Durability", description: "We use only high-grade, moisture-resistant plywood and premium hardware for lasting quality." },
-    { icon: Factory, title: "Factory-Direct Advantage", description: "By controlling the entire process, we deliver superior quality at a fair, transparent price." },
+    { icon: Ruler, title: "Perfect Fit", description: "Factory-made to your exact room dimensions, ensuring no wasted space." },
+    { icon: Gem, title: "Unmatched Durability", description: "High-grade, moisture-resistant plywood and premium hardware for lasting quality." },
+    { icon: Factory, title: "Factory-Direct Price", description: "Superior quality at a fair, transparent price by controlling the entire process." },
 ];
 
 const layouts = [
-    { name: "L-Shaped", description: "Ideal for corner spaces, offering an efficient workflow and ample counter space." },
-    { name: "U-Shaped", description: "Provides maximum storage and countertop area, perfect for larger kitchens." },
-    { name: "Straight Line", description: "Sleek and minimalist, suitable for smaller homes and open-plan living." },
-    { name: "Parallel", description: "A highly efficient layout for long, narrow kitchens, with two counters facing each other." },
+    { name: "L-Shaped", description: "Efficient for corner spaces with ample counter space." },
+    { name: "U-Shaped", description: "Maximum storage and countertop area for larger kitchens." },
+    { name: "Straight Line", description: "Sleek and minimalist, ideal for open-plan living." },
+    { name: "Parallel", description: "Highly efficient layout for long, narrow kitchens." },
 ];
 
 const processSteps = [
     {
       icon: MessagesSquare,
       title: "1. Design Consultation",
-      description: "We work with you to understand your lifestyle, storage needs, and style preferences to create the perfect layout.",
+      description: "We work with you to understand your needs and create the perfect layout.",
     },
     {
       icon: DraftingCompass,
       title: "2. Material Selection",
-      description: "Choose from hundreds of finishes, countertop materials, and hardware options at our experience centers.",
+      description: "Choose from hundreds of finishes and materials at our experience centers.",
     },
     {
       icon: Factory,
       title: "3. Precision Manufacturing",
-      description: "Your design is sent to our factory, where we use advanced machinery to craft each component to perfection.",
+      description: "Your design is crafted to perfection using advanced machinery in our factory.",
     },
     {
       icon: Handshake,
       title: "4. Flawless Installation",
-      description: "Our professional team installs your kitchen with meticulous care, followed by a final quality check and handover.",
+      description: "Our professional team installs your kitchen with meticulous care and a final quality check.",
     }
 ];
 
@@ -69,7 +69,6 @@ export default function ModularKitchensPage() {
   const { setShowGetStartedModal } = useGetStartedModal();
   const heroImage = PlaceHolderImages.find(img => img.id === 'service-kitchens');
   const materialsImage = PlaceHolderImages.find(img => img.id === 'factory-materials');
-  const factoryImage = PlaceHolderImages.find(img => img.id === 'customization-image');
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -99,7 +98,7 @@ export default function ModularKitchensPage() {
               The Heart of Your Home, Reimagined
             </motion.h1>
             <motion.p variants={itemVariants} className="mt-6 max-w-2xl mx-auto text-lg text-white/90">
-              Discover modular kitchens that blend stunning aesthetics with unparalleled functionality, crafted just for you in our own factory.
+              Discover modular kitchens that blend stunning aesthetics with unparalleled functionality.
             </motion.p>
             <motion.div variants={itemVariants} className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
                <Button size="lg" onClick={() => setShowGetStartedModal(true)}>
@@ -127,7 +126,7 @@ export default function ModularKitchensPage() {
                 Engineered for Life, Designed for You
               </h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-                Our kitchens are more than just cabinets and countertops. They are complete systems built to enhance your daily life.
+                Our kitchens are complete systems built to enhance your daily life.
               </p>
             </motion.div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -197,7 +196,7 @@ export default function ModularKitchensPage() {
                   A World of Materials & Finishes
                 </h2>
                 <p className="text-lg text-muted-foreground">
-                  Your kitchen should be a reflection of your taste. Choose from a vast library of laminates, veneers, lacquers, and countertops to create a look that is uniquely yours.
+                  Your kitchen should reflect your taste. Choose from a vast library of laminates, veneers, and countertops to create a look that is uniquely yours.
                 </p>
                 <ul className="space-y-3 text-muted-foreground">
                     <li className="flex items-start gap-3"><Check className="h-6 w-6 text-primary flex-shrink-0 mt-1" /><span>Hundreds of laminate shades and textures.</span></li>
@@ -227,55 +226,13 @@ export default function ModularKitchensPage() {
           </div>
         </motion.section>
 
-        {/* Smart Storage Section */}
-         <motion.section
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          variants={sectionVariants}
-          className="py-16 md:py-24 bg-secondary"
-        >
-          <div className="container px-4 md:px-6">
-            <div className="grid md:grid-cols-2 items-center gap-16">
-               <motion.div variants={itemVariants} className="space-y-6 md:order-last">
-                <h2 className="text-3xl font-semibold tracking-tight text-secondary-foreground sm:text-4xl font-headline">
-                  Intelligent Storage, Effortless Access
-                </h2>
-                <p className="text-lg text-secondary-foreground/80">
-                  A great kitchen isn't just about looks—it's about how it works. We integrate clever accessories to make your kitchen storage intuitive and ergonomic.
-                </p>
-                <div className="grid grid-cols-2 gap-x-6 gap-y-4 text-secondary-foreground/90">
-                    <div className="flex items-center gap-3"><Layers className="h-5 w-5 text-primary"/><span>Pantry Units</span></div>
-                    <div className="flex items-center gap-3"><Layers className="h-5 w-5 text-primary"/><span>Corner Carousels</span></div>
-                    <div className="flex items-center gap-3"><Layers className="h-5 w-5 text-primary"/><span>Drawer Organizers</span></div>
-                    <div className="flex items-center gap-3"><Layers className="h-5 w-5 text-primary"/><span>Bottle Pull-outs</span></div>
-                    <div className="flex items-center gap-3"><Layers className="h-5 w-5 text-primary"/><span>Under-Sink Units</span></div>
-                    <div className="flex items-center gap-3"><Layers className="h-5 w-5 text-primary"/><span>Appliance Garages</span></div>
-                </div>
-              </motion.div>
-              <div className="aspect-video md:aspect-[4/3]">
-                {heroImage && (
-                   <InteractiveImage
-                        src="https://images.unsplash.com/photo-1578899952136-e7ebd1290391?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxraXRjaGVuJTIwc3RvcmFnZXxlbnwwfHx8fDE3MjI1NDQyODV8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                        alt="A well-organized kitchen drawer with smart storage solutions"
-                        width={800}
-                        height={600}
-                        className="w-full h-full"
-                        data-ai-hint="kitchen storage"
-                    />
-                )}
-              </div>
-            </div>
-          </div>
-        </motion.section>
-
         {/* Process Section */}
         <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={sectionVariants}
-          className="py-16 md:py-24"
+          className="py-16 md:py-24 bg-secondary"
         >
           <div className="container px-4 md:px-6">
              <motion.div variants={itemVariants} className="text-center mb-16">
@@ -283,7 +240,7 @@ export default function ModularKitchensPage() {
                 Our Four-Step Kitchen Journey
               </h2>
               <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-                From first sketch to final installation, our process is designed to be simple, transparent, and exciting.
+                From first sketch to final installation, our process is simple, transparent, and exciting.
               </p>
             </motion.div>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12">
@@ -306,43 +263,6 @@ export default function ModularKitchensPage() {
           </div>
         </motion.section>
 
-        {/* Factory Advantage */}
-         <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={sectionVariants}
-            className="py-16 md:py-24 bg-secondary"
-        >
-            <div className="container px-4 md:px-6">
-                 <div className="grid md:grid-cols-2 items-center gap-16">
-                     <motion.div variants={itemVariants} className="space-y-6">
-                        <h2 className="text-3xl font-semibold tracking-tight text-secondary-foreground sm:text-4xl font-headline">
-                            The Factory Advantage
-                        </h2>
-                        <p className="text-lg text-secondary-foreground/80">
-                            Owning our factory means we are not just designers; we are makers. This allows us to maintain the highest quality standards, offer extensive customization, and ensure your kitchen is delivered on time and on budget.
-                        </p>
-                        <Button asChild size="lg">
-                            <Link href="/factory">Learn About Our Process</Link>
-                        </Button>
-                    </motion.div>
-                     <div className="aspect-video md:aspect-[4/3]">
-                        {factoryImage && (
-                        <InteractiveImage
-                            src={factoryImage.imageUrl}
-                            alt={factoryImage.description}
-                            width={800}
-                            height={600}
-                            className="w-full h-full"
-                            data-ai-hint={factoryImage.imageHint}
-                        />
-                        )}
-                    </div>
-                </div>
-            </div>
-        </motion.section>
-
         {/* Closing CTA */}
         <motion.section
             initial="hidden"
@@ -356,7 +276,7 @@ export default function ModularKitchensPage() {
                     <CardHeader className="p-0">
                         <motion.h2 variants={itemVariants} className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">Ready to Cook Up Your Dream Kitchen?</motion.h2>
                         <motion.p variants={itemVariants} className="mt-4 text-lg text-muted-foreground max-w-xl mx-auto">
-                            Let's talk about the possibilities. Book a free design consultation today to get a personalized quote and 3D designs.
+                            Let's talk possibilities. Book a free design consultation to get a personalized quote and 3D designs.
                         </motion.p>
                     </CardHeader>
                     <CardContent className="p-0 mt-8">
@@ -375,3 +295,5 @@ export default function ModularKitchensPage() {
     </div>
   );
 }
+
+    
