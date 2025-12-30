@@ -54,7 +54,7 @@ const InteractiveHighlightsSection = () => {
     inactive: { color: 'hsl(var(--muted-foreground))' },
     active: { color: 'hsl(var(--foreground))' },
   };
-  
+
   const contentVariants = {
     hidden: { opacity: 0, y: 10, height: 0 },
     visible: { opacity: 1, y: 0, height: 'auto', transition: { duration: 0.4, ease: 'easeOut' } },
@@ -68,20 +68,20 @@ const InteractiveHighlightsSection = () => {
 
   return (
     <section id="about" className="bg-background py-16 md:py-24">
-      <div className="container px-4 md:px-6">
-        <motion.div 
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            className="text-center mb-12 md:mb-16"
+      <div className="w-full px-4 sm:max-w-[700px] sm:mx-auto sm:px-0">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-12 md:mb-16"
         >
-            <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
-              Why Choose Nisha Interior?
-            </h2>
-            <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
-              The four key pillars that define our commitment to excellence.
-            </p>
+          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl font-headline">
+            Why Choose Nisha Interior?
+          </h2>
+          <p className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground">
+            The four key pillars that define our commitment to excellence.
+          </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-start">
           {/* Left Side - Titles */}
@@ -90,7 +90,7 @@ const InteractiveHighlightsSection = () => {
               <motion.div
                 key={highlight.id}
                 onViewportEnter={() => setActiveIndex(index)}
-                viewport={{ amount: 0.5, root: null }}
+                viewport={{ amount: 0.5 }}
                 className="relative cursor-default p-4 rounded-lg h-[18rem] md:h-[24rem] flex flex-col justify-center"
               >
                 <motion.h3
@@ -98,21 +98,21 @@ const InteractiveHighlightsSection = () => {
                   variants={titleVariants}
                   animate={activeIndex === index ? 'active' : 'inactive'}
                   initial={false}
-                  transition={{duration: 0.3}}
+                  transition={{ duration: 0.3 }}
                 >
                   {highlight.title}
                 </motion.h3>
-                 <AnimatePresence mode="wait">
-                    <motion.div 
-                      className="overflow-hidden"
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: activeIndex === index ? 'auto' : 0, opacity: activeIndex === index ? 1 : 0 }}
-                      transition={{ duration: 0.4, ease: 'easeOut' }}
-                    >
-                       <p className="text-muted-foreground mt-2 pr-4">
-                          {highlight.description}
-                        </p>
-                    </motion.div>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    className="overflow-hidden"
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: activeIndex === index ? 'auto' : 0, opacity: activeIndex === index ? 1 : 0 }}
+                    transition={{ duration: 0.4, ease: 'easeOut' }}
+                  >
+                    <p className="text-muted-foreground mt-2 pr-4">
+                      {highlight.description}
+                    </p>
+                  </motion.div>
                 </AnimatePresence>
                 {activeIndex === index && (
                   <motion.div
@@ -126,23 +126,23 @@ const InteractiveHighlightsSection = () => {
           </div>
 
           {/* Right Side - Image */}
-          <div className="hidden md:block sticky top-24 h-[calc(100vh-12rem)] min-h-[500px]">
-            <div className="relative w-full h-full">
+          <div className="hidden md:block sticky top-24 h-[330px]">
+            <div className="relative w-[320px] h-[330px]">
               {imageLayers.map((image, index) => (
                 <motion.div
                   key={image.id}
-                  className="absolute inset-0 w-full h-full"
+                  className="absolute inset-0 w-[320px] h-[330px]"
                   variants={imageVariants}
                   initial="hidden"
                   animate={index <= activeIndex ? 'visible' : 'hidden'}
                 >
-                   <InteractiveImage
-                      src={image.imageUrl}
-                      alt={image.description}
-                      width={800}
-                      height={1000}
-                      className="w-full h-full"
-                      data-ai-hint={image.imageHint}
+                  <InteractiveImage
+                    src={image.imageUrl}
+                    alt={image.description}
+                    width={320}
+                    height={330}
+                    className="w-[320px] h-[330px] object-cover"
+                    data-ai-hint={image.imageHint}
                   />
                 </motion.div>
               ))}

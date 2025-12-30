@@ -3,19 +3,19 @@
     {
       "id": "hero-background",
       "description": "A dark, cinematic, and modern living room interior.",
-      "imageUrl": "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsaXZpbmclMjByb29tJTIwaW50ZXJpb3J8ZW58MHx8fHwxNzIxOTMwNzUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/hero-living-room.png",
       "imageHint": "living room interior"
     },
     {
       "id": "hero-background-2",
       "description": "A bright and airy modern kitchen with minimalist furniture.",
-      "imageUrl": "https://images.unsplash.com/photo-1556912173-3bb406ef7e77?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtb2Rlcm4lMjBraXRjaGVufGVufDB8fHx8fDE3MjE5MzA4MjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/hero-modular-kitchen.png",
       "imageHint": "modern kitchen"
     },
     {
       "id": "hero-background-3",
       "description": "An elegant bedroom setup with luxury furniture and calm lighting.",
-      "imageUrl": "https://images.unsplash.com/photo-1571575173723-8316361a3b44?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBiZWRyb29tfGVufDB8fHx8fDE3MjE5MzA4NTV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/hero-luxury-bedroom.png",
       "imageHint": "luxury bedroom"
     },
     {
@@ -93,7 +93,7 @@
     {
       "id": "transform-living-base",
       "description": "An empty modern living room with large windows and concrete floors.",
-      "imageUrl": "https://images.unsplash.com/photo-1615875605825-5eb9bb5c697e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxBbSUyMGVtcHR5JTIwbGl2aW5nJTIwcm9vbXxlbnwwfHx8fDE3MjI1Mzg3MDN8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "/images/why-choose-expert-consultation.png",
       "imageHint": "empty living room"
     },
     {
