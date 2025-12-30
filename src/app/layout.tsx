@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 import { Libre_Baskerville, Nunito } from 'next/font/google';
 import { cn } from '@/lib/utils';
-import { BookingModalProvider } from '@/components/booking-modal';
+import { GetStartedModalProvider } from '@/components/get-started-modal';
 
 const libre_baskerville = Libre_Baskerville({
   subsets: ['latin'],
@@ -29,9 +29,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn("font-sans antialiased", libre_baskerville.variable, nunito.variable)}>
-        <BookingModalProvider>
+        <GetStartedModalProvider>
             {children}
-        </BookingModalProvider>
+        </GetStartedModalProvider>
         <Toaster />
       </body>
     </html>

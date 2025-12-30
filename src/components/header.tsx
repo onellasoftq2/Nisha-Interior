@@ -1,19 +1,19 @@
 'use client';
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
-import { Menu, Video } from 'lucide-react';
+import { Menu, Sparkles } from 'lucide-react';
 import { LogoIcon } from './icons/logo-icon';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { useState, useEffect } from 'react';
-import { useBookingModal } from '@/hooks/use-booking-modal';
+import { useGetStartedModal } from '@/hooks/use-get-started-modal';
 import { Separator } from '@/components/ui/separator';
 
 const Header = () => {
   const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
-  const { setShowBookingModal } = useBookingModal();
+  const { setShowGetStartedModal } = useGetStartedModal();
 
   const navItems = [
     { name: 'Home', href: '/' },
@@ -100,17 +100,17 @@ const Header = () => {
                     </Link>
                   ))}
                   <Separator />
-                   <Button onClick={() => setShowBookingModal(true)} variant="outline" className="text-base">
-                        <Video className="mr-2 h-5 w-5" />
-                        Video Consultation
+                   <Button onClick={() => setShowGetStartedModal(true)} variant="outline" className="text-base">
+                        <Sparkles className="mr-2 h-5 w-5" />
+                        Get Started
                     </Button>
                 </nav>
               </SheetContent>
             </Sheet>
           </div>
            <div className="hidden md:flex items-center gap-2">
-             <Button onClick={() => setShowBookingModal(true)} variant="default" className="text-base">
-                <Video className="mr-2" /> Video Consultation
+             <Button onClick={() => setShowGetStartedModal(true)} variant="default" className="text-base">
+                <Sparkles className="mr-2" /> Get Started
              </Button>
            </div>
         </div>

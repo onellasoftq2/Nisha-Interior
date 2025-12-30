@@ -2,13 +2,13 @@
 import { motion } from 'framer-motion';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { MapPin, Phone, Palette, DraftingCompass, Users, Video } from 'lucide-react';
+import { MapPin, Phone, Palette, DraftingCompass, Users, Sparkles } from 'lucide-react';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
-import { useBookingModal } from '@/hooks/use-booking-modal';
+import { useGetStartedModal } from '@/hooks/use-get-started-modal';
 import { Separator } from '@/components/ui/separator';
 import { InteractiveImage } from '@/components/interactive-image';
 
@@ -80,7 +80,7 @@ const itemVariants = {
 
 export default function ExperienceCentersPage() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'highlight-showrooms');
-  const { setShowBookingModal } = useBookingModal();
+  const { setShowGetStartedModal } = useGetStartedModal();
   
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -121,10 +121,10 @@ export default function ExperienceCentersPage() {
                     <div className="grid md:grid-cols-2 items-center">
                         <div className="p-8 md:p-12">
                              <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-secondary-foreground font-headline">Can't Visit in Person?</h2>
-                             <p className="mt-4 text-lg text-secondary-foreground/80">No problem. Get the same expert guidance and explore our designs from the comfort of your home with a one-on-one video consultation.</p>
-                             <Button size="lg" className="mt-6" onClick={() => setShowBookingModal(true)}>
-                                <Video className="mr-2" />
-                                Book a Video Consultation
+                             <p className="mt-4 text-lg text-secondary-foreground/80">No problem. Get the same expert guidance and explore our designs from the comfort of your home.</p>
+                             <Button size="lg" className="mt-6" onClick={() => setShowGetStartedModal(true)}>
+                                <Sparkles className="mr-2" />
+                                Get Started
                             </Button>
                         </div>
                         <div className="hidden md:block h-full min-h-[250px] relative">

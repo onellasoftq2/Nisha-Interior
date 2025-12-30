@@ -7,11 +7,10 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 import Link from 'next/link';
 import { Badge } from '@/components/ui/badge';
-import { Check, DraftingCompass, Factory, Handshake, MessagesSquare, Smile, Video, Wallet, Clock, Ruler, ShieldCheck, Users, Lightbulb, MessageCircle } from 'lucide-react';
+import { Check, DraftingCompass, Factory, Handshake, MessagesSquare, Sparkles } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { useBookingModal } from '@/hooks/use-booking-modal';
+import { useGetStartedModal } from '@/hooks/use-get-started-modal';
 import { InteractiveImage } from '@/components/interactive-image';
-import ScrollFAQAccordion from '@/components/ui/scroll-faq-accordion';
 import { ContainerScroll, CardSticky } from '@/components/ui/cards-stack';
 
 const services = [
@@ -133,7 +132,7 @@ const textVariants = (direction: 'left' | 'right') => ({
 
 
 export default function ServicesPage() {
-  const { setShowBookingModal } = useBookingModal();
+  const { setShowGetStartedModal } = useGetStartedModal();
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -309,9 +308,9 @@ export default function ServicesPage() {
                         </p>
                     </CardHeader>
                     <CardContent className="p-0 mt-8">
-                         <Button size="lg" className="text-lg" onClick={() => setShowBookingModal(true)}>
-                            <Video className="mr-2 h-5 w-5" />
-                            Book Free Designer-Led Consultation
+                         <Button size="lg" className="text-lg" onClick={() => setShowGetStartedModal(true)}>
+                            <Sparkles className="mr-2 h-5 w-5" />
+                            Get Started
                         </Button>
                         <div className='text-secondary-foreground/80 mt-6 text-sm'>
                             <p className='font-semibold'>What happens next?</p>

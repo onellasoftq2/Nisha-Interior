@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { useEffect, useRef } from 'react';
 import { Award, Home, Building, Factory, Users, Heart, Lightbulb, Video } from 'lucide-react';
-import { useBookingModal } from '@/hooks/use-booking-modal';
+import { useGetStartedModal } from '@/hooks/use-get-started-modal';
 import { InteractiveImage } from '@/components/interactive-image';
 
 const sectionVariants = {
@@ -79,7 +79,7 @@ const differentiators = [
 export default function AboutUsPage() {
   const aboutImage = PlaceHolderImages.find((img) => img.id === 'about-team');
   const valuesImage = PlaceHolderImages.find((img) => img.id === 'about-values');
-  const { setShowBookingModal } = useBookingModal();
+  const { setShowGetStartedModal } = useGetStartedModal();
 
   return (
     <div className="flex flex-col min-h-screen bg-background">
@@ -159,7 +159,7 @@ export default function AboutUsPage() {
                   By listening carefully and collaborating closely, we translate your needs and dreams into a tangible reality. Our factory-backed model gives us the freedom to perfect every detail, ensuring your home is a place you’ll love for years to come.
                 </p>
                 <p>
-                  Whether you visit us in-person or <Button variant="link" className="p-0 h-auto text-lg" onClick={() => setShowBookingModal(true)}>connect via video consultation</Button>, it’s more than just furniture; it’s about building trust and crafting a home that is as unique and enduring as your family.
+                  Whether you visit us in-person or <Button variant="link" className="p-0 h-auto text-lg" onClick={() => setShowGetStartedModal(true)}>connect via video consultation</Button>, it’s more than just furniture; it’s about building trust and crafting a home that is as unique and enduring as your family.
                 </p>
               </div>
               <div className="aspect-[4/5]">

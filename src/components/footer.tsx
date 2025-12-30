@@ -29,7 +29,7 @@ const Footer = () => {
           <div className="space-y-2">
             <h4 className="font-semibold text-foreground">Contact Us</h4>
             <ul className="space-y-1 text-sm">
-                <li><a href="tel:+919876543210" className="text-muted-foreground hover:text-primary transition-colors">Phone: +91 987 654 3210</a></li>
+                <li><a href="tel:+919561311757" className="text-muted-foreground hover:text-primary transition-colors">Phone: +91 9561311757</a></li>
                 <li><a href="mailto:contact@nishainterior.com" className="text-muted-foreground hover:text-primary transition-colors">contact@nishainterior.com</a></li>
                 <li><p className="text-muted-foreground">Pune, Maharashtra</p></li>
             </ul>
