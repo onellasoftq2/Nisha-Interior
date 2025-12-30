@@ -23,22 +23,24 @@ const ConsultationCtaSection = () => {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
     >
-       <Gravity gravity={{ x: 0, y: 0.4 }} className="w-full h-full">
-            {words.map((word) => (
-                <MatterBody
-                    key={word.text}
-                    x={word.x}
-                    y={word.y}
-                    angle={word.angle}
-                    matterBodyOptions={{ friction: 0.1, restitution: 0.6 }}
-                >
-                    <div className={`text-sm md:text-base rounded-full hover:cursor-grab px-5 py-2 font-semibold select-none ${word.className}`}>
-                        {word.text}
-                    </div>
-                </MatterBody>
-            ))}
-        </Gravity>
-      <div className="container relative z-10 px-4 md:px-6 pointer-events-none">
+       <div className="absolute inset-0 pointer-events-none">
+          <Gravity gravity={{ x: 0, y: 0.4 }} className="w-full h-full">
+              {words.map((word) => (
+                  <MatterBody
+                      key={word.text}
+                      x={word.x}
+                      y={word.y}
+                      angle={word.angle}
+                      matterBodyOptions={{ friction: 0.1, restitution: 0.6 }}
+                  >
+                      <div className={`text-sm md:text-base rounded-full px-5 py-2 font-semibold select-none ${word.className}`}>
+                          {word.text}
+                      </div>
+                  </MatterBody>
+              ))}
+          </Gravity>
+        </div>
+      <div className="container relative z-10 px-4 md:px-6">
         <div className="max-w-3xl mx-auto text-center">
             <motion.h2 
                 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline"
@@ -59,7 +61,7 @@ const ConsultationCtaSection = () => {
                 Ready to take the next step? Our design consultants are here to help you bring your vision to life.
             </motion.p>
             <motion.div 
-                className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4 pointer-events-auto"
+                className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
                 initial={{ opacity: 0, y: 16 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
