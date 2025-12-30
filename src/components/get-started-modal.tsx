@@ -1,7 +1,7 @@
 'use client';
 
 import { AnimatePresence, motion } from 'framer-motion';
-import { Dialog, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { useGetStartedModal } from '@/hooks/use-get-started-modal';
 import { Button } from './ui/button';
 import { Phone } from 'lucide-react';
@@ -29,12 +29,18 @@ export const GetStartedModalProvider = ({ children }: { children: React.ReactNod
         <AnimatePresence>
         {showModal && (
             <DialogContent className="max-w-md p-0 border-0 shadow-2xl bg-background overflow-hidden">
-                 <motion.div
+                <motion.div
                     variants={modalVariants}
                     initial="hidden"
                     animate="visible"
                     exit="exit"
-                 >
+                >
+                    <DialogHeader className="sr-only">
+                        <DialogTitle>Get Started</DialogTitle>
+                        <DialogDescription>
+                            Reach out to our expert design consultants today. Call or message us on WhatsApp.
+                        </DialogDescription>
+                    </DialogHeader>
                     <div className="p-8 text-center flex flex-col items-center">
                         <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary/10 text-primary mb-6">
                             <LogoIcon className="h-8 w-8" />
@@ -44,12 +50,12 @@ export const GetStartedModalProvider = ({ children }: { children: React.ReactNod
                             Ready to start the conversation? Reach out to our expert design consultants today. We're excited to hear your ideas.
                         </p>
                         <div className="w-full space-y-4">
-                             <Button asChild size="lg" className="w-full text-lg">
+                                <Button asChild size="lg" className="w-full text-lg">
                                 <Link href="tel:+919561311757">
                                     <Phone className="mr-3" /> Call Now
                                 </Link>
                             </Button>
-                             <Button asChild size="lg" variant="outline" className="w-full text-lg border-foreground/30">
+                                <Button asChild size="lg" variant="outline" className="w-full text-lg border-foreground/30">
                                 <Link href="https://wa.me/919561311757" target="_blank">
                                     <WhatsappIcon className="mr-3" /> WhatsApp Us
                                 </Link>
