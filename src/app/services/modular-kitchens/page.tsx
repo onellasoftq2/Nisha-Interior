@@ -80,7 +80,7 @@ export default function ModularKitchensPage() {
           initial="hidden"
           animate="visible"
           variants={sectionVariants}
-          className="relative min-h-[50vh] md:min-h-[60vh] flex items-center justify-center text-center text-white"
+          className="relative min-h-[60vh] md:min-h-[70vh] flex items-center justify-center text-center text-white"
         >
           {heroImage && (
              <InteractiveImage
