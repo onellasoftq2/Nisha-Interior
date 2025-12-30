@@ -17,7 +17,7 @@ const services = [
     title: 'Wardrobes & Storage',
     imageId: 'service-wardrobes',
     description: 'Smart storage solutions maximizing space and bedroom organization.',
-    href: '/services#wardrobes-storage'
+    href: '/services/wardrobes-bedroom-furniture'
   },
   {
     title: 'Home Interiors',
@@ -108,3 +108,5 @@ const ServicesSection = () => {
 };
 
 export default ServicesSection;
+
+    

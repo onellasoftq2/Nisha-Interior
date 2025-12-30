@@ -185,6 +185,36 @@
       "description": "An efficient parallel or galley kitchen layout for a narrow space.",
       "imageUrl": "https://images.unsplash.com/photo-1631758504368-7a87a8fede86?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxnYWxsZXklMjBraXRjaGVufGVufDB8fHx8fDE3MjI1NDM4MTN8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "galley kitchen"
+    },
+    {
+      "id": "service-wardrobes-hero",
+      "description": "A beautifully organized walk-in closet with ambient lighting.",
+      "imageUrl": "https://images.unsplash.com/photo-1616047006789-b7af5afb8c20?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjbGFzc3klMjBiZWRyb29tfGVufDB8fHx8MTc2NjM4MzQ2OXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "classy bedroom"
+    },
+    {
+      "id": "wardrobe-sliding",
+      "description": "A modern bedroom with a sleek sliding door wardrobe.",
+      "imageUrl": "https://images.unsplash.com/photo-1618221382433-395aa3339097?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzbGlkaW5nJTIwd2FyZHJvYmV8ZW58MHx8fHwxNzIyNTQ4NDkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "sliding wardrobe"
+    },
+    {
+      "id": "wardrobe-hinged",
+      "description": "A classic hinged wardrobe with elegant handles.",
+      "imageUrl": "https://images.unsplash.com/photo-1595542289388-1e7c27b9b325?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxoaW5nZWQlMjB3YXJkcm9iZXxlbnwwfHx8fDE3MjI1NDg1MjB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "hinged wardrobe"
+    },
+    {
+      "id": "wardrobe-walk-in",
+      "description": "A luxurious and spacious walk-in closet with ample storage.",
+      "imageUrl": "https://images.unsplash.com/photo-1610120148894-089a8a8c95e5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3YWxrLWluJTIwY2xvc2V0fGVufDB8fHx8MTcyMjU0ODU0MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "walk-in closet"
+    },
+    {
+      "id": "bedroom-essentials",
+      "description": "A complete bedroom set including a bed, bedside tables, and a dresser.",
+      "imageUrl": "https://images.unsplash.com/photo-1595526114035-0d45ed16433d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxiZWRyb29tJTIwZnVybml0dXJlfGVufDB8fHx8MTcyMjU0ODU3NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "bedroom furniture"
     }
   ]
 }
