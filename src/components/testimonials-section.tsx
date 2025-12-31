@@ -1,6 +1,6 @@
 'use client';
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import { Quote } from 'lucide-react';
 
 // --- Types ---
@@ -89,18 +89,37 @@ const TestimonialsColumn = (props: {
   testimonials: Testimonial[];
   duration?: number;
 }) => {
+  const controls = useAnimation();
+
+  useEffect(() => {
+    controls.start({
+      translateY: "-50%",
+      transition: {
+        duration: props.duration || 10,
+        repeat: Infinity,
+        ease: "linear",
+        repeatType: "loop",
+      },
+    });
+  }, [controls, props.duration]);
+
+
   return (
-    <div className={props.className}>
-      <motion.ul
-        animate={{
+    <div 
+      className={props.className}
+      onMouseEnter={() => controls.stop()}
+      onMouseLeave={() => controls.start({
           translateY: "-50%",
-        }}
-        transition={{
-          duration: props.duration || 10,
-          repeat: Infinity,
-          ease: "linear",
-          repeatType: "loop",
-        }}
+          transition: {
+            duration: props.duration || 10,
+            repeat: Infinity,
+            ease: "linear",
+            repeatType: "loop",
+          },
+        })}
+    >
+      <motion.ul
+        animate={controls}
         className="flex flex-col gap-8 pb-8 bg-transparent transition-colors duration-300 list-none m-0 p-0"
       >
         {[
