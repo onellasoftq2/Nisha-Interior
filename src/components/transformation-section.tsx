@@ -113,7 +113,7 @@ const TransformationSection = () => {
   const [activeTab, setActiveTab] = useState<RoomType>('living');
 
   return (
-    <div className="w-full py-20 lg:py-24 bg-secondary">
+    <div className="w-full py-16 lg:py-16 bg-secondary">
       <div className="container mx-auto">
         <div className="flex flex-col gap-8">
           <div className="text-center">

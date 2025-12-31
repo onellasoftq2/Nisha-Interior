@@ -46,15 +46,15 @@ const ShowroomsSection = () => {
         </div>
         <div className="divide-y border divide-border border-border rounded-lg overflow-hidden shadow-lg">
           <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
-            {showrooms.slice(0, 2).map(showroom => (
+            {showrooms.map(showroom => (
               <ShowroomBox key={showroom.name} {...showroom} />
             ))}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
+          {/* <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
             {showrooms.slice(2, 4).map(showroom => (
               <ShowroomBox key={showroom.name} {...showroom} />
             ))}
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

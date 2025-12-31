@@ -20,21 +20,21 @@ const CustomizationSection = () => {
 
   return (
     <motion.section
-      className="bg-secondary text-secondary-foreground py-16 md:py-24"
+      className="bg-secondary text-secondary-foreground py-16 md:py-16"
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.3 }}
       variants={containerVariants}
     >
-      <div className="container px-4 md:px-6">
+      <div className="container lg:w-[1024px] px-4 md:px-6">
         <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-24">
-          <motion.div variants={textVariants} className="space-y-6">
-            <h2 className="text-2xl font-semibold tracking-tight text-secondary-foreground sm:text-3xl md:text-4xl font-headline">
+          <motion.div variants={textVariants} className="space-y-5">
+            <h2 className="text-xl font-semibold tracking-tight text-secondary-foreground sm:text-2xl md:text-3xl font-headline">
               Manufactured In-House.
               <br />
               Made for Your Exact Space.
             </h2>
-            <p className="text-md text-secondary-foreground/80">
+            <p className="text-sm text-secondary-foreground/80">
               Our own factory gives us the unique ability to create furniture that fits your space to the millimeter. From material selection to final finish, we control every step to ensure superior quality and a perfect fit.
             </p>
             <Button size="lg" asChild variant="outline" className="border-secondary-foreground/50 text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary">

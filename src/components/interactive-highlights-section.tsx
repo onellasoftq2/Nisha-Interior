@@ -67,14 +67,14 @@ const InteractiveHighlightsSection = () => {
   };
 
   return (
-    <section id="about" className="bg-background py-16 md:py-24">
+    <section id="about" className="bg-background py-16 md:py-16">
       <div className="w-full px-4 sm:max-w-[700px] sm:mx-auto sm:px-0">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="text-center mb-12 md:mb-16"
+          className="text-center mb-12 md:mb-8"
         >
           <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl font-headline">
             Why Choose Nisha Interior?
