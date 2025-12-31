@@ -77,7 +77,7 @@ export default function ScrollFAQAccordion({
         </h2>
       </div>
 
-      <div className="md:w-full lg:w-[600px] mx-auto">
+      <div className="md:w-full lg:w-[600px] mx-auto px-8">
         <Accordion.Root type="single" collapsible value={openItem || ""} onValueChange={setOpenItem}>
           {data.map((item) => (
             <Accordion.Item value={item.id.toString()} key={item.id} className="mb-3 border-b-0" ref={(el) => {

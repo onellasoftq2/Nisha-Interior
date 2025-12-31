@@ -25,7 +25,7 @@ const MetricCounter = ({ to, prefix = '', suffix = '' }: { to: number, prefix?: 
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
   const controls = useAnimation();
-  
+
   useEffect(() => {
     if (isInView) {
       controls.start({
@@ -52,28 +52,28 @@ const MetricCounter = ({ to, prefix = '', suffix = '' }: { to: number, prefix?: 
 
 
 const metrics = [
-    { icon: Award, value: 15, label: "Years of Experience", suffix: "+" },
-    { icon: Home, value: 1200, label: "Homes Delivered", suffix: "+" },
-    { icon: Building, value: 4, label: "Experience Centers" },
-    { icon: Factory, value: 1, label: "In-House Factory" }
+  { icon: Award, value: 15, label: "Years of Experience", suffix: "+" },
+  { icon: Home, value: 1200, label: "Homes Delivered", suffix: "+" },
+  { icon: Building, value: 4, label: "Experience Centers" },
+  { icon: Factory, value: 1, label: "In-House Factory" }
 ];
 
 const differentiators = [
-    {
-      icon: Users,
-      title: "A Family-Driven Studio",
-      description: "We are a family business, and we treat our clients like family. Our approach is built on trust, transparency, and a genuine commitment to bringing your vision to life."
-    },
-    {
-      icon: Factory,
-      title: "Makers, Not Resellers",
-      description: "With our own state-of-the-art factory, we control every detail of the manufacturing process. This guarantees superior quality, millimeter-perfect customization, and fair pricing."
-    },
-    {
-      icon: Heart,
-      title: "End-to-End Ownership",
-      description: "From the first design sketch to the final installation, our in-house team manages every step. This seamless process ensures a cohesive result and a hassle-free experience for you."
-    }
+  {
+    icon: Users,
+    title: "A Family-Driven Studio",
+    description: "We are a family business, and we treat our clients like family. Our approach is built on trust, transparency, and a genuine commitment to bringing your vision to life."
+  },
+  {
+    icon: Factory,
+    title: "Makers, Not Resellers",
+    description: "With our own state-of-the-art factory, we control every detail of the manufacturing process. This guarantees superior quality, millimeter-perfect customization, and fair pricing."
+  },
+  {
+    icon: Heart,
+    title: "End-to-End Ownership",
+    description: "From the first design sketch to the final installation, our in-house team manages every step. This seamless process ensures a cohesive result and a hassle-free experience for you."
+  }
 ];
 
 export default function AboutUsPage() {
@@ -92,7 +92,7 @@ export default function AboutUsPage() {
           className="pt-32 pb-24"
         >
           <div className="container px-4 md:px-6 text-center">
-            <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
+            <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl font-headline">
               Designing Homes, Building Relationships.
             </h1>
             <p className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground">
@@ -103,29 +103,29 @@ export default function AboutUsPage() {
 
         {/* Metrics Section */}
         <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={sectionVariants}
-            className="pb-16"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={sectionVariants}
+          className="pb-16"
         >
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                {metrics.map((metric, index) => (
-                    <motion.div 
-                        key={metric.label}
-                        initial={{ opacity: 0, y: 16 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
-                    >
-                        <metric.icon className="h-10 w-10 text-primary mx-auto mb-4" />
-                        <div className="text-4xl md:text-5xl font-bold text-foreground">
-                          <MetricCounter to={metric.value} suffix={metric.suffix || ''} />
-                        </div>
-                        <p className="text-muted-foreground mt-1">{metric.label}</p>
-                    </motion.div>
-                ))}
+              {metrics.map((metric, index) => (
+                <motion.div
+                  key={metric.label}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: index * 0.1, ease: 'easeOut' }}
+                >
+                  <metric.icon className="h-10 w-10 text-primary mx-auto mb-4" />
+                  <div className="text-4xl md:text-5xl font-bold text-foreground">
+                    <MetricCounter to={metric.value} suffix={metric.suffix || ''} />
+                  </div>
+                  <p className="text-muted-foreground mt-1">{metric.label}</p>
+                </motion.div>
+              ))}
             </div>
           </div>
         </motion.section>
@@ -177,14 +177,14 @@ export default function AboutUsPage() {
             </div>
           </div>
         </motion.section>
-        
+
         {/* Differentiators Section */}
         <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={sectionVariants}
-            className="py-16 md:py-24 bg-secondary"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          variants={sectionVariants}
+          className="py-16 md:py-24 bg-secondary"
         >
           <div className="container px-4 md:px-6">
             <div className="text-center mb-16">
@@ -217,7 +217,7 @@ export default function AboutUsPage() {
         </motion.section>
 
         {/* Process and Promise */}
-         <motion.section
+        <motion.section
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
@@ -244,40 +244,40 @@ export default function AboutUsPage() {
                   A beautiful home is the result of a thoughtful process. Ours is built on collaboration, transparency, and a relentless focus on quality—from the initial conversation to the final handover.
                 </p>
                 <div className="space-y-4">
-                    <div className="flex items-start gap-4">
-                        <Lightbulb className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                        <div>
-                            <h4 className='font-semibold text-foreground'>Collaborative Design</h4>
-                            <p className='text-muted-foreground'>We listen first, then design. Your needs and vision are the foundation of everything we create.</p>
-                        </div>
+                  <div className="flex items-start gap-4">
+                    <Lightbulb className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className='font-semibold text-foreground'>Collaborative Design</h4>
+                      <p className='text-muted-foreground'>We listen first, then design. Your needs and vision are the foundation of everything we create.</p>
                     </div>
-                    <div className="flex items-start gap-4">
-                        <Factory className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                        <div>
-                            <h4 className='font-semibold text-foreground'>Transparent Production</h4>
-                            <p className='text-muted-foreground'>Because we control our factory, we provide clear timelines and pricing, with no hidden surprises.</p>
-                        </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <Factory className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className='font-semibold text-foreground'>Transparent Production</h4>
+                      <p className='text-muted-foreground'>Because we control our factory, we provide clear timelines and pricing, with no hidden surprises.</p>
                     </div>
-                     <div className="flex items-start gap-4">
-                        <Award className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                        <div>
-                            <h4 className='font-semibold text-foreground'>Assured Quality</h4>
-                            <p className='text-muted-foreground'>Our commitment to you is backed by a 10-year warranty and a promise of lasting craftsmanship.</p>
-                        </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <Award className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className='font-semibold text-foreground'>Assured Quality</h4>
+                      <p className='text-muted-foreground'>Our commitment to you is backed by a 10-year warranty and a promise of lasting craftsmanship.</p>
                     </div>
+                  </div>
                 </div>
-                 <Button asChild size="lg" variant="link" className="px-0 group text-lg">
-                    <Link href="/services">
-                        See Our Services
-                        <motion.span 
-                            className="inline-block ml-2"
-                            initial={{ x: 0 }}
-                            whileHover={{ x: 4 }}
-                            transition={{ duration: 0.2, ease: 'easeOut' }}
-                        >
-                            →
-                        </motion.span>
-                    </Link>
+                <Button asChild size="lg" variant="link" className="px-0 group text-lg">
+                  <Link href="/services">
+                    See Our Services
+                    <motion.span
+                      className="inline-block ml-2"
+                      initial={{ x: 0 }}
+                      whileHover={{ x: 4 }}
+                      transition={{ duration: 0.2, ease: 'easeOut' }}
+                    >
+                      →
+                    </motion.span>
+                  </Link>
                 </Button>
               </div>
             </div>

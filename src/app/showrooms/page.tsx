@@ -44,21 +44,21 @@ const experienceCenters = [
 ];
 
 const benefits = [
-    {
-        icon: Palette,
-        title: "Touch & Feel Materials",
-        description: "Experience the quality of our laminates, woods, and hardware firsthand."
-    },
-    {
-        icon: DraftingCompass,
-        title: "Explore Full Setups",
-        description: "Visualize your future home by walking through our model kitchens and living spaces."
-    },
-    {
-        icon: Users,
-        title: "Meet Our Designers",
-        description: "Get free, personalized advice from our experts to kickstart your project."
-    }
+  {
+    icon: Palette,
+    title: "Touch & Feel Materials",
+    description: "Experience the quality of our laminates, woods, and hardware firsthand."
+  },
+  {
+    icon: DraftingCompass,
+    title: "Explore Full Setups",
+    description: "Visualize your future home by walking through our model kitchens and living spaces."
+  },
+  {
+    icon: Users,
+    title: "Meet Our Designers",
+    description: "Get free, personalized advice from our experts to kickstart your project."
+  }
 ];
 
 const containerVariants = {
@@ -81,7 +81,7 @@ const itemVariants = {
 export default function ExperienceCentersPage() {
   const heroImage = PlaceHolderImages.find((img) => img.id === 'highlight-showrooms');
   const { setShowGetStartedModal } = useGetStartedModal();
-  
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
@@ -95,7 +95,7 @@ export default function ExperienceCentersPage() {
           <div className="container px-4 md:px-6 text-center">
             <motion.h1
               variants={itemVariants}
-              className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
+              className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl font-headline"
             >
               Step Into Your Future Home
             </motion.h1>
@@ -107,41 +107,41 @@ export default function ExperienceCentersPage() {
             </motion.p>
           </div>
         </motion.section>
-        
+
         {/* Remote Consultation CTA */}
         <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={itemVariants}
-            className="pb-16 md:pb-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={itemVariants}
+          className="pb-16 md:pb-24"
         >
-            <div className="container px-4 md:px-6">
-                <Card className="bg-secondary border-none overflow-hidden">
-                    <div className="grid md:grid-cols-2 items-center">
-                        <div className="p-8 md:p-12">
-                             <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-secondary-foreground font-headline">Can't Visit in Person?</h2>
-                             <p className="mt-4 text-lg text-secondary-foreground/80">No problem. Get the same expert guidance and explore our designs from the comfort of your home.</p>
-                             <Button size="lg" className="mt-6" onClick={() => setShowGetStartedModal(true)}>
-                                <Sparkles className="mr-2" />
-                                Get Started
-                            </Button>
-                        </div>
-                        <div className="hidden md:block h-full min-h-[250px] relative">
-                             <Image
-                                src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2aWRlbyUyMGNvbnN1bHRhdGlvbnxlbnwwfHx8fDE3MjE5MzA5OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
-                                alt="A person having a video consultation with a designer"
-                                fill
-                                className="object-cover"
-                                data-ai-hint="video consultation"
-                            />
-                        </div>
-                    </div>
-                </Card>
-            </div>
+          <div className="container px-4 md:px-6">
+            <Card className="bg-secondary border-none overflow-hidden">
+              <div className="grid md:grid-cols-2 items-center">
+                <div className="p-8 md:p-12">
+                  <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-secondary-foreground font-headline">Can't Visit in Person?</h2>
+                  <p className="mt-4 text-lg text-secondary-foreground/80">No problem. Get the same expert guidance and explore our designs from the comfort of your home.</p>
+                  <Button size="lg" className="mt-6" onClick={() => setShowGetStartedModal(true)}>
+                    <Sparkles className="mr-2" />
+                    Get Started
+                  </Button>
+                </div>
+                <div className="hidden md:block h-full min-h-[250px] relative">
+                  <Image
+                    src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx2aWRlbyUyMGNvbnN1bHRhdGlvbnxlbnwwfHx8fDE3MjE5MzA5OTJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+                    alt="A person having a video consultation with a designer"
+                    fill
+                    className="object-cover"
+                    data-ai-hint="video consultation"
+                  />
+                </div>
+              </div>
+            </Card>
+          </div>
         </motion.section>
 
-        <div className="container px-4 md:px-6"><Separator/></div>
+        <div className="container px-4 md:px-6"><Separator /></div>
 
         {/* Why Visit Section */}
         <motion.section
@@ -153,18 +153,18 @@ export default function ExperienceCentersPage() {
         >
           <div className="container px-4 md:px-6">
             <div className="text-center mb-16">
-                 <motion.h2
-                    variants={itemVariants}
-                    className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline"
-                >
-                    Why Visit an Experience Center?
-                </motion.h2>
-                <motion.p
-                    variants={itemVariants}
-                    className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground"
-                >
-                    Designing a home is a tactile experience. See the quality, feel the textures, and get expert guidance all in one place.
-                </motion.p>
+              <motion.h2
+                variants={itemVariants}
+                className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline"
+              >
+                Why Visit an Experience Center?
+              </motion.h2>
+              <motion.p
+                variants={itemVariants}
+                className="mt-4 max-w-2xl mx-auto text-lg text-muted-foreground"
+              >
+                Designing a home is a tactile experience. See the quality, feel the textures, and get expert guidance all in one place.
+              </motion.p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {benefits.map((benefit, index) => (
@@ -198,48 +198,48 @@ export default function ExperienceCentersPage() {
           className="pb-16 md:pb-24 bg-secondary"
         >
           <div className="container px-4 md:px-6 py-16 md:py-24 space-y-16">
-             {experienceCenters.map((center, index) => {
-                 const image = PlaceHolderImages.find((img) => img.id === center.imageId);
-                 const isReversed = index % 2 === 1;
+            {experienceCenters.map((center, index) => {
+              const image = PlaceHolderImages.find((img) => img.id === center.imageId);
+              const isReversed = index % 2 === 1;
 
-                 return (
-                    <motion.div 
-                        key={center.name} 
-                        variants={itemVariants}
-                        className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 md:gap-16"
-                    >
-                         <div className={`aspect-video md:aspect-[4/3] ${isReversed ? 'md:order-last' : ''}`}>
-                            {image && (
-                                <InteractiveImage
-                                    src={image.imageUrl}
-                                    alt={center.name}
-                                    width={800}
-                                    height={600}
-                                    className="w-full h-full"
-                                    data-ai-hint={image.imageHint}
-                                />
-                            )}
-                        </div>
-                        <div className="space-y-4">
-                            <h3 className="text-3xl font-semibold tracking-tight text-foreground font-headline">{center.name}</h3>
-                            <p className="text-lg text-muted-foreground">{center.address}</p>
-                            <p className="text-muted-foreground">{center.phone}</p>
-                            <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                                <Button size="lg" className="w-full sm:w-auto" asChild>
-                                    <Link href={`tel:${center.phone}`}>
-                                        <Phone className="mr-2" /> Call Now
-                                    </Link>
-                                </Button>
-                                <Button size="lg" variant="outline" className="w-full sm:w-auto border-foreground/30" asChild>
-                                    <Link href={center.mapLink} target="_blank">
-                                        <MapPin className="mr-2" /> Get Directions
-                                    </Link>
-                                </Button>
-                            </div>
-                        </div>
-                    </motion.div>
-                 );
-             })}
+              return (
+                <motion.div
+                  key={center.name}
+                  variants={itemVariants}
+                  className="grid grid-cols-1 md:grid-cols-2 items-center gap-12 md:gap-16"
+                >
+                  <div className={`aspect-video md:aspect-[4/3] ${isReversed ? 'md:order-last' : ''}`}>
+                    {image && (
+                      <InteractiveImage
+                        src={image.imageUrl}
+                        alt={center.name}
+                        width={800}
+                        height={600}
+                        className="w-full h-full"
+                        data-ai-hint={image.imageHint}
+                      />
+                    )}
+                  </div>
+                  <div className="space-y-4">
+                    <h3 className="text-3xl font-semibold tracking-tight text-foreground font-headline">{center.name}</h3>
+                    <p className="text-lg text-muted-foreground">{center.address}</p>
+                    <p className="text-muted-foreground">{center.phone}</p>
+                    <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                      <Button size="lg" className="w-full sm:w-auto" asChild>
+                        <Link href={`tel:${center.phone}`}>
+                          <Phone className="mr-2" /> Call Now
+                        </Link>
+                      </Button>
+                      <Button size="lg" variant="outline" className="w-full sm:w-auto border-foreground/30" asChild>
+                        <Link href={center.mapLink} target="_blank">
+                          <MapPin className="mr-2" /> Get Directions
+                        </Link>
+                      </Button>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </motion.section>
       </main>

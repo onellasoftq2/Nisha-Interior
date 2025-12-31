@@ -38,21 +38,21 @@ export default function ContactPage() {
           animate="visible"
           className="pt-32 pb-24"
         >
-            <div className="container px-4 md:px-6 text-center">
-                <motion.h1
-                variants={itemVariants}
-                className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
-                >
-                Get in Touch
-                </motion.h1>
-                <motion.p
-                variants={itemVariants}
-                transition={{delay: 0.1}}
-                className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground"
-                >
-                Ready to start your project or have a question? We're here to help. Reach out via your preferred method.
-                </motion.p>
-            </div>
+          <div className="container px-4 md:px-6 text-center">
+            <motion.h1
+              variants={itemVariants}
+              className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl font-headline"
+            >
+              Get in Touch
+            </motion.h1>
+            <motion.p
+              variants={itemVariants}
+              transition={{ delay: 0.1 }}
+              className="mt-6 max-w-2xl mx-auto text-lg text-muted-foreground"
+            >
+              Ready to start your project or have a question? We're here to help. Reach out via your preferred method.
+            </motion.p>
+          </div>
         </motion.section>
 
         <motion.section

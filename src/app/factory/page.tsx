@@ -41,26 +41,26 @@ const processSteps = [
 ];
 
 const glanceItems = [
-    {
-        icon: Layers,
-        title: "Advanced Machinery",
-        description: "Precision engineering for a flawless fit and finish."
-    },
-    {
-        icon: ShieldCheck,
-        title: "Rigorous QA",
-        description: "Multi-stage checks to ensure lifelong durability."
-    },
-    {
-        icon: Palette,
-        title: "Limitless Finishes",
-        description: "An extensive library of materials and finishes."
-    },
-    {
-        icon: Users,
-        title: "Skilled Craftsmen",
-        description: "Decades of combined experience in furniture making."
-    }
+  {
+    icon: Layers,
+    title: "Advanced Machinery",
+    description: "Precision engineering for a flawless fit and finish."
+  },
+  {
+    icon: ShieldCheck,
+    title: "Rigorous QA",
+    description: "Multi-stage checks to ensure lifelong durability."
+  },
+  {
+    icon: Palette,
+    title: "Limitless Finishes",
+    description: "An extensive library of materials and finishes."
+  },
+  {
+    icon: Users,
+    title: "Skilled Craftsmen",
+    description: "Decades of combined experience in furniture making."
+  }
 ];
 
 const containerVariants = {
@@ -88,7 +88,7 @@ const glanceItemVariants = {
 export default function FactoryPage() {
   const factoryImage = PlaceHolderImages.find((img) => img.id === 'factory-process');
   const materialsImage = PlaceHolderImages.find((img) => img.id === 'factory-materials');
-  
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       <Header />
@@ -102,7 +102,7 @@ export default function FactoryPage() {
           <div className="container px-4 md:px-6 text-center">
             <motion.h1
               variants={itemVariants}
-              className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline"
+              className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl font-headline"
             >
               The Heart of Our Craft
             </motion.h1>
@@ -114,14 +114,14 @@ export default function FactoryPage() {
             </motion.p>
           </div>
         </motion.section>
-        
+
         {/* Factory at a Glance */}
         <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={containerVariants}
-            className="pb-16 md:pb-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={containerVariants}
+          className="pb-16 md:pb-24"
         >
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -138,24 +138,24 @@ export default function FactoryPage() {
                     transition={{ duration: 0.25, ease: 'easeOut' }}
                   >
                     <Card className="h-full bg-card border-none shadow-none text-center p-0 transition-colors duration-300 group-hover:bg-secondary">
-                        <CardHeader className="items-center p-0">
+                      <CardHeader className="items-center p-0">
                         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary mb-4 transition-transform duration-300 group-hover:scale-110">
-                            <item.icon className="h-7 w-7" />
+                          <item.icon className="h-7 w-7" />
                         </div>
                         <CardTitle className="font-headline text-lg md:text-xl relative">
-                            {item.title}
-                            <motion.span 
-                                className="absolute bottom-[-4px] left-0 right-0 h-[2px] bg-primary origin-center"
-                                initial={{ scaleX: 0 }}
-                                animate={{ scaleX: 0 }}
-                                whileHover={{ scaleX: 1 }}
-                                transition={{ duration: 0.3, ease: 'easeOut' }}
-                            />
+                          {item.title}
+                          <motion.span
+                            className="absolute bottom-[-4px] left-0 right-0 h-[2px] bg-primary origin-center"
+                            initial={{ scaleX: 0 }}
+                            animate={{ scaleX: 0 }}
+                            whileHover={{ scaleX: 1 }}
+                            transition={{ duration: 0.3, ease: 'easeOut' }}
+                          />
                         </CardTitle>
-                        </CardHeader>
-                        <CardContent className="p-0 mt-2">
+                      </CardHeader>
+                      <CardContent className="p-0 mt-2">
                         <p className="text-muted-foreground text-sm md:text-base">{item.description}</p>
-                        </CardContent>
+                      </CardContent>
                     </Card>
                   </motion.div>
                 </motion.div>
@@ -220,27 +220,27 @@ export default function FactoryPage() {
                   True luxury is not just about looks; it's about longevity. We build furniture that withstands the rigors of daily life. Our commitment starts with sourcing the finest materials—from moisture-resistant plywood to premium hardware—and continues through every stage of production.
                 </p>
                 <div className="space-y-4">
-                    <div className="flex items-start gap-4">
-                        <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                        <div>
-                            <h4 className='font-semibold text-foreground'>Durability Standards</h4>
-                            <p className='text-muted-foreground'>Engineered to resist wear, moisture, and daily use for years of reliability.</p>
-                        </div>
+                  <div className="flex items-start gap-4">
+                    <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className='font-semibold text-foreground'>Durability Standards</h4>
+                      <p className='text-muted-foreground'>Engineered to resist wear, moisture, and daily use for years of reliability.</p>
                     </div>
-                    <div className="flex items-start gap-4">
-                        <Ruler className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                        <div>
-                            <h4 className='font-semibold text-foreground'>Material Selection</h4>
-                            <p className='text-muted-foreground'>We partner with trusted suppliers for certified woods, laminates, and hardware.</p>
-                        </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <Ruler className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className='font-semibold text-foreground'>Material Selection</h4>
+                      <p className='text-muted-foreground'>We partner with trusted suppliers for certified woods, laminates, and hardware.</p>
                     </div>
-                     <div className="flex items-start gap-4">
-                        <ShieldCheck className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
-                        <div>
-                            <h4 className='font-semibold text-foreground'>Final Inspection</h4>
-                            <p className='text-muted-foreground'>Every finished product is inspected for flawless functionality and finish before it leaves our factory.</p>
-                        </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <ShieldCheck className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                    <div>
+                      <h4 className='font-semibold text-foreground'>Final Inspection</h4>
+                      <p className='text-muted-foreground'>Every finished product is inspected for flawless functionality and finish before it leaves our factory.</p>
                     </div>
+                  </div>
                 </div>
               </motion.div>
               <div className="aspect-video md:aspect-[4/3]">

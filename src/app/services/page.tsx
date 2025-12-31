@@ -19,8 +19,8 @@ const services = [
     title: 'Modular Kitchens',
     description: 'Ergonomic, stylish kitchens that blend clever storage with a beautiful aesthetic.',
     whoItIsFor: [
-        "Homeowners looking to maximize kitchen functionality and storage.",
-        "Families wanting a durable, easy-to-maintain kitchen for daily use.",
+      "Homeowners looking to maximize kitchen functionality and storage.",
+      "Families wanting a durable, easy-to-maintain kitchen for daily use.",
     ],
     imageId: 'service-kitchens',
     cta: 'Explore Kitchen Designs',
@@ -31,8 +31,8 @@ const services = [
     title: 'Wardrobes & Storage',
     description: 'Intelligent storage solutions, from luxurious walk-in closets to sleek media units.',
     whoItIsFor: [
-        "Anyone needing to organize clothes and belongings efficiently.",
-        "Homeowners who want storage to be a feature, not an afterthought."
+      "Anyone needing to organize clothes and belongings efficiently.",
+      "Homeowners who want storage to be a feature, not an afterthought."
     ],
     imageId: 'service-wardrobes',
     cta: 'Discover Storage Solutions',
@@ -43,8 +43,8 @@ const services = [
     title: 'Complete Home Interiors',
     description: 'A seamless, end-to-end journey from a blank canvas to your dream home.',
     whoItIsFor: [
-        "New homeowners wanting a turnkey solution for their entire space.",
-        "Clients who value a single, reliable partner to manage the entire process."
+      "New homeowners wanting a turnkey solution for their entire space.",
+      "Clients who value a single, reliable partner to manage the entire process."
     ],
     imageId: 'service-interiors',
     cta: 'View Interior Projects',
@@ -53,50 +53,50 @@ const services = [
 ];
 
 const whatYouGet = [
-    {
-        icon: Users,
-        label: "Designer-Led Planning"
-    },
-    {
-        icon: Factory,
-        label: "Factory-Made Furniture"
-    },
-    {
-        icon: Handshake,
-        label: "End-to-End Execution"
-    },
-    {
-        icon: ShieldCheck,
-        label: "Post-Installation Support"
-    }
+  {
+    icon: Users,
+    label: "Designer-Led Planning"
+  },
+  {
+    icon: Factory,
+    label: "Factory-Made Furniture"
+  },
+  {
+    icon: Handshake,
+    label: "End-to-End Execution"
+  },
+  {
+    icon: ShieldCheck,
+    label: "Post-Installation Support"
+  }
 ];
 
 const processSteps = [
-    {
-      icon: MessagesSquare,
-      title: "Consultation & Design",
-      description: "We start by listening to craft the perfect design concept for your needs, style, and budget.",
-      duration: "1-2 Weeks"
-    },
-    {
-      icon: DraftingCompass,
-      title: "Material & Finish Selection",
-      description: "We help you choose from our wide range of high-quality materials to bring your vision to life.",
-      duration: "1 Week"
-    },
-    {
-      icon: Factory,
-      title: "In-House Manufacturing",
-      description: "Your custom furniture is built in our state-of-the-art factory, ensuring precision and quality.",
-      duration: "3-4 Weeks"
-    },
-    {
-      icon: Handshake,
-      title: "Installation & Handover",
-      description: "Our professional team handles the installation with care, ensuring your complete satisfaction.",
-      duration: "1-2 Weeks"
-    }
-  ];
+  {
+    icon: MessagesSquare,
+    title: "Consultation & Design",
+    description: "We start by listening to craft the perfect design concept for your needs, style, and budget.",
+    duration: "1-2 Weeks"
+  },
+  {
+    icon: DraftingCompass,
+    title: "Material & Finish Selection",
+    description: "We help you choose from our wide range of high-quality materials to bring your vision to life.",
+    duration: "1 Week"
+  },
+  {
+    icon: Factory,
+    title: "In-House Manufacturing",
+    description: "Your custom furniture is built in our state-of-the-art factory, ensuring precision and quality.",
+    duration: "3-4 Weeks"
+  },
+  {
+    icon: Handshake,
+    title: "Installation & Handover",
+    description: "Our professional team handles the installation with care, ensuring your complete satisfaction.",
+    duration: "1-2 Weeks"
+  }
+];
 
 const sectionVariants = {
   hidden: { opacity: 0, y: 16 },
@@ -111,8 +111,8 @@ const sectionVariants = {
 };
 
 const textVariants = (direction: 'left' | 'right') => ({
-    hidden: { opacity: 0, x: direction === 'left' ? -30 : 30 },
-    visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut', delay: 0.2 } },
+  hidden: { opacity: 0, x: direction === 'left' ? -30 : 30 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.5, ease: 'easeOut', delay: 0.2 } },
 });
 
 
@@ -127,10 +127,10 @@ export default function ServicesPage() {
           initial="hidden"
           animate="visible"
           variants={sectionVariants}
-          className="pt-32 pb-24"
+          className="py-8"
         >
           <div className="container px-4 md:px-6 text-center">
-            <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl font-headline">
+            <h1 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl font-headline">
               End-to-End Design Solutions
             </h1>
             <p className="mt-6 max-w-3xl mx-auto text-lg text-muted-foreground">
@@ -139,7 +139,7 @@ export default function ServicesPage() {
           </div>
         </motion.section>
 
-        <div className="container px-4 md:px-6">
+        <div className="container lg:w-[1024px] px-4 md:px-6">
           {services.map((service, index) => {
             const image = PlaceHolderImages.find((img) => img.id === service.imageId);
             const isReversed = index % 2 === 1;
@@ -154,42 +154,42 @@ export default function ServicesPage() {
                 className="w-full flex items-center md:min-h-[90vh] py-16 md:py-24"
               >
                 <div className="w-full grid grid-cols-1 items-center gap-12 md:gap-16 md:grid-cols-2">
-                  <motion.div 
-                      className={`space-y-8 ${isReversed ? 'md:order-last' : ''}`}
-                      variants={textVariants(isReversed ? 'right' : 'left')}
+                  <motion.div
+                    className={`space-y-8 ${isReversed ? 'md:order-last' : ''}`}
+                    variants={textVariants(isReversed ? 'right' : 'left')}
                   >
                     <div>
-                        <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">
+                      <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl font-headline">
                         {service.title}
-                        </h2>
-                        <p className="mt-4 text-lg text-muted-foreground">{service.description}</p>
+                      </h2>
+                      <p className="mt-4 text-lg text-muted-foreground">{service.description}</p>
                     </div>
 
                     <div>
-                        <h3 className="font-semibold text-foreground mb-3">Who This Service Is For:</h3>
-                        <ul className="space-y-2 text-muted-foreground">
-                        {service.whoItIsFor.map((item, i) =>(
-                            <li key={i} className='flex items-start gap-3'>
-                                <Check className='h-5 w-5 text-primary mt-1 flex-shrink-0'/>
-                                <span>{item}</span>
-                            </li>
+                      <h3 className="font-semibold text-foreground mb-3">Who This Service Is For:</h3>
+                      <ul className="space-y-2 text-muted-foreground">
+                        {service.whoItIsFor.map((item, i) => (
+                          <li key={i} className='flex items-start gap-3'>
+                            <Check className='h-5 w-5 text-primary mt-1 flex-shrink-0' />
+                            <span>{item}</span>
+                          </li>
                         ))}
-                        </ul>
+                      </ul>
                     </div>
-                    
+
                     <Button size="lg" variant="link" className="px-0 group text-lg" asChild>
-                        <Link href={service.href}>
-                            {service.cta}
-                            <motion.span 
-                                className="inline-block ml-2"
-                                initial={{ x: 0 }}
-                                whileHover={{ x: 4 }}
-                                transition={{ duration: 0.2, ease: 'easeOut' }}
-                            >
-                                →
-                            </motion.span>
-                        </Link>
-                      </Button>
+                      <Link href={service.href}>
+                        {service.cta}
+                        <motion.span
+                          className="inline-block ml-2"
+                          initial={{ x: 0 }}
+                          whileHover={{ x: 4 }}
+                          transition={{ duration: 0.2, ease: 'easeOut' }}
+                        >
+                          →
+                        </motion.span>
+                      </Link>
+                    </Button>
                   </motion.div>
                   <div className="aspect-video md:aspect-[4/3]">
                     {image && (
@@ -209,13 +209,56 @@ export default function ServicesPage() {
           })}
         </div>
 
+
+        {/* Our Process Section */}
+        <motion.section
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={sectionVariants}
+          className="py-16 md:py-16 bg-secondary text-secondary-foreground"
+        >
+          <div className="container lg:w-[1024px] px-4 md:px-6">
+            <div className="grid md:grid-cols-2 md:gap-8 xl:gap-12 py-0">
+              <div className="left-0 top-[50px] md:sticky md:h-svh md:py-0">
+                <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl font-headline">
+                  Our Simple, Transparent Process
+                </h2>
+                <p className="mt-4 max-w-2xl text-md text-secondary-foreground/80">
+                  We make turning your dream home into a reality a seamless and enjoyable experience.
+                </p>
+              </div>
+              <ContainerScroll className="min-h-[400vh] space-y-8 py-12">
+                {processSteps.map((step, index) => (
+                  <CardSticky
+                    key={step.title}
+                    index={index + 2}
+                    className="rounded-2xl border p-8 shadow-md backdrop-blur-md bg-background/80"
+                  >
+                    <div className="flex items-center justify-between gap-4 py-6">
+                      <h2 className="text-2xl font-bold tracking-tighter text-foreground">
+                        {step.title}
+                      </h2>
+                      <Badge variant="outline" className="bg-background/20 border-foreground/30 text-foreground flex-shrink-0">
+                        {step.duration}
+                      </Badge>
+                    </div>
+                    <p className="text-foreground/80">{step.description}</p>
+                  </CardSticky>
+                ))}
+              </ContainerScroll>
+            </div>
+          </div>
+        </motion.section>
+
+
         {/* What You Get Section */}
         <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={sectionVariants}
-            className="py-16 md:py-24"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={sectionVariants}
+          className="py-16 md:py-24"
         >
           <div className="container px-4 md:px-6">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -234,78 +277,36 @@ export default function ServicesPage() {
             </div>
           </div>
         </motion.section>
-
-        {/* Our Process Section */}
+        {/* Consultation CTA Block */}
         <motion.section
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, amount: 0.3 }}
           variants={sectionVariants}
-          className="py-16 md:py-24 bg-secondary text-secondary-foreground"
+          className="py-16 md:py-24"
         >
-          <div className="container px-4 md:px-6">
-            <div className="grid md:grid-cols-2 md:gap-8 xl:gap-12">
-              <div className="left-0 top-0 md:sticky md:h-svh md:py-12">
-                <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline">
-                  Our Simple, Transparent Process
-                </h2>
-                <p className="mt-4 max-w-2xl text-lg text-secondary-foreground/80">
-                  We make turning your dream home into a reality a seamless and enjoyable experience.
+          <div className="container px-4 md:px-6 max-w-4xl mx-auto">
+            <Card className="p-8 md:p-12 text-center bg-secondary border-none">
+              <CardHeader className="p-0">
+                <h2 className="text-3xl font-semibold tracking-tight text-secondary-foreground sm:text-4xl font-headline">Ready to Start Your Project?</h2>
+                <p className="mt-4 text-lg text-secondary-foreground/80 max-w-xl mx-auto">
+                  Book a free, no-obligation consultation with one of our expert designers.
                 </p>
-              </div>
-              <ContainerScroll className="min-h-[400vh] space-y-8 py-12">
-                {processSteps.map((step, index) => (
-                  <CardSticky
-                    key={step.title}
-                    index={index + 2}
-                    className="rounded-2xl border p-8 shadow-md backdrop-blur-md bg-background/80"
-                  >
-                    <div className="flex items-center justify-between gap-4 py-6">
-                      <h2 className="text-2xl font-bold tracking-tighter text-foreground">
-                        {step.title}
-                      </h2>
-                      <Badge variant="outline" className="bg-background/20 border-foreground/30 text-foreground flex-shrink-0">
-                          {step.duration}
-                      </Badge>
-                    </div>
-                    <p className="text-foreground/80">{step.description}</p>
-                  </CardSticky>
-                ))}
-              </ContainerScroll>
-            </div>
+              </CardHeader>
+              <CardContent className="p-0 mt-8">
+                <Button size="lg" className="text-lg" onClick={() => setShowGetStartedModal(true)}>
+                  <Sparkles className="mr-2 h-5 w-5" />
+                  Get Started
+                </Button>
+                <div className='text-secondary-foreground/80 mt-6 text-sm'>
+                  <p className='font-semibold'>What happens next?</p>
+                  <p>We'll discuss your vision, explain our process, and answer all your questions. It's a supportive conversation, not a sales pitch.</p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </motion.section>
 
-        {/* Consultation CTA Block */}
-        <motion.section
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={sectionVariants}
-            className="py-16 md:py-24"
-        >
-            <div className="container px-4 md:px-6 max-w-4xl mx-auto">
-                 <Card className="p-8 md:p-12 text-center bg-secondary border-none">
-                    <CardHeader className="p-0">
-                        <h2 className="text-3xl font-semibold tracking-tight text-secondary-foreground sm:text-4xl font-headline">Ready to Start Your Project?</h2>
-                        <p className="mt-4 text-lg text-secondary-foreground/80 max-w-xl mx-auto">
-                            Book a free, no-obligation consultation with one of our expert designers.
-                        </p>
-                    </CardHeader>
-                    <CardContent className="p-0 mt-8">
-                         <Button size="lg" className="text-lg" onClick={() => setShowGetStartedModal(true)}>
-                            <Sparkles className="mr-2 h-5 w-5" />
-                            Get Started
-                        </Button>
-                        <div className='text-secondary-foreground/80 mt-6 text-sm'>
-                            <p className='font-semibold'>What happens next?</p>
-                            <p>We'll discuss your vision, explain our process, and answer all your questions. It's a supportive conversation, not a sales pitch.</p>
-                        </div>
-                    </CardContent>
-                 </Card>
-            </div>
-        </motion.section>
-        
       </main>
       <Footer />
     </div>
