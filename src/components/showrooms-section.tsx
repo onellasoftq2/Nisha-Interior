@@ -50,48 +50,48 @@ const ShowroomsSection = () => {
             Experience our quality and designs in person. Find the Nisha Interior center nearest to you.
           </p>
         </div>
-        <div className="divide-y border divide-border border-border rounded-lg overflow-hidden shadow-lg">
-          <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
-            {showrooms.map(showroom => (
-              <ShowroomBox key={showroom.name} {...showroom} />
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border rounded-lg overflow-hidden shadow-lg">
+            {showrooms.map((showroom, index) => (
+              <ShowroomBox 
+                key={showroom.name} 
+                {...showroom} 
+                className={cn(
+                    index > 0 && "border-t", // Top border for all but first on mobile
+                    index % 2 !== 0 && "md:border-l", // Left border for second item in row on md
+                    index > 1 && "md:border-t", // Top border for second row on md
+                    index > 0 && "lg:border-l lg:border-t-0" // Left border for all but first on lg, remove top border
+                )}
+              />
             ))}
-          </div>
         </div>
       </div>
     </section>
   );
 };
 
-const ShowroomBox = ({ name, address, phone, mapLink, whatsappLink }: { name: string; address: string; phone: string; mapLink: string, whatsappLink: string }) => {
+const ShowroomBox = ({ name, address, phone, mapLink, whatsappLink, className }: { name: string; address: string; phone: string; mapLink: string, whatsappLink: string, className?: string }) => {
   return (
-    <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between p-8 bg-background">
-      <div>
+    <div className={cn("relative flex flex-col p-8 bg-background", className)}>
+      <div className="flex-grow">
         <h3 className="text-xl font-semibold font-headline text-foreground">{name}</h3>
         <p className="text-muted-foreground mt-1 text-sm">{address}</p>
       </div>
-      <div className="flex-1 lg:hidden" />
-      {/* Mobile/Tablet Buttons */}
-      <div className="grid grid-cols-3 divide-x divide-border border border-border rounded-md overflow-hidden mt-6 lg:hidden">
-        <LinkBox Icon={Phone} text="Call Now" href={`tel:${phone}`} />
-        <LinkBox Icon={WhatsappIcon} text="WhatsApp" href={whatsappLink} />
-        <LinkBox Icon={MapPin} text="Directions" href={mapLink} />
-      </div>
-      {/* Desktop Icon Buttons */}
-      <div className="hidden lg:flex items-center gap-2 mt-4 lg:mt-0">
-          <a href={`tel:${phone}`} target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="icon" className="border-foreground/20">
+      
+      <div className="flex items-center gap-2 mt-6">
+          <a href={`tel:${phone}`} target="_blank" rel="noopener noreferrer" className="flex-1">
+            <Button variant="outline" size="icon" className="w-full border-foreground/20">
                 <Phone className="h-4 w-4" />
                 <span className="sr-only">Call Now</span>
             </Button>
           </a>
-          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="icon" className="border-foreground/20">
-                <WhatsappIcon className="h-4 w-4" />
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer" className="flex-1">
+            <Button variant="outline" size="icon" className="w-full border-foreground/20">
+                <WhatsappIcon className="h-5 w-5" />
                 <span className="sr-only">WhatsApp</span>
             </Button>
           </a>
-          <a href={mapLink} target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="icon" className="border-foreground/20">
+          <a href={mapLink} target="_blank" rel="noopener noreferrer" className="flex-1">
+            <Button variant="outline" size="icon" className="w-full border-foreground/20">
                 <MapPin className="h-4 w-4" />
                 <span className="sr-only">Directions</span>
             </Button>
