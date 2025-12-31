@@ -4,31 +4,36 @@ import { useAnimate } from 'framer-motion';
 import { Phone, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { LucideIcon } from 'lucide-react';
+import { WhatsappIcon } from './icons/whatsapp-icon';
 
 const showrooms = [
   {
     name: 'Wakad Center',
     address: '123 Sunshine Plaza, Wakad',
     phone: '+911234567890',
-    mapLink: 'https://maps.google.com'
+    mapLink: 'https://maps.google.com',
+    whatsappLink: 'https://wa.me/919876543210',
   },
   {
     name: 'Kharadi Center',
     address: '456 Urban Square, Kharadi',
     phone: '+911234567891',
-    mapLink: 'https://maps.google.com'
+    mapLink: 'https://maps.google.com',
+    whatsappLink: 'https://wa.me/919876543210',
   },
   {
     name: 'New Kharadi Annex',
     address: '789 Galaxy Galleria, New Kharadi',
     phone: '+911234567892',
-    mapLink: 'https://maps.google.com'
+    mapLink: 'https://maps.google.com',
+    whatsappLink: 'https://wa.me/919876543210',
   },
   {
     name: 'Nanded City Hub',
     address: '101 Aspire Towers, Nanded City',
     phone: '+911234567893',
-    mapLink: 'https://maps.google.com'
+    mapLink: 'https://maps.google.com',
+    whatsappLink: 'https://wa.me/919876543210',
   },
 ];
 
@@ -50,25 +55,21 @@ const ShowroomsSection = () => {
               <ShowroomBox key={showroom.name} {...showroom} />
             ))}
           </div>
-          {/* <div className="grid grid-cols-1 md:grid-cols-2 divide-y md:divide-y-0 md:divide-x divide-border">
-            {showrooms.slice(2, 4).map(showroom => (
-              <ShowroomBox key={showroom.name} {...showroom} />
-            ))}
-          </div> */}
         </div>
       </div>
     </section>
   );
 };
 
-const ShowroomBox = ({ name, address, phone, mapLink }: { name: string; address: string; phone: string; mapLink: string }) => {
+const ShowroomBox = ({ name, address, phone, mapLink, whatsappLink }: { name: string; address: string; phone: string; mapLink: string, whatsappLink: string }) => {
   return (
     <div className="relative flex flex-col p-8 bg-background">
       <h3 className="text-xl font-semibold font-headline text-foreground">{name}</h3>
       <p className="text-muted-foreground mt-1 text-sm">{address}</p>
       <div className="flex-1" />
-      <div className="grid grid-cols-2 divide-x divide-border border border-border rounded-md overflow-hidden mt-6">
+      <div className="grid grid-cols-3 divide-x divide-border border border-border rounded-md overflow-hidden mt-6">
         <LinkBox Icon={Phone} text="Call Now" href={`tel:${phone}`} />
+        <LinkBox Icon={WhatsappIcon} text="WhatsApp" href={whatsappLink} />
         <LinkBox Icon={MapPin} text="Directions" href={mapLink} />
       </div>
     </div>
@@ -96,7 +97,7 @@ const EXIT_KEYFRAMES: Record<string, string[]> = {
 };
 
 type LinkBoxProps = {
-  Icon: LucideIcon;
+  Icon: LucideIcon | typeof WhatsappIcon;
   href?: string;
   text: string;
 };
@@ -158,7 +159,7 @@ const LinkBox = ({ Icon, href, text }: LinkBoxProps) => {
       className="relative grid h-10 w-full place-content-center text-foreground bg-background"
     >
       <div className="flex items-center gap-3">
-        <Icon className="text-sm" />
+        <Icon className="text-sm h-4 w-4" />
         <span className="text-sm font-medium">{text}</span>
       </div>
 
@@ -168,7 +169,7 @@ const LinkBox = ({ Icon, href, text }: LinkBoxProps) => {
         className="absolute inset-0 grid place-content-center bg-primary text-primary-foreground"
       >
         <div className="flex items-center gap-3">
-          <Icon className="text-sm" />
+          <Icon className="text-sm h-4 w-4" />
           <span className="text-sm font-medium">{text}</span>
         </div>
       </div>
