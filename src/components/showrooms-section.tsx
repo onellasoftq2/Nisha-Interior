@@ -5,6 +5,7 @@ import { Phone, MapPin } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { LucideIcon } from 'lucide-react';
 import { WhatsappIcon } from './icons/whatsapp-icon';
+import { Button } from './ui/button';
 
 const showrooms = [
   {
@@ -63,14 +64,38 @@ const ShowroomsSection = () => {
 
 const ShowroomBox = ({ name, address, phone, mapLink, whatsappLink }: { name: string; address: string; phone: string; mapLink: string, whatsappLink: string }) => {
   return (
-    <div className="relative flex flex-col p-8 bg-background">
-      <h3 className="text-xl font-semibold font-headline text-foreground">{name}</h3>
-      <p className="text-muted-foreground mt-1 text-sm">{address}</p>
-      <div className="flex-1" />
-      <div className="grid grid-cols-3 divide-x divide-border border border-border rounded-md overflow-hidden mt-6">
+    <div className="relative flex flex-col lg:flex-row lg:items-center lg:justify-between p-8 bg-background">
+      <div>
+        <h3 className="text-xl font-semibold font-headline text-foreground">{name}</h3>
+        <p className="text-muted-foreground mt-1 text-sm">{address}</p>
+      </div>
+      <div className="flex-1 lg:hidden" />
+      {/* Mobile/Tablet Buttons */}
+      <div className="grid grid-cols-3 divide-x divide-border border border-border rounded-md overflow-hidden mt-6 lg:hidden">
         <LinkBox Icon={Phone} text="Call Now" href={`tel:${phone}`} />
         <LinkBox Icon={WhatsappIcon} text="WhatsApp" href={whatsappLink} />
         <LinkBox Icon={MapPin} text="Directions" href={mapLink} />
+      </div>
+      {/* Desktop Icon Buttons */}
+      <div className="hidden lg:flex items-center gap-2 mt-4 lg:mt-0">
+          <a href={`tel:${phone}`} target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="icon" className="border-foreground/20">
+                <Phone className="h-4 w-4" />
+                <span className="sr-only">Call Now</span>
+            </Button>
+          </a>
+          <a href={whatsappLink} target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="icon" className="border-foreground/20">
+                <WhatsappIcon className="h-4 w-4" />
+                <span className="sr-only">WhatsApp</span>
+            </Button>
+          </a>
+          <a href={mapLink} target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="icon" className="border-foreground/20">
+                <MapPin className="h-4 w-4" />
+                <span className="sr-only">Directions</span>
+            </Button>
+          </a>
       </div>
     </div>
   );
