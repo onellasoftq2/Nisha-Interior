@@ -52,16 +52,16 @@ export default function ScrollFAQAccordion({
     }
 
     data.forEach((item, index) => {
-        const contentRef = contentRefs.current.get(item.id.toString());
-        if(contentRef) {
-            ScrollTrigger.create({
-                trigger: contentRef,
-                start: "top 60%", 
-                end: "bottom 40%",
-                onEnter: () => setOpenItem(item.id.toString()),
-                onEnterBack: () => setOpenItem(item.id.toString()),
-            });
-        }
+      const contentRef = contentRefs.current.get(item.id.toString());
+      if (contentRef) {
+        ScrollTrigger.create({
+          trigger: contentRef,
+          start: "top 60%",
+          end: "bottom 40%",
+          onEnter: () => setOpenItem(item.id.toString()),
+          onEnterBack: () => setOpenItem(item.id.toString()),
+        });
+      }
     });
 
     return () => {
@@ -70,67 +70,67 @@ export default function ScrollFAQAccordion({
   }, [data]);
 
   return (
-    <div className={cn("w-full py-16 md:py-24", className)}>
-        <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl md:text-5xl font-headline mb-12">
-                Frequently Asked Questions
-            </h2>
-        </div>
-      
-      <div className="max-w-3xl mx-auto">
+    <div className={cn("w-full py-16 md:py-16", className)}>
+      <div className="max-w-3xl mx-auto text-center">
+        <h2 className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl md:text-4xl font-headline mb-8">
+          Frequently Asked Questions
+        </h2>
+      </div>
+
+      <div className="md:w-full lg:w-[600px] mx-auto">
         <Accordion.Root type="single" collapsible value={openItem || ""} onValueChange={setOpenItem}>
-            {data.map((item) => (
-            <Accordion.Item value={item.id.toString()} key={item.id} className="mb-6 border-b-0" ref={(el) => {
-                  if (el) contentRefs.current.set(item.id.toString(), el);
-                }}>
-                <Accordion.Header>
-                <Accordion.Trigger className="flex w-full items-center justify-between gap-x-4 cursor-pointer text-left py-2 focus:outline-none">
-                    <span
-                        className={cn(
-                            "text-lg font-medium transition-colors",
-                            openItem === item.id.toString()
-                            ? "text-primary"
-                            : "text-foreground/70 hover:text-foreground",
-                            questionClassName
-                        )}
-                    >
-                    {item.question}
-                    </span>
-
-                    <span
+          {data.map((item) => (
+            <Accordion.Item value={item.id.toString()} key={item.id} className="mb-3 border-b-0" ref={(el) => {
+              if (el) contentRefs.current.set(item.id.toString(), el);
+            }}>
+              <Accordion.Header>
+                <Accordion.Trigger className="flex w-full items-center justify-between gap-x-4 cursor-pointer text-left py-1 focus:outline-none">
+                  <span
                     className={cn(
-                        "text-muted-foreground transition-transform duration-300",
-                        openItem === item.id.toString() && "text-primary rotate-45"
+                      "text-md font-medium transition-colors",
+                      openItem === item.id.toString()
+                        ? "text-primary"
+                        : "text-foreground/70 hover:text-foreground",
+                      questionClassName
                     )}
-                    >
-                    <Plus className="h-5 w-5" />
-                    </span>
-                </Accordion.Trigger>
-                </Accordion.Header>
+                  >
+                    {item.question}
+                  </span>
 
-                <Accordion.Content asChild forceMount>
+                  <span
+                    className={cn(
+                      "text-muted-foreground transition-transform duration-300",
+                      openItem === item.id.toString() && "text-primary rotate-45"
+                    )}
+                  >
+                    <Plus className="h-5 w-5" />
+                  </span>
+                </Accordion.Trigger>
+              </Accordion.Header>
+
+              <Accordion.Content asChild forceMount>
                 <motion.div
-                    initial="collapsed"
-                    animate={openItem === item.id.toString() ? "open" : "collapsed"}
-                    variants={{
-                        open: { opacity: 1, height: "auto", marginTop: "16px" },
-                        collapsed: { opacity: 0, height: 0, marginTop: "0px" },
-                    }}
-                    transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-                    className="overflow-hidden"
+                  initial="collapsed"
+                  animate={openItem === item.id.toString() ? "open" : "collapsed"}
+                  variants={{
+                    open: { opacity: 1, height: "auto", marginTop: "16px" },
+                    collapsed: { opacity: 0, height: 0, marginTop: "0px" },
+                  }}
+                  transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  className="overflow-hidden"
                 >
-                    <div
-                        className={cn(
-                            "text-base text-left text-muted-foreground pb-4",
-                            answerClassName
-                        )}
-                        >
-                        {item.answer}
-                    </div>
+                  <div
+                    className={cn(
+                      "text-base text-left text-muted-foreground pb-4",
+                      answerClassName
+                    )}
+                  >
+                    {item.answer}
+                  </div>
                 </motion.div>
-                </Accordion.Content>
+              </Accordion.Content>
             </Accordion.Item>
-            ))}
+          ))}
         </Accordion.Root>
       </div>
     </div>

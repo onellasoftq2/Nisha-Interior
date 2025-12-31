@@ -10,34 +10,57 @@ import Footer from '@/components/footer';
 import TestimonialsSection from '@/components/testimonials-section';
 import ScrollFAQAccordion from '@/components/ui/scroll-faq-accordion';
 import TransformationSection from '@/components/transformation-section';
-
 const faqs = [
-    {
-        id: 1,
-        question: "How does your pricing work?",
-        answer: "Our pricing is transparent and based on the materials, finishes, and complexity of your project. We provide a detailed quote after the design consultation, with no hidden costs. Because we own our factory, we can offer premium quality without the premium price tag."
-    },
-    {
-        id: 2,
-        question: "What is the typical timeline for a project?",
-        answer: "A typical project, from design to handover, takes about 6-8 weeks. This includes design finalization, manufacturing in our factory, and on-site installation. We provide a more precise timeline once your design is confirmed."
-    },
-    {
-        id: 3,
-        question: "How much customization is possible?",
-        answer: "Almost anything is possible. Since we manufacture everything in-house, we can customize dimensions to the millimeter, and you have a vast choice of materials, colors, and finishes. We build to fit your space and style perfectly."
-    },
-    {
-        id: 4,
-        question: "Can I just get a design consultation?",
-        answer: "Absolutely. We offer a standalone Interior Design Consultation service where our experts help you refine your ideas, select materials, and create an actionable plan, whether you decide to proceed with us or not."
-    },
-    {
-        id: 5,
-        question: "Do I need to have a clear idea before the consultation?",
-        answer: "Not at all! Many of our clients come to us with just a basic idea. Our designers are experts at helping you discover and refine your vision. The consultation is a collaborative process to explore possibilities."
-    }
+  {
+    id: 1,
+    question: "What is included in your interior service?",
+    answer:
+      "Our service covers everything from design consultation and space planning to manufacturing, delivery, and installation. This includes modular furniture, wardrobes, storage units, finishes, and on-site execution, ensuring a seamless end-to-end experience."
+  },
+  {
+    id: 2,
+    question: "How does the pricing work and is it fixed?",
+    answer:
+      "Pricing is based on your layout, material selections, finishes, and level of customization. After the design is finalized, we share a detailed quotation. Once approved, the price remains fixed unless you request design or material changes."
+  },
+  {
+    id: 3,
+    question: "How long does it take to complete a full home interior?",
+    answer:
+      "Most projects are completed within 6–8 weeks after design sign-off. Since manufacturing happens in our own factory, timelines are more predictable and delays are minimized."
+  },
+  {
+    id: 4,
+    question: "Can I customize sizes, materials, and finishes?",
+    answer:
+      "Yes. All furniture is made to measure in our factory. You can customize dimensions, materials, colors, hardware, and finishes to match your space and preferences."
+  },
+  {
+    id: 5,
+    question: "Do you handle installation and quality checks?",
+    answer:
+      "Yes. Our trained installation team handles on-site execution, followed by quality checks to ensure proper fit, finish, and functionality before final handover."
+  },
+  {
+    id: 6,
+    question: "What kind of warranty or support do you provide?",
+    answer:
+      "We provide a warranty on manufacturing and fittings, along with post-installation support. Our team is available for any service or adjustments required after handover."
+  },
+  {
+    id: 7,
+    question: "Can I proceed in phases instead of doing the full home at once?",
+    answer:
+      "Absolutely. Many clients choose to complete interiors room by room. We can plan and execute the project in phases based on your budget and timeline."
+  },
+  {
+    id: 8,
+    question: "How is your approach different from marketplace interior brands?",
+    answer:
+      "Unlike marketplace models, we design and manufacture in-house. This gives us better quality control, accurate sizing, fewer middlemen, transparent pricing, and consistent execution."
+  }
 ];
+
 
 
 export default function Home() {
